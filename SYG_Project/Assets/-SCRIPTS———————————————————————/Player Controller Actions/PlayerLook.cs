@@ -3,7 +3,7 @@ using Rewired;
 
 public class PlayerLook : MonoBehaviour
 {
-    [Range(0,3)][SerializeField] int playerID = 0;
+    [SerializeField] int playerID = 0;
     [SerializeField] Vector2 lookSpeed = Vector2.one;
     [SerializeField] Vector2 mouseSensitivity = Vector2.one *0.1f;
     [Range(0,90f)][SerializeField]float maxVerticalAngle = 85f;
@@ -70,7 +70,7 @@ public class PlayerLook : MonoBehaviour
         if (CanLook)
         {
             if (horizontalPivot) GetHorizontalAngle();
-            if (verticalPivot) GetVerticalAngle();
+            //if (verticalPivot) GetVerticalAngle();
             ApplyToCamera();
         }
     }
@@ -84,13 +84,13 @@ public class PlayerLook : MonoBehaviour
         while (vAngle<-360f) vAngle -= 360f;
     }
 
-    void GetVerticalAngle()
+    /*void GetVerticalAngle()
     {
         inputY = -player.GetAxis("LookVertical") * lookSpeed.y;
         if (MouseInput) inputY *= mouseSensitivity.y;
         hAngle += inputY;
         hAngle = Mathf.Clamp(hAngle,-maxVerticalAngle,maxVerticalAngle);
-    }
+    }*/
 
     void ApplyToCamera()
     {

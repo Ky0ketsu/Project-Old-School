@@ -4,7 +4,7 @@ using Rewired;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMove : MonoBehaviour
 {
-    [Range(0,3)][SerializeField] int playerID = 0; // Rewired plugin
+    [SerializeField] int playerID = 0; // Rewired plugin
     public bool CanRun{get{return canRun;}set{canRun=value;}}
     bool canRun=false;
     public bool CanFall{get{return canFall;}set{canFall=value;}}
