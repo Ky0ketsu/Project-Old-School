@@ -10,7 +10,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
     [HideInInspector] protected NavMeshAgent agent;
 
     [SerializeField]
-    protected Transform player;
+    public Transform player;
 
     private void Awake()
     {

@@ -17,7 +17,15 @@ public class Scr_Mimolle : Scr_Character
     void CheckCanViewPlayer()
     {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position + Vector3.up * 1.5f, transform.position - player.position ), out hit, Vector3.Distance(transform.position , player.position) )
+        if(Physics.Raycast(transform.position + Vector3.up * 1.5f, transform.position - player.position, out hit, Vector3.Distance(transform.position , player.position), layerMask))
+        {
+            Debug.DrawRay(transform.position + Vector3.up, (transform.position - player.position * 1.5f) * hit.distance, Color.green);
+            shearchPlayer = true;
+        }
+        else
+        {
+            Debug.DrawRay(transform.position + Vector3.up, (transform.position - player.position * 1.5f) * hit.distance, Color.red);
+        }
     }
 
     public override void SetDestination()
