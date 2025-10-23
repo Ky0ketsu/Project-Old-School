@@ -67,6 +67,18 @@ public class Scr_Player_Slap : MonoBehaviour
             if (player.GetButton("Slap"))
             {
                 canSlap = false;
+                if (Physics.Raycast(transform.position + Vector3.up * 1.5f, viewDirection.forward, out hit, 3f, layerMask))
+                {
+                    ISlapable slapable = hit.transform.GetComponent<ISlapable>();
+
+                    
+                    if (slapable != null)
+                    {
+                        Debug.Log(slapable);
+                        slapable.Slap();
+                    }
+                    else Debug.Log(" je suis null");
+                }
                 Slap();
             }
         }
@@ -84,12 +96,7 @@ public class Scr_Player_Slap : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         slapSprite.DOLocalMove(initialSlapPosition + new Vector3(-1.5f, 1f, 0), 0.5f).SetEase(Ease.OutExpo);
         slapSprite.DOLocalRotate(initialSlapRotation + new Vector3(0, -40, 0), 0.5f).SetEase(Ease.OutExpo);
-        yield return new WaitForSeconds(0.25f);
-
-        /*RaycastHit hit;
-        if(RaycastHit)*/
-
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         slapSprite.DOLocalMove(initialSlapPosition, 0.2f).SetEase(Ease.InCubic);
         slapSprite.DOLocalRotate(initialSlapRotation, 0.5f).SetEase(Ease.OutExpo);
         yield return new WaitForSeconds(0.2f);

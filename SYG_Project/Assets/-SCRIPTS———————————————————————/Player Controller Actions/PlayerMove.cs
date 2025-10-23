@@ -16,7 +16,6 @@ public class PlayerMove : MonoBehaviour
     PlayerLook lookScript => GetComponent<PlayerLook>();
     Player player; // Rewired plugin
 
-
     void Awake()
     {
         EVENTS.OnGameplay += EnableMoveSet;
