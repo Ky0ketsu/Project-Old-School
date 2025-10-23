@@ -44,3 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb53de7c2bcee74b8fce36c97fe5a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  parentGranpa: {fileID: 0}
+  parentBedroom: {fileID: 0}
+  grandpaPrefab:
+  - {fileID: 2062127361108710777, guid: a8a9f43ab13cfbb43ba9cf5a3aec2022, type: 3}
+  - {fileID: 7500527285318101863, guid: 1237c6cfb7a5421478d0c50a7726a1fb, type: 3}
+  - {fileID: 4737593438325050748, guid: d6e74807ca4d3ae49867c3565e0c817d, type: 3}
+  - {fileID: 4609382580916239025, guid: 0cf3dbf4b0c0d54498228cd39006d9fe, type: 3}
+  grandpas:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -6,6 +6,10 @@ public class Scr_GrandpaManager : MonoBehaviour
 {
     [SerializeField]
     Transform player , parentGranpa;
+
+    [SerializeField]
+    Transform parentBedroom;
+    [SerializeField] Transform[] Bedrooms = new Transform[4];
     
     public GameObject[] grandpaPrefab = new GameObject[4];
     public GameObject[] grandpas = new GameObject[4];
@@ -28,7 +32,27 @@ public class Scr_GrandpaManager : MonoBehaviour
         for (int i = 0; i < grandpas.Length; i++)
         {
             grandpas[i] = Instantiate(grandpaPrefab[i] , parentGranpa.position + Vector3.right * i , Quaternion.identity, parentGranpa);
-            grandpas[i].GetComponent<Scr_Character>().player = player;
+
+
+            if (grandpas[i].GetComponent<Scr_Character>() != null)
+            {
+                grandpas[i].GetComponent<Scr_Character>().player = player;
+            }
+
+            if (parentBedroom.GetChild(i) != null)
+            {
+                Bedrooms[i] = parentBedroom.GetChild(i);
+            }
+
+            if (grandpas[i].GetComponent<Scr_Character>() != null)
+            {
+                if (Bedrooms[i] != null)
+                {
+                    grandpas[i].GetComponent<Scr_Character>().bedroom = Bedrooms[i];
+                }
+                else Debug.Log($"Pas de chambre {i}");
+            }
+            else Debug.Log($"Pas de vieux {i}");
         }
     }
 
@@ -39,4 +63,6 @@ public class Scr_GrandpaManager : MonoBehaviour
             Destroy(grandpa);
         }
     }
+
+
 }

@@ -10,12 +10,14 @@ public class Scr_Mimolle : Scr_Character
 
 
     private void Update()
-    {
+    {   
         CheckCanViewPlayer();
     }
 
     void CheckCanViewPlayer()
     {
+        
+
         RaycastHit hit;
         if(Physics.Raycast(transform.position + Vector3.up * 1.5f, transform.position - player.position, out hit, Vector3.Distance(transform.position , player.position), layerMask))
         {
@@ -25,7 +27,14 @@ public class Scr_Mimolle : Scr_Character
         else
         {
             Debug.DrawRay(transform.position + Vector3.up, (transform.position - player.position * 1.5f) * hit.distance, Color.red);
+            StartCoroutine(DelayToShearch());
         }
+    }
+
+    IEnumerator DelayToShearch()
+    {
+        yield return new WaitForSeconds(2f);
+        shearchPlayer = true;
     }
 
     public override void SetDestination()
@@ -37,6 +46,11 @@ public class Scr_Mimolle : Scr_Character
                 targetPosition = player.position + new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
             }
         }
+        if (shearchPlayer! && player != null)
+        {
+            targetPosition = player.position;
+        }
+
         agent.SetDestination(targetPosition);
     }
 

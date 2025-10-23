@@ -16,7 +16,7 @@ public class Scr_Player_Slap : MonoBehaviour
     [SerializeField] private Transform viewDirection;
     public LayerMask layerMask;
 
-
+    [SerializeField] ParticleSystem slapParticule;
 
     void Awake()
     {
