@@ -16,15 +16,17 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     [SerializeField] public Transform bedroom;
 
-    protected bool controlledMove;
+    [SerializeField] protected bool controlledMove;
 
-    [SerializeField]private bool inBedroom;
+    [SerializeField] private bool inBedroom;
     [SerializeField] private float timer;
 
     private void Awake()
     {
         EVENTS.OnGameplay += EnableMove;
         EVENTS.OnGameplayExit += DisableMove;
+        agent = GetComponent<NavMeshAgent>();
+        rigid = GetComponent<Rigidbody>();
     }
 
     private void OnDestroy()
@@ -46,17 +48,23 @@ public class Scr_Character : MonoBehaviour , ISlapable
     private void Start()
     {
         targetPosition = transform.position;
-        agent = GetComponent<NavMeshAgent>();
-        rigid = GetComponent<Rigidbody>();
+       
     }
 
     public virtual void SetDestination()
     {
-        if (new Vector3(targetPosition.x, 0, targetPosition.z) == new Vector3(transform.position.x ,0 ,transform.position.z))
+        if(agent.isOnNavMesh)
         {
-            targetPosition += new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            if (new Vector3(targetPosition.x, 0, targetPosition.z) == new Vector3(transform.position.x ,0 ,transform.position.z))
+            {
+                targetPosition += new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            }
+            agent.SetDestination(targetPosition);
+            }
+        else
+        {
+            Debug.Log("Agent is not on navmesh");
         }
-        agent.SetDestination(targetPosition);
     }
 
     public virtual void Slaped()
@@ -72,32 +80,38 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     public virtual void GoBedroom()
     {
-        agent.SetDestination(bedroom.position);
-        if (Vector3.Distance(transform.position, bedroom.position) < 3f)
+        if(agent.isOnNavMesh)
         {
-            canMove = false;
-            agent.enabled = false;
-            rigid.useGravity = false;
-            transform.position += Vector3.down * 10;
+            agent.SetDestination(bedroom.position);
+            if (Vector3.Distance(transform.position, bedroom.position) < 3f)
+            {
+                canMove = false;
+                agent.enabled = false;
+                rigid.useGravity = false;
+                transform.position += Vector3.down * 10;
 
-            timer = 20f;
-            inBedroom = true;
+                timer = 10f;
+                inBedroom = true;
+            }
+        }
+        else
+        {
+            Debug.Log("Agent is not on navmesh");
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (inBedroom == true)
         {
             Timer();
-            Debug.Log("Time");
         }
 
         if (canMove && controlledMove)
         {
             GoBedroom();
         }
-        if (canMove && controlledMove!)
+        else if (canMove && !controlledMove)
         {
             SetDestination();
         }
@@ -105,15 +119,22 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     void Timer()
     {
-        timer -= 1 * Time.deltaTime;
+        timer -= Time.deltaTime;
+
+        if(bedroom.GetComponent<Scr_Door>().slaped == true)
+        {
+            timer = 10f;
+            bedroom.GetComponent<Scr_Door>().slaped = false;
+        }
 
         if(timer <= 0)
         {
             rigid.useGravity = true;
-            transform.position += Vector3.up * 10;
+            transform.position += Vector3.up * 11f;
             agent.enabled = true;
             canMove = true;
             inBedroom = false;
+            controlledMove = false;
         }
     }
 }

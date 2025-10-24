@@ -31,7 +31,7 @@ public class Scr_GrandpaManager : MonoBehaviour
     {
         for (int i = 0; i < grandpas.Length; i++)
         {
-            grandpas[i] = Instantiate(grandpaPrefab[i] , parentGranpa.position + Vector3.right * i , Quaternion.identity, parentGranpa);
+            grandpas[i] = Instantiate(grandpaPrefab[i] , parentGranpa.position + Vector3.right * 2 * i , Quaternion.identity, parentGranpa);
 
 
             if (grandpas[i].GetComponent<Scr_Character>() != null)
