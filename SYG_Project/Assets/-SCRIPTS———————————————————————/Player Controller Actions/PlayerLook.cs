@@ -81,7 +81,7 @@ public class PlayerLook : MonoBehaviour
         if (MouseInput) inputX *= mouseSensitivity.x;
         vAngle +=inputX;
         while (vAngle>360f) vAngle-=360f;
-        while (vAngle<-360f) vAngle -= 360f;
+        while (vAngle<-360f) vAngle += 360f;
     }
 
     /*void GetVerticalAngle()
