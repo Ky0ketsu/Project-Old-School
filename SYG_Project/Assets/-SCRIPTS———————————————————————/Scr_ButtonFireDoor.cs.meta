@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: c1e78b8727d56eb458f06735b4179c9f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - doorToSpawn: {fileID: 5717794793214431235, guid: f82304352896e594cb1c2eafe65b8e6f,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
