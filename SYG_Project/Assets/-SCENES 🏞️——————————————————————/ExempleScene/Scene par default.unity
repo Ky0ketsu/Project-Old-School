@@ -575,14 +575,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5094336218751650547, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
+      propertyPath: m_Size.x
+      value: 9.158728
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094336218751650547, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.42063618
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094336218751650547, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 38290bcb1a2bddd4a89c39774d2030ae,
         type: 2}
     - target: {fileID: 5094336218751650547, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
+      propertyPath: m_CollectObjects
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094336218751650547, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
       propertyPath: m_LayerMask.m_Bits
-      value: 523799
+      value: 1048087
       objectReference: {fileID: 0}
     - target: {fileID: 5658997199456773548, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}

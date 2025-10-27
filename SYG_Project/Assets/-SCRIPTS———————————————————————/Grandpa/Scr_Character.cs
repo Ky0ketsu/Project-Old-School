@@ -8,18 +8,20 @@ public class Scr_Character : MonoBehaviour , ISlapable
 {
     private Rigidbody rigid;
 
-    [SerializeField] protected bool canMove;
-    [SerializeField] protected Vector3 targetPosition;
+    [SerializeField] 
+    protected bool canMove;
 
+    protected Vector3 targetPosition;
+    protected NavMeshAgent agent;
 
-    [HideInInspector] protected NavMeshAgent agent;
-
-    [SerializeField]
+    [HideInInspector]
     public Transform player;
 
-    [SerializeField] public Transform bedroom;
+    [HideInInspector]
+    public Transform bedroom;
 
-    [SerializeField] protected bool controlledMove;
+    [SerializeField]
+    protected bool controlledMove;
 
     [SerializeField] private bool inBedroom;
     [SerializeField] private float timer;
@@ -56,28 +58,16 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     public virtual void SetDestination()
     {
-        /*if(agent.isOnNavMesh)
-        {
-            if (new Vector3(targetPosition.x, 0, targetPosition.z) == new Vector3(transform.position.x ,0 ,transform.position.z))
-            {
-                targetPosition += new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
-            }
-            agent.SetDestination(targetPosition);
-            }
-        else
-        {
-            Debug.Log("Agent is not on navmesh");
-        }*/
-
-
-        if(agent.isOnNavMesh && new Vector3(targetPosition.x, 0, targetPosition.z) == new Vector3(transform.position.x, 0, transform.position.z))
+        NavMeshPath navPath = new NavMeshPath();
+        if(agent.isOnNavMesh && new Vector3(targetPosition.x, 0, targetPosition.z) == new Vector3(transform.position.x, 0, transform.position.z) || agent.CalculatePath(new Vector3(targetPosition.x, 0, targetPosition.z), navPath) == false)
         {
             Vector3 randomPoint = transform.position + new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
             NavMeshHit hit;
+
+            //regarde si le point touche le nav mesh
             if(NavMesh.SamplePosition(randomPoint, out hit, 10f , NavMesh.AllAreas))
             {
                 targetPosition = hit.position;
-                agent.SetDestination(targetPosition);
             }
         }
     }
@@ -95,9 +85,9 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     public virtual void GoBedroom()
     {
+        targetPosition = bedroom.position;
         if(agent.isOnNavMesh)
         {
-            agent.SetDestination(bedroom.position);
             if (Vector3.Distance(transform.position, bedroom.position) < 3f)
             {
                 canMove = false;
@@ -109,10 +99,6 @@ public class Scr_Character : MonoBehaviour , ISlapable
                 inBedroom = true;
             }
         }
-        else
-        {
-            Debug.Log("Agent is not on navmesh");
-        }
     }
 
     void FixedUpdate()
@@ -122,14 +108,17 @@ public class Scr_Character : MonoBehaviour , ISlapable
             Timer();
         }
 
-        if (canMove && controlledMove)
+        //Deffinit le type de deplacement
+        if (controlledMove)
         {
             GoBedroom();
         }
-        else if (canMove && !controlledMove)
+        else
         {
             SetDestination();
         }
+
+        if (canMove) agent.SetDestination(targetPosition);
 
         if (!agent.isOnNavMesh) Debug.LogWarning($"{transform.name} n'est pas sur le navmesh");
     }

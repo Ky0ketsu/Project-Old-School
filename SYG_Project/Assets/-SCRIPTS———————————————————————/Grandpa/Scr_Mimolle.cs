@@ -54,7 +54,6 @@ public class Scr_Mimolle : Scr_Character
                 if (NavMesh.SamplePosition(randomPoint, out hit, 10f, NavMesh.AllAreas))
                 {
                     targetPosition = hit.position;
-                    agent.SetDestination(targetPosition);
                 }
             }
         }
