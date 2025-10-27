@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +10,8 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     [SerializeField] protected bool canMove;
     [SerializeField] protected Vector3 targetPosition;
+
+
     [HideInInspector] protected NavMeshAgent agent;
 
     [SerializeField]
@@ -53,7 +56,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     public virtual void SetDestination()
     {
-        if(agent.isOnNavMesh)
+        /*if(agent.isOnNavMesh)
         {
             if (new Vector3(targetPosition.x, 0, targetPosition.z) == new Vector3(transform.position.x ,0 ,transform.position.z))
             {
@@ -64,6 +67,18 @@ public class Scr_Character : MonoBehaviour , ISlapable
         else
         {
             Debug.Log("Agent is not on navmesh");
+        }*/
+
+
+        if(agent.isOnNavMesh && new Vector3(targetPosition.x, 0, targetPosition.z) == new Vector3(transform.position.x, 0, transform.position.z))
+        {
+            Vector3 randomPoint = transform.position + new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            NavMeshHit hit;
+            if(NavMesh.SamplePosition(randomPoint, out hit, 10f , NavMesh.AllAreas))
+            {
+                targetPosition = hit.position;
+                agent.SetDestination(targetPosition);
+            }
         }
     }
 
@@ -115,8 +130,11 @@ public class Scr_Character : MonoBehaviour , ISlapable
         {
             SetDestination();
         }
+
+        if (!agent.isOnNavMesh) Debug.LogWarning($"{transform.name} n'est pas sur le navmesh");
     }
 
+    // temps avant que le vieux resorte du sa chambre
     void Timer()
     {
         timer -= Time.deltaTime;

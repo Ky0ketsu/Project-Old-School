@@ -47,7 +47,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -303,7 +303,6 @@ MonoBehaviour:
   playerID: 0
   lookSpeed: {x: 2, y: 1}
   mouseSensitivity: {x: 0.1, y: 0.1}
-  maxVerticalAngle: 89
   horizontalPivot: {fileID: 5368870109600697686}
   verticalPivot: {fileID: 9182846347747517818}
 --- !u!114 &3459277675610821995
@@ -391,6 +390,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  slapParticule: {fileID: 0}
 --- !u!1 &5401122650657258834
 GameObject:
   m_ObjectHideFlags: 0

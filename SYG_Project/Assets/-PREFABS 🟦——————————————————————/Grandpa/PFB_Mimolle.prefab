@@ -115,4 +115,5 @@ MonoBehaviour:
   shearchPlayer: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 623069
+  timerNotShowPlayer: 0
