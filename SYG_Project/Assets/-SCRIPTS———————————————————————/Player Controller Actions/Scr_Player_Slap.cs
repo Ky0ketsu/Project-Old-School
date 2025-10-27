@@ -1,6 +1,5 @@
 using Rewired;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
@@ -16,7 +15,7 @@ public class Scr_Player_Slap : MonoBehaviour
     [SerializeField] private Transform viewDirection;
     public LayerMask layerMask;
 
-
+    [SerializeField] ParticleSystem slapParticule;
 
     void Awake()
     {

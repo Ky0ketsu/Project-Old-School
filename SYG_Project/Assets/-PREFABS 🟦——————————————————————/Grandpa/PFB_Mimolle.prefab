@@ -11,7 +11,22 @@ PrefabInstance:
     - target: {fileID: 205227091723625368, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
         type: 3}
       propertyPath: m_Name
-      value: Mimolle
+      value: PFB_Mimolle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816018980468687929, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816018980468687929, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7240558
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816018980468687929, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.37584552
       objectReference: {fileID: 0}
     - target: {fileID: 6526421896265656764, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
         type: 3}
@@ -90,3 +105,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da2a37e95d76c745aaa77c0551819f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
+  targetPosition: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
+  bedroom: {fileID: 0}
+  controlledMove: 0
+  inBedroom: 0
+  timer: 0
+  shearchPlayer: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
