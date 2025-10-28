@@ -31,7 +31,6 @@ public class Scr_Character : MonoBehaviour , ISlapable
         EVENTS.OnGameplay += EnableMove;
         EVENTS.OnGameplayExit += DisableMove;
         agent = GetComponent<NavMeshAgent>();
-        rigid = GetComponent<Rigidbody>();
     }
 
     private void OnDestroy()
@@ -56,10 +55,10 @@ public class Scr_Character : MonoBehaviour , ISlapable
        
     }
 
+    //recherche une position aleatoire autour de lui même
     public virtual void SetDestination()
     {
-        NavMeshPath navPath = new NavMeshPath();
-        if(agent.isOnNavMesh && new Vector3(targetPosition.x, 0, targetPosition.z) == new Vector3(transform.position.x, 0, transform.position.z) || agent.CalculatePath(new Vector3(targetPosition.x, 0, targetPosition.z), navPath) == false)
+        if(agent.isOnNavMesh &&  Vector3.Distance(new Vector3(targetPosition.x, 0, targetPosition.z), new Vector3(transform.position.x, 0, transform.position.z)) < 2f)
         {
             Vector3 randomPoint = transform.position + new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
             NavMeshHit hit;
@@ -88,11 +87,10 @@ public class Scr_Character : MonoBehaviour , ISlapable
         targetPosition = bedroom.position;
         if(agent.isOnNavMesh)
         {
-            if (Vector3.Distance(transform.position, bedroom.position) < 3f)
+            if (Vector3.Distance(transform.position, bedroom.position) < 2f)
             {
                 canMove = false;
                 agent.enabled = false;
-                rigid.useGravity = false;
                 transform.position += Vector3.down * 10;
 
                 timer = 10f;
@@ -119,8 +117,6 @@ public class Scr_Character : MonoBehaviour , ISlapable
         }
 
         if (canMove) agent.SetDestination(targetPosition);
-
-        if (!agent.isOnNavMesh) Debug.LogWarning($"{transform.name} n'est pas sur le navmesh");
     }
 
     // temps avant que le vieux resorte du sa chambre
@@ -136,8 +132,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
         if(timer <= 0)
         {
-            rigid.useGravity = true;
-            transform.position += Vector3.up * 11f;
+            transform.position += Vector3.up * 10f;
             agent.enabled = true;
             canMove = true;
             inBedroom = false;

@@ -585,6 +585,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5094336218751650547, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
+      propertyPath: m_TileSize
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094336218751650547, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094336218751650547, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 38290bcb1a2bddd4a89c39774d2030ae,
@@ -598,6 +608,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LayerMask.m_Bits
       value: 1048087
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094336218751650547, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
+      propertyPath: m_OverrideTileSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094336218751650547, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
+      propertyPath: m_OverrideVoxelSize
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5658997199456773548, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
@@ -651,16 +671,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3205766281997456391, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
-        type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 3205766281997456391, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
-        type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6526421896265656764, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
         type: 3}

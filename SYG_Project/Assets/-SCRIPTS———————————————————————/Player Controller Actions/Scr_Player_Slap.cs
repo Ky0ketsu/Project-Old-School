@@ -68,7 +68,7 @@ public class Scr_Player_Slap : MonoBehaviour
                 canSlap = false;
                 if (Physics.Raycast(transform.position + Vector3.up * 1.5f, viewDirection.forward, out hit, 3f, layerMask))
                 {
-                    ISlapable slapable = hit.transform.GetComponent<ISlapable>();
+                    ISlapable slapable = hit.transform.GetComponentInParent<ISlapable>();
 
                     
                     if (slapable != null)

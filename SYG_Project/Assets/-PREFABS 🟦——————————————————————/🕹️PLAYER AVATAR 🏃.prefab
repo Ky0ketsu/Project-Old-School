@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 5320076987262580759}
   - component: {fileID: 6371353069162640122}
   - component: {fileID: 6697002344033776022}
+  - component: {fileID: 8637207622344538560}
   m_Layer: 6
   m_Name: "\U0001F579\uFE0FPLAYER AVATAR \U0001F3C3"
   m_TagString: Untagged
@@ -391,6 +392,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   slapParticule: {fileID: 0}
+--- !u!114 &8637207622344538560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366888945474098782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c17761c6e31a547b71c739e0487491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 1548654775471198934}
 --- !u!1 &5401122650657258834
 GameObject:
   m_ObjectHideFlags: 0
