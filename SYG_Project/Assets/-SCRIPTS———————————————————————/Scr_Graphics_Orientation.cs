@@ -8,6 +8,6 @@ public class Scr_Graphics_Orientation : MonoBehaviour
 
     void Update()
     {
-        transform.eulerAngles = look.eulerAngles ;
+        transform.eulerAngles = new Vector3(0, look.eulerAngles.y, 0);
     }
 }

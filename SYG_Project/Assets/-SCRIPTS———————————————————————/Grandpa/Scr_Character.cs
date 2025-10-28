@@ -26,6 +26,8 @@ public class Scr_Character : MonoBehaviour , ISlapable
     [SerializeField] private bool inBedroom;
     [SerializeField] private float timer;
 
+    [SerializeField] private ParticleSystem particuleSlap;
+
     private void Awake()
     {
         EVENTS.OnGameplay += EnableMove;
@@ -107,14 +109,8 @@ public class Scr_Character : MonoBehaviour , ISlapable
         }
 
         //Deffinit le type de deplacement
-        if (controlledMove)
-        {
-            GoBedroom();
-        }
-        else
-        {
-            SetDestination();
-        }
+        if (controlledMove) GoBedroom();
+        else SetDestination();
 
         if (canMove) agent.SetDestination(targetPosition);
     }
