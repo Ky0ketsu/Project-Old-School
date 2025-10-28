@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
-  targetPosition: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   bedroom: {fileID: 0}
   controlledMove: 0
@@ -115,4 +114,5 @@ MonoBehaviour:
   shearchPlayer: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 623069
+  timerNotShowPlayer: 0

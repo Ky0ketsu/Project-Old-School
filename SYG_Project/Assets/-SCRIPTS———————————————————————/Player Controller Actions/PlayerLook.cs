@@ -6,7 +6,7 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] int playerID = 0;
     [SerializeField] Vector2 lookSpeed = Vector2.one;
     [SerializeField] Vector2 mouseSensitivity = Vector2.one *0.1f;
-    [Range(0,90f)][SerializeField]float maxVerticalAngle = 85f;
+    //[Range(0,90f)][SerializeField]float maxVerticalAngle = 85f;
     public bool CanLook{get{return canLook;}set{canLook=value;}}
     bool canLook = false;
     public Transform HorizontalPivot {get{return horizontalPivot;}}

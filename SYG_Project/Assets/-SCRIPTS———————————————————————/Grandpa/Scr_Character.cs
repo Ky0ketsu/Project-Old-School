@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,16 +8,20 @@ public class Scr_Character : MonoBehaviour , ISlapable
 {
     private Rigidbody rigid;
 
-    [SerializeField] protected bool canMove;
-    [SerializeField] protected Vector3 targetPosition;
-    [HideInInspector] protected NavMeshAgent agent;
+    [SerializeField] 
+    protected bool canMove;
 
-    [SerializeField]
+    protected Vector3 targetPosition;
+    protected NavMeshAgent agent;
+
+    [HideInInspector]
     public Transform player;
 
-    [SerializeField] public Transform bedroom;
+    [HideInInspector]
+    public Transform bedroom;
 
-    [SerializeField] protected bool controlledMove;
+    [SerializeField]
+    protected bool controlledMove;
 
     [SerializeField] private bool inBedroom;
     [SerializeField] private float timer;
@@ -26,7 +31,6 @@ public class Scr_Character : MonoBehaviour , ISlapable
         EVENTS.OnGameplay += EnableMove;
         EVENTS.OnGameplayExit += DisableMove;
         agent = GetComponent<NavMeshAgent>();
-        rigid = GetComponent<Rigidbody>();
     }
 
     private void OnDestroy()
@@ -51,19 +55,19 @@ public class Scr_Character : MonoBehaviour , ISlapable
        
     }
 
+    //recherche une position aleatoire autour de lui même
     public virtual void SetDestination()
     {
-        if(agent.isOnNavMesh)
+        if(agent.isOnNavMesh &&  Vector3.Distance(new Vector3(targetPosition.x, 0, targetPosition.z), new Vector3(transform.position.x, 0, transform.position.z)) < 2f)
         {
-            if (new Vector3(targetPosition.x, 0, targetPosition.z) == new Vector3(transform.position.x ,0 ,transform.position.z))
+            Vector3 randomPoint = transform.position + new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            NavMeshHit hit;
+
+            //regarde si le point touche le nav mesh
+            if(NavMesh.SamplePosition(randomPoint, out hit, 10f , NavMesh.AllAreas))
             {
-                targetPosition += new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+                targetPosition = hit.position;
             }
-            agent.SetDestination(targetPosition);
-            }
-        else
-        {
-            Debug.Log("Agent is not on navmesh");
         }
     }
 
@@ -80,23 +84,18 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     public virtual void GoBedroom()
     {
+        targetPosition = bedroom.position;
         if(agent.isOnNavMesh)
         {
-            agent.SetDestination(bedroom.position);
-            if (Vector3.Distance(transform.position, bedroom.position) < 3f)
+            if (Vector3.Distance(transform.position, bedroom.position) < 2f)
             {
                 canMove = false;
                 agent.enabled = false;
-                rigid.useGravity = false;
                 transform.position += Vector3.down * 10;
 
                 timer = 10f;
                 inBedroom = true;
             }
-        }
-        else
-        {
-            Debug.Log("Agent is not on navmesh");
         }
     }
 
@@ -107,16 +106,20 @@ public class Scr_Character : MonoBehaviour , ISlapable
             Timer();
         }
 
-        if (canMove && controlledMove)
+        //Deffinit le type de deplacement
+        if (controlledMove)
         {
             GoBedroom();
         }
-        else if (canMove && !controlledMove)
+        else
         {
             SetDestination();
         }
+
+        if (canMove) agent.SetDestination(targetPosition);
     }
 
+    // temps avant que le vieux resorte du sa chambre
     void Timer()
     {
         timer -= Time.deltaTime;
@@ -129,8 +132,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
         if(timer <= 0)
         {
-            rigid.useGravity = true;
-            transform.position += Vector3.up * 11f;
+            transform.position += Vector3.up * 10f;
             agent.enabled = true;
             canMove = true;
             inBedroom = false;
