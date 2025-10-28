@@ -11,9 +11,10 @@ public class Scr_Mimolle : Scr_Character
     [SerializeField] bool shearchPlayer;
     [SerializeField] LayerMask layerMask;
 
-    //temps depuis le lequel il n'a pas vue le joueur
     [SerializeField]
     private float timerNotShowPlayer;
+
+    private float timerAfterkickPlayer;
 
 
     private void Update()
@@ -22,6 +23,10 @@ public class Scr_Mimolle : Scr_Character
 
         if (timerCanAttack > 0) timerCanAttack -= Time.deltaTime;
         if (timerCanAttack <= 0) canAttack = true;
+
+
+        if(timerAfterkickPlayer > 0) timerAfterkickPlayer -= Time.deltaTime;
+        if (timerAfterkickPlayer < 0) timerAfterkickPlayer = 0;
     }
 
     void CheckCanViewPlayer()
@@ -31,7 +36,7 @@ public class Scr_Mimolle : Scr_Character
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position) * 1.05f, layerMask))
         {
-            if (hit.transform.GetComponent<Scr_Player_Slap>() != null)
+            if (hit.transform.GetComponent<Scr_Player_Slap>() != null && timerAfterkickPlayer == 0)
             {
                 shearchPlayer = false;
                 timerNotShowPlayer = 3f;
@@ -49,13 +54,12 @@ public class Scr_Mimolle : Scr_Character
     //recherche une position aléatoire autour du joueur
     public override void SetDestination()
     {
-        if (Vector3.Distance(transform.position, player.position) <= 2f)
+        if (Vector3.Distance(transform.position, player.position) <= 2f && timerAfterkickPlayer == 0)
         {
             AttackPlayer();
-            agent.speed = 0f;
+            agent.SetDestination(transform.position);
             return;
         }
-        else agent.speed = 2f;
 
         if (shearchPlayer)
         {
@@ -70,10 +74,7 @@ public class Scr_Mimolle : Scr_Character
                 }
             }
         }
-        else
-        {
-            targetPosition = player.position;
-        }
+        else targetPosition = player.position;
     }
 
     bool canAttack;
@@ -88,12 +89,6 @@ public class Scr_Mimolle : Scr_Character
             Invoke("CheckTouchPlayer", 0.6f);
             timerCanAttack = 2f;
         }
-        else
-        {
-            
-        }
-
-        
     }
 
     void CheckTouchPlayer()
@@ -105,6 +100,7 @@ public class Scr_Mimolle : Scr_Character
             if (hit.transform.GetComponentInParent<Scr_PlayerStun>() != null)
             {
                 hit.transform.GetComponentInParent<Scr_PlayerStun>().Stun();
+                timerAfterkickPlayer = 15f;
             }
             else Debug.Log("mimolle na pas toucher");
         }

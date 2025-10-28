@@ -16,6 +16,19 @@ public class Scr_PlayerStun : MonoBehaviour
         canStun = true;
     }
 
+    private void Update()
+    {
+        while (cameraTransform.eulerAngles.z > 360)
+        {
+            cameraTransform.eulerAngles -= new Vector3(0,0,360);
+        }
+
+        while (cameraTransform.eulerAngles.z < -360)
+        {
+            cameraTransform.eulerAngles += new Vector3(0, 0, 360);
+        }
+    }
+
     public void Stun()
     {
         if (!canStun) return;
@@ -32,14 +45,22 @@ public class Scr_PlayerStun : MonoBehaviour
 
     IEnumerator StunRoutine()
     {
-
+        transform.GetComponent<PlayerMove>().CanRun = false;
+        transform.GetComponent<PlayerLook>().CanLook = false;
         cameraTransform.DOMoveY(initialY + 2f, 1f).SetEase(Ease.InExpo);
+        cameraTransform.DOLocalRotate(new Vector3(0, 0, 90), 2f).SetEase(Ease.OutExpo);
         yield return new WaitForSeconds(1f);
-        cameraTransform.DOMoveY(initialY - 1.5f, 1.5f).SetEase(Ease.OutExpo);
-        yield return new WaitForSeconds(2f);
+        
+        cameraTransform.DOMoveY(initialY - 1.5f, 1.5f).SetEase(Ease.OutBounce);
+        
+        yield return new WaitForSeconds(5f);
 
         cameraTransform.DOMoveY(initialY, 3f).SetEase(Ease.InCubic);
+        cameraTransform.DOLocalRotate(new Vector3(0, 0, 0), 2f).SetEase(Ease.InOutCubic);
         yield return new WaitForSeconds(3f);
+        transform.GetComponent<PlayerMove>().CanRun = true;
+        transform.GetComponent<PlayerLook>().CanLook = true;
         canStun = true;
+        
     }
 }
