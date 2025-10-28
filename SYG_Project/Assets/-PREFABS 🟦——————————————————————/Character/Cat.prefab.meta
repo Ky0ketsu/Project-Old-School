@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:SYG_Project/Assets/-PREFABS 🟦——————————————————————/Character/Cat.prefab.meta
 guid: aa873cecbc2d9d446b709c564645d99a
+========
+guid: b663c10578caf4c4fb7ad5060a12eddd
+>>>>>>>> 86ea6b0b94d711627f96399aaa7c82a88c39b42e:SYG_Project/Assets/-PREFABS 🟦——————————————————————/BedroomSpawnPoint.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
