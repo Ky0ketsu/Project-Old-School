@@ -26,7 +26,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
     [SerializeField] private bool inBedroom;
     [SerializeField] private float timer;
 
-    [SerializeField] private ParticleSystem particuleSlap;
+    [SerializeField] private Scr_Door personalDoor; 
 
     private void Awake()
     {
@@ -109,8 +109,14 @@ public class Scr_Character : MonoBehaviour , ISlapable
         }
 
         //Deffinit le type de deplacement
-        if (controlledMove) GoBedroom();
-        else SetDestination();
+        if (controlledMove)
+        {
+            GoBedroom();
+        }
+        else
+        {
+            SetDestination();
+        }
 
         if (canMove) agent.SetDestination(targetPosition);
     }
@@ -120,19 +126,27 @@ public class Scr_Character : MonoBehaviour , ISlapable
     {
         timer -= Time.deltaTime;
 
-        if(bedroom.GetComponent<Scr_Door>().slaped == true)
+        if (timer <= 5)
         {
-            timer = 10f;
-            bedroom.GetComponent<Scr_Door>().slaped = false;
+            bedroom.GetComponent<Scr_Door>().halfOpen = true;
         }
 
-        if(timer <= 0)
+        if (timer <= 0)
         {
             transform.position += Vector3.up * 10f;
             agent.enabled = true;
             canMove = true;
             inBedroom = false;
             controlledMove = false;
+            bedroom.GetComponent<Scr_Door>().CloseDoor();
+
+        }
+
+        if (bedroom.GetComponent<Scr_Door>().slaped == true)
+        {
+            timer = 10f;
+            bedroom.GetComponent<Scr_Door>().CloseDoor();
+            bedroom.GetComponent<Scr_Door>().slaped = false;
         }
     }
 }
