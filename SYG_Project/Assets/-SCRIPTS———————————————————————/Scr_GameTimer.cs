@@ -5,15 +5,52 @@ using UnityEngine.SceneManagement;
 
 public class Scr_GameTimer : MonoBehaviour
 {
-    public float timer = 300f; //60 min = 300 sec
+    public float timer; //60 min = 300 sec
+
+    [HideInInspector]
+    private bool isPlaying;
+
+    private void Awake()
+    {
+        EVENTS.OnGameplay += EnableTimer;
+        EVENTS.OnGameplayExit += DisableTimer;
+        EVENTS.OnGameStart += SetTimer;
+    }
+
+    private void OnDestroy()
+    {
+        EVENTS.OnGameplay -= EnableTimer;
+        EVENTS.OnGameplayExit -= DisableTimer;
+        EVENTS.OnGameStart -= SetTimer;
+    }
+
+    private void EnableTimer()
+    {
+        isPlaying = true;
+    }
+
+    public void DisableTimer()
+    {
+        isPlaying = false;
+    }
+
+    void SetTimer()
+    {
+        timer = 10f;
+    }
 
     public void Update()
     {
-        timer -= Time.deltaTime;
-
-        if (timer < 0 )
+        if(isPlaying)
         {
-            SceneManager.LoadScene("EndScene", LoadSceneMode.Single); 
+            TimerUpdate();
         }
+    }
+
+    void TimerUpdate()
+    {
+        if (timer > 0) timer -= Time.deltaTime;
+
+        if (timer <= 0) EVENTS.InvokeGameOver();
     }
 }

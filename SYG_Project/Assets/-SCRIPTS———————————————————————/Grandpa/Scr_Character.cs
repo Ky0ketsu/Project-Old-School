@@ -128,17 +128,18 @@ public class Scr_Character : MonoBehaviour , ISlapable
             SetDestination();
         }
 
-        if (agent.isOnNavMesh)
+        if (canMove)
         {
-            if(canMove)
+            if(agent.isOnNavMesh)
             {
                 agent.SetDestination(targetPosition);
             }
+            else
+            {
+                ReplaceOnMesh();
+            }
         }
-        else
-        {
-            ReplaceOnMesh();
-        }
+        
     }
 
     // temps avant que le vieux resorte du sa chambre
