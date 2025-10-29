@@ -5,14 +5,16 @@ using UnityEngine;
 public class Scr_GrandpaManager : MonoBehaviour
 {
     [SerializeField]
-    Transform player , parentGranpa;
+    Transform player;
 
     [SerializeField]
     Transform parentBedroom;
     [SerializeField] Transform[] Bedrooms = new Transform[4];
-    
-    public GameObject[] grandpaPrefab = new GameObject[4];
+   
     public GameObject[] grandpas = new GameObject[4];
+
+    [SerializeField]
+    private  Transform grandpaParent;
 
 
     private void Awake()
@@ -31,7 +33,7 @@ public class Scr_GrandpaManager : MonoBehaviour
     {
         for (int i = 0; i < grandpas.Length; i++)
         {
-            grandpas[i] = Instantiate(grandpaPrefab[i] , parentGranpa.position + Vector3.right * 2 * i , Quaternion.identity, parentGranpa);
+            grandpas[i] = grandpaParent.GetChild(i).gameObject;
 
 
             if (grandpas[i].GetComponent<Scr_Character>() != null)
@@ -53,6 +55,8 @@ public class Scr_GrandpaManager : MonoBehaviour
                 else Debug.Log($"Pas de chambre {i}");
             }
             else Debug.Log($"Pas de vieux {i}");
+
+            grandpas[i].GetComponent<Scr_Character>().ReplaceOnMesh();
         }
     }
 

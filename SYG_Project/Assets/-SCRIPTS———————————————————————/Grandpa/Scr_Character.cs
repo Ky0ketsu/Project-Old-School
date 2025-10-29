@@ -14,7 +14,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
     protected Vector3 targetPosition;
     protected NavMeshAgent agent;
 
-    [HideInInspector]
+    [SerializeField]
     public Transform player;
 
     [HideInInspector]
@@ -73,6 +73,16 @@ public class Scr_Character : MonoBehaviour , ISlapable
         }
     }
 
+    public void ReplaceOnMesh()
+    {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(transform.position, out hit, 10f, NavMesh.AllAreas))
+        {
+            transform.position = hit.position;
+            Debug.Log("Replace");
+        }
+    }
+
     public virtual void Slaped()
     {
         Debug.Log($"{transform.name} a pris une claque");
@@ -118,7 +128,17 @@ public class Scr_Character : MonoBehaviour , ISlapable
             SetDestination();
         }
 
-        if (canMove) agent.SetDestination(targetPosition);
+        if (agent.isOnNavMesh)
+        {
+            if(canMove)
+            {
+                agent.SetDestination(targetPosition);
+            }
+        }
+        else
+        {
+            ReplaceOnMesh();
+        }
     }
 
     // temps avant que le vieux resorte du sa chambre
