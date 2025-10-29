@@ -436,6 +436,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: chara-base
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8288562068c544f4e9b3c8edf41d43a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -449,6 +454,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1186449496847107744, guid: 432b0492a30602c4dbbf26e5833f978d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3483769671729874366, guid: 432b0492a30602c4dbbf26e5833f978d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -498,6 +508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809492290972537154, guid: 432b0492a30602c4dbbf26e5833f978d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4256753372495699716, guid: 432b0492a30602c4dbbf26e5833f978d,
         type: 3}
