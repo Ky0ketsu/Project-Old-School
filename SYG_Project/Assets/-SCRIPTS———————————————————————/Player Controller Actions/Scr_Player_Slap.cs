@@ -19,7 +19,7 @@ public class Scr_Player_Slap : MonoBehaviour
 
     void Awake()
     {
-        initialSlapPosition = slapSprite.position;
+        initialSlapPosition = slapSprite.localPosition;
         initialSlapRotation = slapSprite.eulerAngles;
         EVENTS.OnGameplay += EnableSlap;
         EVENTS.OnGameplayExit += DisableSlap;
