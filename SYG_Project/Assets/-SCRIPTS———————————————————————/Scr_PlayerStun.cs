@@ -11,6 +11,9 @@ public class Scr_PlayerStun : MonoBehaviour
     private float initialY;
     private bool canStun;
 
+    public List<AudioClip> stunList;
+    [SerializeField] AudioSource audioStun;
+
     private void Start()
     {
         canStun = true;
@@ -40,6 +43,14 @@ public class Scr_PlayerStun : MonoBehaviour
         canStun = false;
         initialY = cameraTransform.position.y;
         Debug.Log("Player Stun");
+
+        if(audioStun != null) 
+            {
+            int r = Random.Range(0, stunList.Count);
+            audioStun.clip = stunList[r];
+            audioStun.Play();
+            }
+
         StartCoroutine(StunRoutine());
     }
 
