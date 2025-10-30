@@ -92,6 +92,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1496134484055324906}
   m_SourcePrefab: {fileID: 100100000, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab, type: 3}
+--- !u!1 &2944952634667966220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7762198063117185512, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 4856653714098695908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4737593438325050748 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 205227091723625368, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
@@ -111,9 +117,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
+  graphics: {fileID: 8180722588441227730}
+  colliders: {fileID: 2944952634667966220}
   player: {fileID: 0}
   bedroom: {fileID: 0}
   controlledMove: 0
   inBedroom: 0
   timer: 0
-  personalDoor: {fileID: 0}
+  leaveBedroomFX: {fileID: 0}
+--- !u!1 &8180722588441227730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3666368851544809270, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 4856653714098695908}
+  m_PrefabAsset: {fileID: 0}

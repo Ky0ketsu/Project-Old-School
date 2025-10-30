@@ -111,10 +111,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
+  graphics: {fileID: 3217459165918407127}
+  colliders: {fileID: 8502768712306493193}
   player: {fileID: 0}
   bedroom: {fileID: 0}
   controlledMove: 0
   inBedroom: 0
   timer: 0
-  personalDoor: {fileID: 0}
+  leaveBedroomFX: {fileID: 0}
   life: 0
+--- !u!1 &3217459165918407127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3666368851544809270, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 2181775332947179233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8502768712306493193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7762198063117185512, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 2181775332947179233}
+  m_PrefabAsset: {fileID: 0}
