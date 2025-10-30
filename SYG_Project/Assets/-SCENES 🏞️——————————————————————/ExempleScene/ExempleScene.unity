@@ -390,6 +390,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8637207622344538560, guid: 5a34377d222504e459583428626f9f4b,
+        type: 3}
+      propertyPath: audioStun
+      value: 
+      objectReference: {fileID: 2129139582}
+    - target: {fileID: 8637207622344538560, guid: 5a34377d222504e459583428626f9f4b,
+        type: 3}
+      propertyPath: stunList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8637207622344538560, guid: 5a34377d222504e459583428626f9f4b,
+        type: 3}
+      propertyPath: 'stunList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6570cde46cba6d54eab09e255b9ac3a1, type: 3}
+    - target: {fileID: 8637207622344538560, guid: 5a34377d222504e459583428626f9f4b,
+        type: 3}
+      propertyPath: 'stunList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 5f7a32cb6379c924d955680f80ba3c27, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
