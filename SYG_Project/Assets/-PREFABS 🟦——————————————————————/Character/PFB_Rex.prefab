@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_Rex
       objectReference: {fileID: 0}
+    - target: {fileID: 2592650528302666769, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4ed11371e81bf914b8e2b2102810ccd8, type: 2}
     - target: {fileID: 3816018980468687929, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
         type: 3}
       propertyPath: m_Color.b
@@ -106,10 +111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
-  targetPosition: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   bedroom: {fileID: 0}
   controlledMove: 0
   inBedroom: 0
   timer: 0
+  personalDoor: {fileID: 0}
   life: 0

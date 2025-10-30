@@ -7,41 +7,60 @@ public class Scr_GrandpaSpriteDirection : MonoBehaviour
     public Transform graphics;
     [SerializeField] float result;
     [SerializeField] Transform Square;
+    Animator anim; 
 
-    [SerializeField] Sprite front;
-    [SerializeField] Sprite right;
-    [SerializeField] Sprite back;
-    [SerializeField] Sprite left; 
     
 
-
-
-    public void LateUpdate()
+    private void Start()
     {
+        anim = Square.GetComponent<Animator>();
+    }
+
+    public void Update()
+    {
+        
+
+
         float graphicsAngle = graphics.localEulerAngles.y;
 
         if ((graphicsAngle > 0 &&  graphicsAngle < 45) || (graphicsAngle < 360 && graphicsAngle > 315))
         {
             //FRONT
-            Square.GetComponent<SpriteRenderer>().sprite = front; 
+
+            anim.SetBool("goBack", false);
+            anim.SetBool("goLeft", false);
+            anim.SetBool("goRight", false);
+            anim.SetBool("goFront", true);
         }
 
         if ((graphicsAngle < 315 && graphicsAngle > 225))
         {
             //RIGHT
-            Square.GetComponent<SpriteRenderer>().sprite = right; 
+
+            anim.SetBool("goBack", false);
+            anim.SetBool("goLeft", false);
+            anim.SetBool("goFront", false);
+            anim.SetBool("goRight", true);
         }
 
         if ((graphicsAngle < 225 && graphicsAngle > 135))
         {
             //BACK
-            Square.GetComponent<SpriteRenderer>().sprite = back; 
+
+            anim.SetBool("goFront", false);
+            anim.SetBool("goLeft", false);
+            anim.SetBool("goRight", false);
+            anim.SetBool("goBack", true);
         }
 
         if ((graphicsAngle < 135 && graphicsAngle > 45))
         {
             //LEFT
-            Square.GetComponent<SpriteRenderer>().sprite = left;
+
+            anim.SetBool("goBack", false);
+            anim.SetBool("goFront", false);
+            anim.SetBool("goRight", false);
+            anim.SetBool("goLeft", true);
         }
     }
 }
