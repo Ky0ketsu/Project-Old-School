@@ -703,6 +703,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 979765592880079391, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
+      propertyPath: timerAutoOpenDoor
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1020470136028101360, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
       propertyPath: m_Name
@@ -786,7 +791,7 @@ PrefabInstance:
     - target: {fileID: 2758790782822559976, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3011219383415632641, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}

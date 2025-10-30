@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3636778011148033071}
   - component: {fileID: 2772229465823616493}
   - component: {fileID: 6415042539211994049}
+  - component: {fileID: 8403579627545018554}
   m_Layer: 0
   m_Name: PFB_FireDoor
   m_TagString: Untagged
@@ -70,6 +71,25 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &8403579627545018554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285942770618024448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e78b8727d56eb458f06735b4179c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 15
+  isClosed: 0
+  doorToSpawn: {fileID: 5717794793214431235, guid: f82304352896e594cb1c2eafe65b8e6f,
+    type: 3}
+  loadedDoor: {fileID: 0}
+  timerAutoOpenDoor: 5
+  currentTimer: 0
 --- !u!1001 &3813754492654395472
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,11 +1,11 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Scr_ButtonFireDoor : MonoBehaviour, ISlapable
+public class Scr_FireDoor : MonoBehaviour, ISlapable
 {
-    public float timer = 15f;
     public bool isClosed = false;
     public GameObject doorToSpawn;
     public GameObject loadedDoor;
@@ -16,8 +16,6 @@ public class Scr_ButtonFireDoor : MonoBehaviour, ISlapable
     public void Slap()
     {
         ChangeDoorState();
-
-        timer = 15f;
     }
 
     void ChangeDoorState()
@@ -33,24 +31,34 @@ public class Scr_ButtonFireDoor : MonoBehaviour, ISlapable
         {
             OpenDoor();
         }
-    }    
+    }
+
+    [HideInInspector]
+    private float initialY;
+
+    private void Start()
+    {
+        initialY = transform.position.y;
+    }
 
     void CloseDoor()
     {
         Debug.Log("Porte fermer");
+        transform.DORotate(Vector3.zero, 1f).SetEase(Ease.InCubic);
     }
 
     void OpenDoor()
     {
+        transform.DORotate(Vector3.up * 90f, 1f).SetEase(Ease.InCubic);
         Debug.Log("Porte ouverte");
     }
 
     public void Update()
     {
-        if (isClosed == true)
+        if (isClosed == false)
         {
-           if (timer > 0) timer -= Time.deltaTime;
-           if (timer <= 0) ChangeDoorState();
+           if (currentTimer > 0) currentTimer -= Time.deltaTime;
+           if (currentTimer <= 0) ChangeDoorState();
         }  
     }
 }
