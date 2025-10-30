@@ -6,10 +6,11 @@ using UnityEngine.AI;
 
 public class Scr_Character : MonoBehaviour , ISlapable
 {
-    private Rigidbody rigid;
 
     [SerializeField] 
     protected bool canMove;
+
+    [SerializeField] GameObject graphics, colliders;
 
     protected Vector3 targetPosition;
     protected NavMeshAgent agent;
@@ -17,7 +18,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
     [SerializeField]
     public Transform player;
 
-    [HideInInspector]
+    
     public Transform bedroom;
 
     [SerializeField]
@@ -25,8 +26,6 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     [SerializeField] private bool inBedroom;
     [SerializeField] private float timer;
-
-    [SerializeField] private Scr_Door personalDoor; 
 
     private void Awake()
     {
@@ -54,39 +53,43 @@ public class Scr_Character : MonoBehaviour , ISlapable
     private void Start()
     {
         targetPosition = transform.position;
-       
     }
 
     //recherche une position aleatoire autour de lui même
-    public virtual void SetDestination()
-    {
-        if(agent.isOnNavMesh &&  Vector3.Distance(new Vector3(targetPosition.x, 0, targetPosition.z), new Vector3(transform.position.x, 0, transform.position.z)) < 2f)
-        {
-            Vector3 randomPoint = transform.position + new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
-            NavMeshHit hit;
-
-            //regarde si le point touche le nav mesh
-            if(NavMesh.SamplePosition(randomPoint, out hit, 10f , NavMesh.AllAreas))
-            {
-                targetPosition = hit.position;
-            }
-        }
-    }
-
-    public void ReplaceOnMesh()
+    public virtual void SetRandomDestination(Vector3 center, float randomMaxDistance)
     {
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(transform.position, out hit, 10f, NavMesh.AllAreas))
+        bool foundDestination = false;
+        while (foundDestination==false)
         {
-            transform.position = hit.position;
-            Debug.Log("Replace");
+            Vector3 randomPoint = center + new Vector3(Random.Range(-randomMaxDistance, randomMaxDistance), 0, Random.Range(-randomMaxDistance, randomMaxDistance));
+            //regarde si le point touche le nav mesh
+            if (NavMesh.SamplePosition(randomPoint, out hit, 10f, NavMesh.AllAreas))
+            {
+                targetPosition = hit.position;
+                foundDestination = true;
+            }
         }
+
+        agent.SetDestination(targetPosition);
     }
+
+    //public void ReplaceOnMesh()
+    //{
+    //    NavMeshHit hit;
+    //    if (NavMesh.SamplePosition(transform.position, out hit, 10f, NavMesh.AllAreas))
+    //    {
+    //        transform.position = hit.position;
+    //        Debug.Log("Replace");
+    //    }
+
+      
+    //}
 
     public virtual void Slaped()
     {
         Debug.Log($"{transform.name} a pris une claque");
-        controlledMove = true;
+        GoBedroom();
     }
 
     public void Slap()
@@ -96,56 +99,49 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     public virtual void GoBedroom()
     {
-        targetPosition = bedroom.position;
-        if(agent.isOnNavMesh)
-        {
-            if (Vector3.Distance(transform.position, bedroom.position) < 2f)
-            {
-                canMove = false;
-                agent.enabled = false;
-                transform.position += Vector3.down * 10;
+        controlledMove = true;
+        SetRandomDestination(bedroom.position,0);
+    }
 
-                timer = 10f;
-                inBedroom = true;
-            }
-        }
+    void ArrivedInBedroom()
+    {
+        canMove = false;
+        agent.enabled = false;
+        transform.position += Vector3.down * 10;
+        timer = 10f;
+        inBedroom = true;
     }
 
     void FixedUpdate()
     {
+        if (GAME.MANAGER.CurrentState != State.gameplay) return;
         if (inBedroom == true)
         {
-            Timer();
+            UpdateTimer();
+        }
+        else if (ArrivedToDestination())
+        {
+            if (controlledMove)
+            {
+                timer = 10f;
+                inBedroom = true;
+                ActivateAgent(false);
+            }
+            else SetRandomDestination(transform.position, 10f);
         }
 
-        //Deffinit le type de deplacement
-        if (controlledMove)
-        {
-            GoBedroom();
-        }
-        else
-        {
-            SetDestination();
-        }
+        if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
+    }
 
-        if (canMove)
-        {
-            if(agent.isOnNavMesh)
-            {
-                agent.SetDestination(targetPosition);
-            }
-            else
-            {
-                ReplaceOnMesh();
-            }
-        }
-        
+    bool ArrivedToDestination()
+    {
+        return (agent.destination - transform.position).magnitude < 2f;
     }
 
     // temps avant que le vieux resorte du sa chambre
-    void Timer()
+    void UpdateTimer()
     {
-        timer -= Time.deltaTime;
+        timer -= Time.fixedDeltaTime;
 
         if (timer <= 5)
         {
@@ -154,13 +150,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
         if (timer <= 0)
         {
-            transform.position += Vector3.up * 10f;
-            agent.enabled = true;
-            canMove = true;
-            inBedroom = false;
-            controlledMove = false;
-            bedroom.GetComponent<Scr_Door>().CloseDoor();
-
+            ActivateAgent(true);
         }
 
         if (bedroom.GetComponent<Scr_Door>().slaped == true)
@@ -168,6 +158,31 @@ public class Scr_Character : MonoBehaviour , ISlapable
             timer = 10f;
             bedroom.GetComponent<Scr_Door>().CloseDoor();
             bedroom.GetComponent<Scr_Door>().slaped = false;
+        }
+    }
+
+    void ActivateAgent(bool wanted)
+    {
+        if (wanted)
+        {
+            //transform.position += Vector3.up * 10f;
+            graphics.SetActive(true);
+            colliders.SetActive(true);
+            agent.enabled = true;
+            canMove = true;
+            bedroom.GetComponent<Scr_Door>().CloseDoor();
+            controlledMove = false;
+            SetRandomDestination(transform.position, 10f);
+            inBedroom = false;
+        }
+        else
+        {
+            //transform.position -= Vector3.up * 10f;
+            graphics.SetActive(false);
+            colliders.SetActive(false);
+            agent.enabled = false;
+            canMove = false;
+            bedroom.GetComponent<Scr_Door>().CloseDoor();
         }
     }
 }

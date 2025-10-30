@@ -30,6 +30,7 @@ public class Scr_Rex : Scr_Character
         timerHp = 5f;
         if(life == 0 )
         {
+            
             controlledMove = true;
         }
 

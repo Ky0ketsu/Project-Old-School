@@ -52,7 +52,7 @@ public class Scr_Mimolle : Scr_Character
     }
 
     //recherche une position aléatoire autour du joueur
-    public override void SetDestination()
+    public override void SetRandomDestination(Vector3 center, float maxRandomDistance)
     {
         if (Vector3.Distance(transform.position, player.position) <= 2f && timerAfterkickPlayer == 0)
         {

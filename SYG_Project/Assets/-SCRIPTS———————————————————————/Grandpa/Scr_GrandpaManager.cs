@@ -56,7 +56,7 @@ public class Scr_GrandpaManager : MonoBehaviour
             }
             else Debug.Log($"Pas de vieux {i}");
 
-            grandpas[i].GetComponent<Scr_Character>().ReplaceOnMesh();
+           //grandpas[i].GetComponent<Scr_Character>().ReplaceOnMesh();
         }
     }
 

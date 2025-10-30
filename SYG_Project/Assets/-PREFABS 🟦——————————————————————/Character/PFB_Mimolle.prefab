@@ -87,6 +87,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1218190047114834822}
   m_SourcePrefab: {fileID: 100100000, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab, type: 3}
+--- !u!1 &105547771140421911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7762198063117185512, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 7696129633833158911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6354484704562452425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3666368851544809270, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 7696129633833158911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7500527285318101863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 205227091723625368, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
@@ -106,11 +118,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
+  graphics: {fileID: 6354484704562452425}
+  colliders: {fileID: 105547771140421911}
   player: {fileID: 0}
   bedroom: {fileID: 0}
   controlledMove: 0
   inBedroom: 0
   timer: 0
+  personalDoor: {fileID: 0}
   shearchPlayer: 0
   layerMask:
     serializedVersion: 2
