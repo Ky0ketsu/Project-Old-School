@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40ade8f64d82a7c4fb641157b75b125b, type: 3}
-  m_Name: Playlist ExempleScene
+  m_Name: Playlist Menu
   m_EditorClassIdentifier: 
   playlist:
     looping: 1
     randomizeTracks: 0
-    timeScale: 1
-    fadeInDuration: 5
+    timeScale: 0
+    fadeInDuration: 1
     fadeOutDuration: 1
     tracks:
-    - clipTitle: MusicGame
-      clip: {fileID: 8300000, guid: b5a87106d4405e64dba4ec3d7b46690b, type: 3}
-      volume: 0.606
+    - clipTitle: Music Menu
+      clip: {fileID: 8300000, guid: cfd75273560a5504fbba79245d827f8e, type: 3}
+      volume: 0.514

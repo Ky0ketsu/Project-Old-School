@@ -3,6 +3,7 @@ using UnityEngine;
 public class GetMainCamera : MonoBehaviour
 {
     static int getMainCamInstances = 0;
+    Transform gameCamSystem;
 
     void OnEnable()
     {
@@ -33,6 +34,7 @@ public class GetMainCamera : MonoBehaviour
             GAME.MANAGER.gameCam.nearClipPlane = tempCam.nearClipPlane;
             GAME.MANAGER.gameCam.farClipPlane = tempCam.farClipPlane;
             Destroy(tempCam.gameObject);
+            gameCamSystem = GAME.MANAGER.gameCam.GetComponentInParent<AudioListener>().transform.parent;
         }
     }
 
@@ -40,7 +42,7 @@ public class GetMainCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        GAME.MANAGER.gameCam.transform.position = transform.position;
-        GAME.MANAGER.gameCam.transform.rotation = transform.rotation;
+        gameCamSystem.position = transform.position;
+        gameCamSystem.rotation = transform.rotation;
     }
 } // SCRIPT END

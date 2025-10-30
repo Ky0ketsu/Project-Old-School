@@ -1,25 +1,29 @@
 using Rewired;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 public class Scr_Player_Slap : MonoBehaviour
 {
+
+    
+
     [SerializeField] int playerID = 0;
     [SerializeField] private bool canSlap;
     Player player;
+    public List<AudioClip> slapList;
     [SerializeField] AudioSource audioSlap;
     [SerializeField] Transform slapSprite;
     [HideInInspector] Vector3 initialSlapPosition, initialSlapRotation;
 
     [SerializeField] private Transform viewDirection;
     public LayerMask layerMask;
-
-    [SerializeField] GameObject slapFX;
-
+    [SerializeField] ParticleSystem slapParticule;
     void Awake()
     {
-        initialSlapPosition = slapSprite.position;
+
+        initialSlapPosition = slapSprite.localPosition;
         initialSlapRotation = slapSprite.eulerAngles;
         EVENTS.OnGameplay += EnableSlap;
         EVENTS.OnGameplayExit += DisableSlap;
@@ -75,8 +79,6 @@ public class Scr_Player_Slap : MonoBehaviour
                     {
                         Debug.Log(slapable);
                         slapable.Slap();
-                        if (slapFX != null) Instantiate(slapFX, hit.point, Quaternion.identity);
-                        else Debug.Log("slapFX manquant");
                     }
                     else Debug.Log(" je suis null");
                 }
@@ -87,7 +89,12 @@ public class Scr_Player_Slap : MonoBehaviour
 
     void Slap()
     {
-        if(audioSlap != null) audioSlap.Play();
+        if(audioSlap != null) 
+            {
+            int r = Random.Range(0, slapList.Count);
+            audioSlap.clip = slapList[r];
+            audioSlap.Play();
+            }
         StartCoroutine(SlapAnimation());
     }
 
