@@ -72,10 +72,6 @@ MonoBehaviour:
   graphics: {fileID: 590332525449407790}
   result: 0
   Square: {fileID: 6017816657689831037}
-  front: {fileID: 21300000, guid: 28f8ed09cf7b4db46821e23cd7c574be, type: 3}
-  back: {fileID: 21300000, guid: a93f43f0605a44744879bdca8cece555, type: 3}
-  left: {fileID: 21300000, guid: 8e5efe9ee43841142b62d041f35d9fc9, type: 3}
-  right: {fileID: 21300000, guid: 2f13f1a12d868ed4d9e972878896d773, type: 3}
 --- !u!1 &3666368851544809270
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6017816657689831037}
   - component: {fileID: 3816018980468687929}
+  - component: {fileID: 2592650528302666769}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -147,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 4983116007627652176}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -208,6 +205,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2592650528302666769
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4983116007627652176}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 267fd27a1bda78c408fa6d9623448e4a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7762198063117185512
 GameObject:
   m_ObjectHideFlags: 0

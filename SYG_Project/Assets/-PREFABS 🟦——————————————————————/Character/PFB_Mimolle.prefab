@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_Mimolle
       objectReference: {fileID: 0}
+    - target: {fileID: 2592650528302666769, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1ba38d0d3fdae4540a531ccf5ba01317, type: 2}
     - target: {fileID: 3816018980468687929, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
         type: 3}
       propertyPath: m_Color.b
