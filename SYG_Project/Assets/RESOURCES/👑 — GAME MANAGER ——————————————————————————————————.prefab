@@ -109,6 +109,7 @@ RectTransform:
   m_Children:
   - {fileID: 5610679501376950414}
   - {fileID: 1644480728933720968}
+  - {fileID: 970887191466304297}
   m_Father: {fileID: 6517764045165281437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16458334, y: 0}
@@ -184,6 +185,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initTransform: {x: 0, y: 0, z: 0}
   selfTransform: {fileID: 7847020042988900322}
+  cameraActionOpenList:
+  - {fileID: 8300000, guid: cf948ae139fa5c049b7c62317cd6dcd6, type: 3}
+  - {fileID: 8300000, guid: 191aa4288e883fd468407cfe242a3aa3, type: 3}
+  cameraActionCloseList:
+  - {fileID: 8300000, guid: 0072ccd30494a9642b89fd4f622f4b94, type: 3}
+  - {fileID: 8300000, guid: b1e27f54b748b024ebd8c993488f3c22, type: 3}
+  - {fileID: 8300000, guid: 9538dab268b482043b405347abbdd4f0, type: 3}
+  audioCameraAction: {fileID: 579554289262807585}
+  prefab: {fileID: 8003537980074723509}
 --- !u!1 &4094687345795912794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,6 +1625,11 @@ PrefabInstance:
       propertyPath: m_AspectRatio
       value: 2.3333333
       objectReference: {fileID: 0}
+    - target: {fileID: 3631313063004864135, guid: c6b26752e8dc0b34ab30cc91105625db,
+        type: 3}
+      propertyPath: m_Name
+      value: QUITTER Button Graphics
+      objectReference: {fileID: 0}
     - target: {fileID: 3641125031736639237, guid: c6b26752e8dc0b34ab30cc91105625db,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2965,6 +2980,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8618560239884727359, guid: c6b26752e8dc0b34ab30cc91105625db,
+        type: 3}
+      propertyPath: m_Name
+      value: RETOUR Button Graphics
+      objectReference: {fileID: 0}
     - target: {fileID: 8729743407773622138, guid: c6b26752e8dc0b34ab30cc91105625db,
         type: 3}
       propertyPath: m_fontSize
@@ -3044,6 +3064,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8883529793897821697, guid: c6b26752e8dc0b34ab30cc91105625db,
+        type: 3}
+      propertyPath: m_AspectRatio
+      value: 1.7777778
       objectReference: {fileID: 0}
     - target: {fileID: 9007744502372954795, guid: c6b26752e8dc0b34ab30cc91105625db,
         type: 3}
@@ -3133,4 +3158,101 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7926815238878257423, guid: c6b26752e8dc0b34ab30cc91105625db,
     type: 3}
   m_PrefabInstance: {fileID: 3779095870153040274}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4292799259697381044
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7847020042988900322}
+    m_Modifications:
+    - target: {fileID: 3718262042042446997, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6089237566075303425, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_Name
+      value: FX_Tablet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6710096566708370657, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 7784425942646283147, guid: afd3ba79d4510ba4cb0ee80ed1cc785b, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: afd3ba79d4510ba4cb0ee80ed1cc785b, type: 3}
+--- !u!82 &579554289262807585 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3718262042042446997, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4292799259697381044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &970887191466304297 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3957079603222224285, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4292799259697381044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8003537980074723509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6089237566075303425, guid: afd3ba79d4510ba4cb0ee80ed1cc785b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4292799259697381044}
   m_PrefabAsset: {fileID: 0}

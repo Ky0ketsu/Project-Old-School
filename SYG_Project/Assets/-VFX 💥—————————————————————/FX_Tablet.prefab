@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6652994954808560604}
   - component: {fileID: 6710096566708370657}
   m_Layer: 0
-  m_Name: FX_Exemple
+  m_Name: FX_Tablet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
