@@ -385,7 +385,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   canSlap: 0
-  slapList: []
+  slapList:
+  - {fileID: 8300000, guid: 0e35046aea77dfa4fa995bf2dd8306fd, type: 3}
+  - {fileID: 8300000, guid: 692995f9d917e204584a0574c33f092f, type: 3}
+  - {fileID: 8300000, guid: e4b3a07af3d95b142b2eacf80e5a44c8, type: 3}
   audioSlap: {fileID: 8356423538355694085}
   slapSprite: {fileID: 1354020908540602091}
   viewDirection: {fileID: 5368870109600697686}
@@ -406,7 +409,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 1548654775471198934}
-  stunList: []
+  stunList:
+  - {fileID: 8300000, guid: 6570cde46cba6d54eab09e255b9ac3a1, type: 3}
+  - {fileID: 8300000, guid: 5f7a32cb6379c924d955680f80ba3c27, type: 3}
   audioStun: {fileID: 8356423538355694085}
 --- !u!1 &5401122650657258834
 GameObject:
@@ -651,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feetSounds:
-  - {fileID: 8300000, guid: 5d858012f68ee3e43879e892e8c9e5ed, type: 3}
+  - {fileID: 8300000, guid: 8c17da8f5885ca1429e7ac55944664cb, type: 3}
   pitch: {x: 0.9, y: 1.05}
   stepSize: 1.5
 --- !u!82 &3169480182097322982

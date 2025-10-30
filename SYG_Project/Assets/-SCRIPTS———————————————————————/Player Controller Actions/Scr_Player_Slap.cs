@@ -93,7 +93,11 @@ public class Scr_Player_Slap : MonoBehaviour
             {
             int r = Random.Range(0, slapList.Count);
             audioSlap.clip = slapList[r];
-            audioSlap.Play();
+            if (audioSlap != null)
+                {
+                    audioSlap.Play();
+                }
+            else Debug.Log("Pas de son");
             }
         StartCoroutine(SlapAnimation());
     }
