@@ -27,6 +27,10 @@ public class Scr_Character : MonoBehaviour , ISlapable
     [SerializeField] private bool inBedroom;
     [SerializeField] private float timer;
 
+
+    [SerializeField]
+    protected GameObject leaveBedroomFX;
+
     private void Awake()
     {
         EVENTS.OnGameplay += EnableMove;
@@ -174,6 +178,8 @@ public class Scr_Character : MonoBehaviour , ISlapable
             controlledMove = false;
             SetRandomDestination(transform.position, 10f);
             inBedroom = false;
+            if (leaveBedroomFX) Instantiate(leaveBedroomFX, transform.position, Quaternion.identity);
+            else Debug.Log("Pas de FX");
         }
         else
         {

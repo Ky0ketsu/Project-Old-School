@@ -15,7 +15,7 @@ public class Scr_Player_Slap : MonoBehaviour
     [SerializeField] private Transform viewDirection;
     public LayerMask layerMask;
 
-    [SerializeField] ParticleSystem slapParticule;
+    [SerializeField] GameObject slapFX;
 
     void Awake()
     {
@@ -75,6 +75,8 @@ public class Scr_Player_Slap : MonoBehaviour
                     {
                         Debug.Log(slapable);
                         slapable.Slap();
+                        if (slapFX != null) Instantiate(slapFX, hit.point, Quaternion.identity);
+                        else Debug.Log("slapFX manquant");
                     }
                     else Debug.Log(" je suis null");
                 }

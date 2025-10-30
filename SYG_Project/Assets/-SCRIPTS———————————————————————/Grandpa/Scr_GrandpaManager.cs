@@ -20,13 +20,11 @@ public class Scr_GrandpaManager : MonoBehaviour
     private void Awake()
     {
         EVENTS.OnGameStart += SpawnGrandpa;
-        EVENTS.OnGameOver += DestroyGrandpa;
     }
 
     private void OnDestroy()
     {
         EVENTS.OnGameStart -= SpawnGrandpa;
-        EVENTS.OnGameOver -= DestroyGrandpa;
     }
 
     public void SpawnGrandpa()
@@ -36,35 +34,13 @@ public class Scr_GrandpaManager : MonoBehaviour
             grandpas[i] = grandpaParent.GetChild(i).gameObject;
 
 
-            if (grandpas[i].GetComponent<Scr_Character>() != null)
+            if (grandpas[i].GetComponent<Scr_Character>() != null && parentBedroom.GetChild(i) != null)
             {
                 grandpas[i].GetComponent<Scr_Character>().player = player;
-            }
-
-            if (parentBedroom.GetChild(i) != null)
-            {
                 Bedrooms[i] = parentBedroom.GetChild(i);
+                grandpas[i].GetComponent<Scr_Character>().bedroom = Bedrooms[i];
             }
-
-            if (grandpas[i].GetComponent<Scr_Character>() != null)
-            {
-                if (Bedrooms[i] != null)
-                {
-                    grandpas[i].GetComponent<Scr_Character>().bedroom = Bedrooms[i];
-                }
-                else Debug.Log($"Pas de chambre {i}");
-            }
-            else Debug.Log($"Pas de vieux {i}");
-
-           //grandpas[i].GetComponent<Scr_Character>().ReplaceOnMesh();
-        }
-    }
-
-    public void DestroyGrandpa()
-    {
-        foreach (GameObject grandpa in grandpas)
-        {
-            Destroy(grandpa);
+            else Debug.Log($"1 ou 2 elements manquant dans la paire chambre/vieux numero {i}");
         }
     }
 

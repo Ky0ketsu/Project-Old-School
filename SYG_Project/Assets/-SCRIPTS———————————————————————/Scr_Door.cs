@@ -6,7 +6,10 @@ public class Scr_Door : MonoBehaviour, ISlapable
 {
     public bool slaped;
     public bool halfOpen = false;
-    public bool turnVisual = false; 
+    public bool turnVisual = false;
+
+    [SerializeField]
+    private GameObject closeDoorFx, openDoorFX;
 
     public void Slap()
     {
@@ -36,5 +39,7 @@ public class Scr_Door : MonoBehaviour, ISlapable
         transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
         turnVisual = false;
         halfOpen = false;
+        if (closeDoorFx != null) Instantiate(closeDoorFx, transform.position, Quaternion.identity);
+        else Debug.Log("Pas de FX");
     }
 }

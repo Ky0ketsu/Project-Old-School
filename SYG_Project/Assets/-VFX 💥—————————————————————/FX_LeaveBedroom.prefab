@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3957079603222224285}
-  - component: {fileID: 6652994954808560604}
+  - component: {fileID: 5036194147386001678}
   m_Layer: 0
-  m_Name: FX_Exemple
+  m_Name: FX_LeaveBedroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 5727561370057998686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6652994954808560604
+--- !u!114 &5036194147386001678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,12 +43,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6089237566075303425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e35ecaf50c8ce3478be8ee1ae09fef5, type: 3}
+  m_Script: {fileID: 11500000, guid: 160641b40a9955749b756f775a18be5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenShake: 1.5
-  freezeMilliseconds: 50
-  freezeBeforeShake: 1
+  timeBeforeDestruction: 10
+  shrinkAnimation: 0
 --- !u!1 &7578891522599990498
 GameObject:
   m_ObjectHideFlags: 0

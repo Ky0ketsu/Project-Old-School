@@ -8,37 +8,49 @@ public class Scr_ButtonFireDoor : MonoBehaviour, ISlapable
     public float timer = 15f;
     public bool isClosed = false;
     public GameObject doorToSpawn;
-    public GameObject loadedDoor; 
+    public GameObject loadedDoor;
 
-   public void Slap()
-   {
+    [Range(0, 50f)] public float timerAutoOpenDoor;
+    [SerializeField] private float currentTimer;
+
+    public void Slap()
+    {
+        ChangeDoorState();
+
         timer = 15f;
+    }
+
+    void ChangeDoorState()
+    {
+        isClosed = !isClosed;
+
         if (isClosed == true)
         {
-            Debug.Log("RESET TIMER DOOR");
-            return;
+            CloseDoor();
+            currentTimer = timerAutoOpenDoor;
         }
-        CloseDoor();
-   }
+        else
+        {
+            OpenDoor();
+        }
+    }    
 
-   void CloseDoor()
+    void CloseDoor()
     {
-        isClosed = true;
+        Debug.Log("Porte fermer");
+    }
 
-        loadedDoor = Instantiate(doorToSpawn,new Vector3(2, 1, 6.5f), Quaternion.identity);
+    void OpenDoor()
+    {
+        Debug.Log("Porte ouverte");
     }
 
     public void Update()
     {
-        if (isClosed == true) timer = timer - Time.deltaTime;
-
-        if (timer < 0)
+        if (isClosed == true)
         {
-            timer = 15f;
-            Debug.Log("FIRE DOOR OPEN");
-            isClosed = false;
-            Destroy(loadedDoor);
-        }
-           
+           if (timer > 0) timer -= Time.deltaTime;
+           if (timer <= 0) ChangeDoorState();
+        }  
     }
 }
