@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Scr_GameTimer : MonoBehaviour
 {
-    public float timer; //60 min = 300 sec
+    [SerializeField] float timer;
+    public float maxTime = 300; //5 min = 300 sec
+
+
+    Text t => GetComponent<Text>();
 
     [HideInInspector]
     private bool isPlaying;
@@ -36,7 +41,7 @@ public class Scr_GameTimer : MonoBehaviour
 
     void SetTimer()
     {
-        timer = 10f;
+        timer = maxTime;
     }
 
     public void Update()
@@ -49,8 +54,16 @@ public class Scr_GameTimer : MonoBehaviour
 
     void TimerUpdate()
     {
-        if (timer > 0) timer -= Time.deltaTime;
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            t.text = timer.ToString();
+        }
 
-        if (timer <= 0) EVENTS.InvokeGameOver();
+        if (timer <= 0)
+        {
+            isPlaying=false;
+            EVENTS.InvokeGameOver();
+        }
     }
 }
