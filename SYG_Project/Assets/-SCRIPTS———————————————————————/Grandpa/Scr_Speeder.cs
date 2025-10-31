@@ -13,6 +13,17 @@ public class Scr_Speeder : Scr_Character
     private Vector3[] dir = new Vector3[8] { Vector3.forward, -Vector3.forward, Vector3.right, -Vector3.right, (Vector3.forward+Vector3.left).normalized, (Vector3.forward+ Vector3.right).normalized,(Vector3.back + Vector3.left).normalized,( Vector3.back+ Vector3.right ).normalized};
     [SerializeField] float minimumDistante = 3f;
 
+    public List<AudioClip> stunList;
+    public List<AudioClip> crashList;
+    public List<AudioClip> runList;
+    public List<AudioClip> glissList;
+    [SerializeField] AudioSource audioAction;
+    [SerializeField] AudioSource audioCrash;
+    [SerializeField] AudioSource audioMove;
+    [SerializeField] AudioSource audioGliss;
+
+
+
     bool isStun;
 
     public override void SetRandomDestination(Vector3 center, float randomMaxDistance)
@@ -90,6 +101,14 @@ public class Scr_Speeder : Scr_Character
             {
                 currentSpeed = 0;
                 Stun(2f);
+
+                int r = Random.Range(0, stunList.Count);
+                audioAction.clip = stunList[r];
+                audioAction.Play();
+
+                int rr = Random.Range(0, crashList.Count);
+                audioCrash.clip = crashList[rr];
+                audioCrash.Play();
             }
         }
 
@@ -102,6 +121,7 @@ public class Scr_Speeder : Scr_Character
     void Stun(float stunTime)
     {
         isStun = true;
+
         StartCoroutine(StunRoutine(stunTime));
         
     }
