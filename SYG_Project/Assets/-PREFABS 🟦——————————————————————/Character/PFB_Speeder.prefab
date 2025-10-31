@@ -45,7 +45,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.628
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 6885841612890244652}
   - component: {fileID: 6374451790335880815}
   m_Layer: 0
-  m_Name: AudiosourceAction
+  m_Name: AudiosourceStun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.69
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 2627869626690268803}
   - component: {fileID: 5019808516356951413}
   m_Layer: 0
-  m_Name: AudiosourceMove
+  m_Name: AudiosourceRun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -494,7 +494,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -738,7 +738,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ac7a4d65ca384784682377afacfa3b63, type: 3}
   audioAction: {fileID: 6374451790335880815}
   audioCrash: {fileID: 1650566317385804853}
-  audioMove: {fileID: 5019808516356951413}
+  audioRun: {fileID: 5019808516356951413}
   audioGliss: {fileID: 7216014787386322609}
 --- !u!1 &8180722588441227730 stripped
 GameObject:

@@ -19,7 +19,7 @@ public class Scr_Speeder : Scr_Character
     public List<AudioClip> glissList;
     [SerializeField] AudioSource audioAction;
     [SerializeField] AudioSource audioCrash;
-    [SerializeField] AudioSource audioMove;
+    [SerializeField] AudioSource audioRun;
     [SerializeField] AudioSource audioGliss;
 
 
@@ -78,6 +78,15 @@ public class Scr_Speeder : Scr_Character
         if(mouvIsSet == true )
         {
             agent.SetDestination(targetPosition);
+
+            int d = Random.Range(0, runList.Count);
+            audioRun.clip = runList[d];
+            audioRun.Play();
+
+            int dd = Random.Range(0, glissList.Count);
+            audioGliss.clip = glissList[dd];
+            audioGliss.Play();
+
         }
 
     } // fin de SetRandomDestination
