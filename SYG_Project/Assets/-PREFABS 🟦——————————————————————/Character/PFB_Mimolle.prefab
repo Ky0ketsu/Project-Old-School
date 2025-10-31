@@ -305,10 +305,5 @@ MonoBehaviour:
   shearchPlayer: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 623069
+    m_Bits: 622785
   timerNotShowPlayer: 0
-  attackList:
-  - {fileID: 8300000, guid: 994b18382b0846346b84370b5cbfda77, type: 3}
-  - {fileID: 8300000, guid: b356467bbeb14d8438c44e6b4317e6f9, type: 3}
-  - {fileID: 8300000, guid: abcd54682fa098c458af6472ec3d2c92, type: 3}
-  audioAttack: {fileID: 3034934080808831131}
