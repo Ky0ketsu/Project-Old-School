@@ -15,6 +15,7 @@ public class Scr_Rex : Scr_Character
 
     public List<AudioClip> inflateList;
     public List<AudioClip> deflateList;
+    public List<AudioClip> cryList;
     [SerializeField] AudioSource audioPshht;
 
     private void Start()
@@ -50,6 +51,9 @@ public class Scr_Rex : Scr_Character
             Stuned = true;
             canMove = false;
             timerStun = 10f;
+            int r = Random.Range(0, cryList.Count);
+            audioPshht.clip = cryList[r];
+            audioPshht.Play();
         }
     }
 

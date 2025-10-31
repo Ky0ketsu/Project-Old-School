@@ -291,6 +291,8 @@ MonoBehaviour:
   deflateList:
   - {fileID: 8300000, guid: 540b395c183cfb44abed36e9b959a61c, type: 3}
   - {fileID: 8300000, guid: 60d7fa52e785a5f40867bc7cc103ae18, type: 3}
+  cryList:
+  - {fileID: 8300000, guid: 34b668485d6d9474daaddb12b8824776, type: 3}
   audioPshht: {fileID: 5530356404582404854}
 --- !u!1 &3217459165918407127 stripped
 GameObject:
