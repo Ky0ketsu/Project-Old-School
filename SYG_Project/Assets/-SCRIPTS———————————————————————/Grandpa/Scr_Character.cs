@@ -24,8 +24,8 @@ public class Scr_Character : MonoBehaviour , ISlapable
     [SerializeField]
     protected bool controlledMove;
 
-    [SerializeField] private bool inBedroom;
-    [SerializeField] private float timer;
+    [SerializeField] protected bool inBedroom;
+    [SerializeField] protected float timer;
 
 
     [SerializeField]
@@ -116,7 +116,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
         inBedroom = true;
     }
 
-    void FixedUpdate()
+    public virtual void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
         if (inBedroom == true)
@@ -137,15 +137,15 @@ public class Scr_Character : MonoBehaviour , ISlapable
         if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
     }
 
-    bool ArrivedToDestination()
+    protected bool ArrivedToDestination()
     {
         return (agent.destination - transform.position).magnitude < 2f;
     }
 
     // temps avant que le vieux resorte du sa chambre
-    void UpdateTimer()
+     protected void UpdateTimer()
     {
-        timer -= Time.fixedDeltaTime;
+        timer -= Time.deltaTime;
 
         if (timer <= 5)
         {
@@ -165,7 +165,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
         }
     }
 
-    void ActivateAgent(bool wanted)
+    protected void ActivateAgent(bool wanted)
     {
         if (wanted)
         {

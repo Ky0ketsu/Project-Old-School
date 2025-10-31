@@ -125,6 +125,8 @@ MonoBehaviour:
   inBedroom: 0
   timer: 0
   leaveBedroomFX: {fileID: 0}
+  speed: 8.9
+  minimumDistante: 3
 --- !u!1 &8180722588441227730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3666368851544809270, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
