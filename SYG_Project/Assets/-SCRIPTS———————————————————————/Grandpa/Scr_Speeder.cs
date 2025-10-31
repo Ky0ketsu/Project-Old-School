@@ -9,19 +9,18 @@ public class Scr_Speeder : Scr_Character
 {
     [Range(0f, 50f)] float speed;
 
-    [SerializeField] private Vector3[] dir = new Vector3[8];
+    private Vector3[] dir = new Vector3[8] { Vector3.forward, -Vector3.forward, Vector3.right, -Vector3.right, (Vector3.forward+Vector3.left).normalized, (Vector3.forward+ Vector3.right).normalized,(Vector3.back + Vector3.left).normalized,( Vector3.back+ Vector3.right ).normalized};
     [SerializeField] float minimumDistante = 3f;
 
     public override void SetRandomDestination(Vector3 center, float randomMaxDistance)
     {
-        for (int i = 0; i < dir.Length; i++)
-        {
-            dir[i] = (Vector3.up * 360/ dir.Length) * (i - 1);
-        }
 
         bool mouvIsSet = false;
-        Vector3[] tempDir = dir;
         int currentDirIndex = Random.Range(0, dir.Length);
+
+
+        int echecMax1 =0;
+       
         
 
         while(mouvIsSet == false)
@@ -29,42 +28,54 @@ public class Scr_Speeder : Scr_Character
             NavMeshHit hit;
 
             Vector3 lastPickPosition = transform.position;
-            Vector3 currentPickPosition = transform.position;
+            lastPickPosition.y = -1f;
+            Vector3 currentPickPosition = lastPickPosition;
+
             bool currentIsOnNavmesh = true;
             int currentIndex = 0;
 
-            while (currentIsOnNavmesh == true)
+            int echecMax2 = 0;
+            echecMax1++;
+            if (echecMax1 > 5)
+            {
+                Debug.Log("Pas de Destination trouver");
+                break;
+            }
+
+            while (currentIsOnNavmesh == true && echecMax2 < 5)
             {
                 lastPickPosition = currentPickPosition;
-                currentPickPosition = lastPickPosition += dir[currentDirIndex].normalized * 1f;
+                currentPickPosition += dir[currentDirIndex]*2f;
+                Debug.Log(dir[currentDirIndex]);
+                Debug.Log(currentPickPosition);
 
-                if (NavMesh.SamplePosition(currentPickPosition, out hit, 0.5f, NavMesh.AllAreas))
+                Debug.DrawLine(lastPickPosition, currentPickPosition, Color.yellow, 1f);
+
+                if (NavMesh.SamplePosition(currentPickPosition, out hit, 1f, NavMesh.AllAreas))
                 {
                     currentIndex++;
+                    Debug.DrawLine(transform.position, hit.position,Color.green,1f);
+                    echecMax2++;
                 }
-                else currentIsOnNavmesh = false;
+                else
+                { 
+                    currentIsOnNavmesh = false;
+                }
+                
+            } // fin du petit while
+   
+            targetPosition = lastPickPosition;
+            mouvIsSet = true;
 
-            }
-            if (currentIsOnNavmesh == false)
-            {
-                if (NavMesh.SamplePosition(lastPickPosition, out hit, 1f, NavMesh.AllAreas))
-                {
-                    if (currentIndex >= minimumDistante)
-                    {
-                        
-                        targetPosition = hit.position;
-                        mouvIsSet = true;
-                    }
-                }
-                else Debug.Log("Echec au point final");
-            }
-        }
-        if(mouvIsSet == true)
+        } // fin du while
+
+
+        if(mouvIsSet == true || echecMax1 > 2)
         {
             agent.SetDestination(targetPosition);
         }
 
-    }
+    } // fin de SetRandomDestination
 
     void ShortStun()
     {
