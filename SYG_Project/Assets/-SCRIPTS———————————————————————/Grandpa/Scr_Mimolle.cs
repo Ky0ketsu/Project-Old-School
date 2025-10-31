@@ -1,10 +1,6 @@
 using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Scr_Mimolle : Scr_Character
 {
@@ -16,26 +12,8 @@ public class Scr_Mimolle : Scr_Character
 
     private float timerAfterkickPlayer;
 
-    public List<AudioClip> attackList;
-    [SerializeField] AudioSource audioAttack;
-
-
-    private void Update()
-    {   
-        CheckCanViewPlayer();
-
-        if (timerCanAttack > 0) timerCanAttack -= Time.deltaTime;
-        if (timerCanAttack <= 0) canAttack = true;
-
-
-        if(timerAfterkickPlayer > 0) timerAfterkickPlayer -= Time.deltaTime;
-        if (timerAfterkickPlayer < 0) timerAfterkickPlayer = 0;
-    }
-
     void CheckCanViewPlayer()
     {
-
-
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position) * 1.05f, layerMask))
         {
@@ -43,42 +21,68 @@ public class Scr_Mimolle : Scr_Character
             {
                 shearchPlayer = false;
                 timerNotShowPlayer = 3f;
+
                 Debug.DrawRay(transform.position + Vector3.up, (player.position - transform.position).normalized * Vector3.Distance(transform.position, player.position), Color.green);
             }
             else
             {
                 if (timerNotShowPlayer > 0) timerNotShowPlayer -= Time.deltaTime;
                 if (timerNotShowPlayer <= 0) timerNotShowPlayer = 0f; shearchPlayer = true;
+
                 Debug.DrawRay(transform.position + Vector3.up, (player.position - transform.position).normalized * Vector3.Distance(transform.position, player.position), Color.red);
             }
         }
     }
 
-    //recherche une position al�atoire autour du joueur
-    public override void SetRandomDestination(Vector3 center, float maxRandomDistance)
+    void SetDestinationToPlayer()
+    {
+        targetPosition = player.position;
+    }
+
+    void CheckCanHitPlayer()
     {
         if (Vector3.Distance(transform.position, player.position) <= 2f && timerAfterkickPlayer == 0)
         {
             AttackPlayer();
-            agent.SetDestination(transform.position);
-            return;
         }
-
-        if (shearchPlayer)
-        {
-
-            if (agent.isOnNavMesh && Vector3.Distance(new Vector3(targetPosition.x, 0, targetPosition.z), new Vector3(transform.position.x, 0, transform.position.z)) < 2f)
-            {
-                Vector3 randomPoint = player.position + new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
-                NavMeshHit hit;
-                if (NavMesh.SamplePosition(randomPoint, out hit, 10f, NavMesh.AllAreas))
-                {
-                    targetPosition = hit.position;
-                }
-            }
-        }
-        else targetPosition = player.position;
     }
+
+    public override void Update()
+    {
+        if (GAME.MANAGER.CurrentState != State.gameplay) return;
+
+        if (!shearchPlayer) CheckCanHitPlayer();
+        CheckCanViewPlayer();
+
+        if (timerCanAttack > 0) timerCanAttack -= Time.deltaTime;
+        else canAttack = true;
+
+
+        if (timerAfterkickPlayer > 0) timerAfterkickPlayer -= Time.deltaTime;
+        else timerAfterkickPlayer = 0;
+
+
+        if (inBedroom == true)
+        {
+            UpdateTimer();
+        }
+        else if (ArrivedToDestination())
+        {
+            Debug.Log(ArrivedToDestination());
+            if (controlledMove)
+            {
+                timer = 10f;
+                inBedroom = true;
+                ActivateAgent(false);
+            }
+            else if(shearchPlayer) SetRandomDestination(transform.position, 10f);
+            else SetDestinationToPlayer();
+        }
+
+        if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
+    }
+
+
 
     bool canAttack;
     float timerCanAttack;
@@ -90,11 +94,6 @@ public class Scr_Mimolle : Scr_Character
             canAttack = false;
             StartCoroutine(AttackAnimation());
             Invoke("CheckTouchPlayer", 0.6f);
-
-            int r = Random.Range(0, attackList.Count);
-            audioAttack.clip = attackList[r];
-            audioAttack.Play();
-
             timerCanAttack = 2f;
         }
     }

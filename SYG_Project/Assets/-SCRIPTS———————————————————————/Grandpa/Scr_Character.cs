@@ -105,15 +105,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
     {
         controlledMove = true;
         SetRandomDestination(bedroom.position,0);
-    }
-
-    void ArrivedInBedroom()
-    {
-        canMove = false;
-        agent.enabled = false;
-        transform.position += Vector3.down * 10;
-        timer = 10f;
-        inBedroom = true;
+        Debug.DrawLine(transform.position, targetPosition, Color.magenta, 10f);
     }
 
     public virtual void Update()

@@ -7,9 +7,8 @@ public class Scr_Rex : Scr_Character
 {
     [SerializeField]
     int life;
-    float timerHp;
-    float timerStun;
-    bool Stuned;
+
+    float timerAfterHit;
 
 
 
@@ -31,6 +30,8 @@ public class Scr_Rex : Scr_Character
 
     void DeacreasedHp()
     {
+
+
         if(life > 0)
         {
         life--; 
@@ -39,51 +40,70 @@ public class Scr_Rex : Scr_Character
         audioPshht.Play();
         }
         
-        timerHp = 5f;
+        timerAfterHit = 5f;
         if(life == 0 )
         {
-            
             controlledMove = true;
         }
 
-        if (life < 0)
+        if (life < 0 && !isStun)
         {
-            Stuned = true;
-            canMove = false;
-            timerStun = 10f;
+            Stun();
+
             int r = Random.Range(0, cryList.Count);
             audioPshht.clip = cryList[r];
             audioPshht.Play();
         }
+
+
     }
 
-    private void Update()
+    private bool isStun;
+    void Stun()
     {
-        if(life < 3 && timerHp > 0)
+        isStun = true;
+        StartCoroutine(StunRoutine());
+        canMove = false;
+    }
+
+    IEnumerator StunRoutine()
+    {
+        yield return new WaitForSeconds(4f);
+        isStun = false;
+        canMove = true;
+    }
+
+    public override void Update()
+    {
+        if (GAME.MANAGER.CurrentState != State.gameplay) return;
+        if (inBedroom == true)
         {
-            timerHp -= Time.deltaTime;
+            UpdateTimer();
         }
-        if(life < 3 && timerHp <= 0)
+        else if (ArrivedToDestination())
         {
-            life++;
-            Debug.Log(life);
+            if (controlledMove)
+            {
+                timer = 10f;
+                inBedroom = true;
+                ActivateAgent(false);
+            }
+            else SetRandomDestination(transform.position, 10f);
         }
 
-        if(life > 0)
-        {
-            controlledMove = false;
-        }
+        if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
 
 
-        if(Stuned == true && timerStun > 0)
+        if (!isStun)
         {
-            timerStun -= Time.deltaTime;
+            if (life < 3)
+            {
+                if (timerAfterHit > 0) timerAfterHit -= Time.deltaTime;
+                else { life++; Debug.Log(life); }
+            }
         }
-        if(Stuned == true && timerStun <= 0)
-        {
-            canMove = true;
-            Stuned = false;
-        }
+
+        if(life > 0) controlledMove = false;
     }
 
 
