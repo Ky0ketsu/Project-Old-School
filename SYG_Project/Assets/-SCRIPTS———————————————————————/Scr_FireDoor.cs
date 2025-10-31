@@ -13,6 +13,10 @@ public class Scr_FireDoor : MonoBehaviour, ISlapable
     [Range(0, 50f)] public float timerAutoOpenDoor;
     [SerializeField] private float currentTimer;
 
+    public List<AudioClip> openList;
+    public List<AudioClip> closeList;
+    [SerializeField] AudioSource audioFireDoor;
+
     public void Slap()
     {
         ChangeDoorState();
@@ -45,12 +49,18 @@ public class Scr_FireDoor : MonoBehaviour, ISlapable
     {
         Debug.Log("Porte fermer");
         transform.DORotate(Vector3.zero, 1f).SetEase(Ease.InCubic);
+        int r = Random.Range(0, closeList.Count);
+        audioFireDoor.clip = closeList[r];
+        audioFireDoor.Play();
     }
 
     void OpenDoor()
     {
         transform.DORotate(Vector3.up * 90f, 1f).SetEase(Ease.InCubic);
         Debug.Log("Porte ouverte");
+        int r = Random.Range(0, openList.Count);
+        audioFireDoor.clip = openList[r];
+        audioFireDoor.Play();
     }
 
     public void Update()

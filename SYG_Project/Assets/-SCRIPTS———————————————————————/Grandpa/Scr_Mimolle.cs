@@ -16,8 +16,8 @@ public class Scr_Mimolle : Scr_Character
 
     private float timerAfterkickPlayer;
 
-     public List<AudioClip> attackList;
-     [SerializeField] AudioSource audioAttack;
+    public List<AudioClip> attackList;
+    [SerializeField] AudioSource audioAttack;
 
 
     private void Update()
@@ -90,6 +90,11 @@ public class Scr_Mimolle : Scr_Character
             canAttack = false;
             StartCoroutine(AttackAnimation());
             Invoke("CheckTouchPlayer", 0.6f);
+
+            int r = Random.Range(0, attackList.Count);
+            audioAttack.clip = attackList[r];
+            audioAttack.Play();
+
             timerCanAttack = 2f;
         }
     }
