@@ -11,13 +11,18 @@ public class Scr_Door : MonoBehaviour, ISlapable
     [SerializeField]
     private GameObject closeDoorFx, openDoorFX;
 
+
+    public List<AudioClip> dooropenList;
+    public List<AudioClip> doorcloseList;
+    [SerializeField] AudioSource audioDoor;
+
     public void Slap()
     {
         slaped = true;
     }
 
 
-    //Quand Scr_Character dit être derrière une porte, il lance un timer, si le timer est en dessous de 5 le visuel change
+    //Quand Scr_Character dit ï¿½tre derriï¿½re une porte, il lance un timer, si le timer est en dessous de 5 le visuel change
     //
     public void Update()
     {
@@ -33,12 +38,15 @@ public class Scr_Door : MonoBehaviour, ISlapable
     }
 
 
-    //La porte est fermé (par le Vieux ou le Joueur) et reviens à un visuel de base + arrête les changements dans l'Update
+    //La porte est fermï¿½ (par le Vieux ou le Joueur) et reviens ï¿½ un visuel de base + arrï¿½te les changements dans l'Update
     public void CloseDoor()
     {
         transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
         turnVisual = false;
         halfOpen = false;
+        int r = Random.Range(0, doorcloseList.Count);
+        audioDoor.clip = doorcloseList[r];
+        audioDoor.Play();
         if (closeDoorFx != null) Instantiate(closeDoorFx, transform.position, Quaternion.identity);
         else Debug.Log("Pas de FX");
     }
