@@ -7,42 +7,33 @@ using UnityEngine.AI;
 
 public class Scr_Speeder : Scr_Character
 {
-    [Range(0f, 50f)] float speed;
+    [SerializeField, Range(0f, 50f)] float speed;
+    private float currentSpeed;
 
     private Vector3[] dir = new Vector3[8] { Vector3.forward, -Vector3.forward, Vector3.right, -Vector3.right, (Vector3.forward+Vector3.left).normalized, (Vector3.forward+ Vector3.right).normalized,(Vector3.back + Vector3.left).normalized,( Vector3.back+ Vector3.right ).normalized};
     [SerializeField] float minimumDistante = 3f;
+
+    bool isStun;
 
     public override void SetRandomDestination(Vector3 center, float randomMaxDistance)
     {
 
         bool mouvIsSet = false;
         int currentDirIndex = Random.Range(0, dir.Length);
-
-
-        int echecMax1 =0;
-       
         
 
         while(mouvIsSet == false)
         {
             NavMeshHit hit;
 
-            Vector3 lastPickPosition = transform.position;
+            Vector3 lastPickPosition = center;
             lastPickPosition.y = -1f;
             Vector3 currentPickPosition = lastPickPosition;
 
             bool currentIsOnNavmesh = true;
             int currentIndex = 0;
 
-            int echecMax2 = 0;
-            echecMax1++;
-            if (echecMax1 > 5)
-            {
-                Debug.Log("Pas de Destination trouver");
-                break;
-            }
-
-            while (currentIsOnNavmesh == true && echecMax2 < 5)
+            while (currentIsOnNavmesh == true)
             {
                 lastPickPosition = currentPickPosition;
                 currentPickPosition += dir[currentDirIndex]*2f;
@@ -55,7 +46,6 @@ public class Scr_Speeder : Scr_Character
                 {
                     currentIndex++;
                     Debug.DrawLine(transform.position, hit.position,Color.green,1f);
-                    echecMax2++;
                 }
                 else
                 { 
@@ -63,29 +53,63 @@ public class Scr_Speeder : Scr_Character
                 }
                 
             } // fin du petit while
-   
+
+            if (currentIndex < 3)
+            {
+                break;
+            }
             targetPosition = lastPickPosition;
             mouvIsSet = true;
 
         } // fin du while
 
 
-        if(mouvIsSet == true || echecMax1 > 2)
+        if(mouvIsSet == true )
         {
             agent.SetDestination(targetPosition);
         }
 
     } // fin de SetRandomDestination
 
-    void ShortStun()
+    public override void Update()
     {
+        if (GAME.MANAGER.CurrentState != State.gameplay) return;
+        if (inBedroom == true)
+        {
+            UpdateTimer();
+        }
+        else if (ArrivedToDestination())
+        {
+            if (controlledMove)
+            {
+                timer = 10f;
+                inBedroom = true;
+                ActivateAgent(false);
+            }
+            else if (!isStun)
+            {
+                currentSpeed = 0;
+                Stun(2f);
+            }
+        }
+
+        if (!isStun && currentSpeed < speed) currentSpeed += 3f * Time.deltaTime * (1 + currentSpeed / 10);
+
+        if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
+        agent.speed = currentSpeed;
+    }
+
+    void Stun(float stunTime)
+    {
+        isStun = true;
+        StartCoroutine(StunRoutine(stunTime));
         
     }
 
-    void LongStun()
+    IEnumerator StunRoutine(float StunTime)
     {
-
+        yield return new WaitForSeconds(StunTime);
+        SetRandomDestination(transform.position, 10f);
+        isStun = false;
     }
-
-
 }
