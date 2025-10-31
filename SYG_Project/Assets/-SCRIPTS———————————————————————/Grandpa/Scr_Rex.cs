@@ -11,6 +11,13 @@ public class Scr_Rex : Scr_Character
     float timerStun;
     bool Stuned;
 
+
+
+    public List<AudioClip> inflateList;
+    public List<AudioClip> deflateList;
+    public List<AudioClip> cryList;
+    [SerializeField] AudioSource audioPshht;
+
     private void Start()
     {
         life = 3;
@@ -25,7 +32,12 @@ public class Scr_Rex : Scr_Character
     void DeacreasedHp()
     {
         if(life > 0)
-        { life--; }
+        {
+        life--; 
+        int r = Random.Range(0, deflateList.Count);
+        audioPshht.clip = deflateList[r];
+        audioPshht.Play();
+        }
         
         timerHp = 5f;
         if(life == 0 )
@@ -39,6 +51,9 @@ public class Scr_Rex : Scr_Character
             Stuned = true;
             canMove = false;
             timerStun = 10f;
+            int r = Random.Range(0, cryList.Count);
+            audioPshht.clip = cryList[r];
+            audioPshht.Play();
         }
     }
 
