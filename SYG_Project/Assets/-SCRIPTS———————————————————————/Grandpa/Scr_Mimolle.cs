@@ -16,6 +16,9 @@ public class Scr_Mimolle : Scr_Character
 
     private float timerAfterkickPlayer;
 
+     public List<AudioClip> attackList;
+     [SerializeField] AudioSource audioAttack;
+
 
     private void Update()
     {   
@@ -51,7 +54,7 @@ public class Scr_Mimolle : Scr_Character
         }
     }
 
-    //recherche une position aléatoire autour du joueur
+    //recherche une position alï¿½atoire autour du joueur
     public override void SetRandomDestination(Vector3 center, float maxRandomDistance)
     {
         if (Vector3.Distance(transform.position, player.position) <= 2f && timerAfterkickPlayer == 0)
