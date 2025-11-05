@@ -181,7 +181,7 @@ PrefabInstance:
     - target: {fileID: 6904772261322917910, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_Name
-      value: BACK Button Zone Prefab Variant
+      value: Button Prefab BACK Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
