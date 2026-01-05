@@ -32,7 +32,7 @@ public class Scr_FireDoor : MonoBehaviour, ISlapable
         ChangeDoorState();
     }
 
-    void ChangeDoorState()
+    public void ChangeDoorState()
     {
         isClosed = !isClosed;
 
@@ -51,10 +51,12 @@ public class Scr_FireDoor : MonoBehaviour, ISlapable
 
     private void Start()
     {
+        isClosed = true;
+        ChangeDoorState();
         initialY = transform.position.y;
     }
 
-    void CloseDoor()
+    public void CloseDoor()
     {
         Debug.Log("Porte fermer");
         rightDoor.DORotate(Vector3.up * rightRotaClose, 1f).SetEase(Ease.InCubic);
@@ -65,7 +67,7 @@ public class Scr_FireDoor : MonoBehaviour, ISlapable
         audioFireDoor.Play();
     }
 
-    void OpenDoor()
+    public void OpenDoor()
     {
         rightDoor.DORotate(Vector3.up * rightRotaOpen, 1f).SetEase(Ease.InCubic);
         leftDoor.DORotate(Vector3.up * leftRotaOpen, 1f).SetEase(Ease.InCubic);

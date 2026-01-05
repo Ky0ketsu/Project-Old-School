@@ -126,7 +126,27 @@ public class Scr_Speeder : Scr_GranpaOrigin
 
         if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
         agent.speed = currentSpeed;
+
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, 5f, layerMask))
+        {
+            Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.yellow);
+
+            if (hit.transform.GetComponent<Scr_FireDoor>() != null)
+            {
+                hit.transform.GetComponent<Scr_FireDoor>().ChangeDoorState();
+                Debug.Log("Speeder claque la porte");
+            }
+        }
+        else
+        {
+            Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.red);
+        }
     }
+
+    [SerializeField]
+    LayerMask layerMask;
 
     void Stun(float stunTime)
     {
