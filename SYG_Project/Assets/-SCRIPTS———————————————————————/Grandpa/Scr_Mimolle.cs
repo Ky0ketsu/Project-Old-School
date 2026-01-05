@@ -68,7 +68,6 @@ public class Scr_Mimolle : Scr_GranpaOrigin
         }
         else if (ArrivedToDestination())
         {
-            Debug.Log(ArrivedToDestination());
             if (controlledMove)
             {
                 timer = 10f;

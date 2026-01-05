@@ -54,7 +54,7 @@ public class Scr_GranpaOrigin : MonoBehaviour , ISlapable
         canMove = false;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         targetPosition = transform.position;
     }
