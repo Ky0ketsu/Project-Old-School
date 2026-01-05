@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Scr_Character : MonoBehaviour , ISlapable
+public class Scr_GranpaOrigin : MonoBehaviour , ISlapable
 {
 
     [SerializeField] 

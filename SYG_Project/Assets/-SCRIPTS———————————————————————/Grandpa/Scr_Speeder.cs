@@ -1,11 +1,9 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Scr_Speeder : Scr_Character
+public class Scr_Speeder : Scr_GranpaOrigin
 {
     [SerializeField, Range(0f, 50f)] float speed;
     private float currentSpeed;
@@ -33,7 +31,7 @@ public class Scr_Speeder : Scr_Character
         int currentDirIndex = Random.Range(0, dir.Length);
         
 
-        while(mouvIsSet == false)
+        while(mouvIsSet == false && center != bedroom.position)
         {
             NavMeshHit hit;
 
@@ -75,7 +73,7 @@ public class Scr_Speeder : Scr_Character
         } // fin du while
 
 
-        if(mouvIsSet == true )
+        if(mouvIsSet == true && center != bedroom.position)
         {
             agent.SetDestination(targetPosition);
 
@@ -86,7 +84,10 @@ public class Scr_Speeder : Scr_Character
             int dd = Random.Range(0, glissList.Count);
             audioGliss.clip = glissList[dd];
             audioGliss.Play();
-
+        }
+        else
+        {
+            agent.SetDestination(bedroom.position);
         }
 
     } // fin de SetRandomDestination

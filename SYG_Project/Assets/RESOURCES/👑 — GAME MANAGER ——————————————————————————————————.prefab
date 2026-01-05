@@ -809,7 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6752fc81209664f8b189308050203e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialTimer: 10
+  initialTimer: 300
   currentTimer: 0
 --- !u!1 &4851073025384987826
 GameObject:

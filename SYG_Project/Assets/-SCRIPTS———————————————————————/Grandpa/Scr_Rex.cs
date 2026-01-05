@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using UnityEngine;
 
-public class Scr_Rex : Scr_Character
+public class Scr_Rex : Scr_GranpaOrigin
 {
     [SerializeField]
     int life;
@@ -30,8 +30,6 @@ public class Scr_Rex : Scr_Character
 
     void DeacreasedHp()
     {
-
-
         if(life > 0)
         {
         life--; 
@@ -44,6 +42,7 @@ public class Scr_Rex : Scr_Character
         if(life == 0 )
         {
             controlledMove = true;
+            agent.SetDestination(bedroom.position);
         }
 
         if (life < 0 && !isStun)

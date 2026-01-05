@@ -34,11 +34,11 @@ public class Scr_GrandpaManager : MonoBehaviour
             grandpas[i] = grandpaParent.GetChild(i).gameObject;
 
 
-            if (grandpas[i].GetComponent<Scr_Character>() != null && parentBedroom.GetChild(i) != null)
+            if (grandpas[i].GetComponent<Scr_GranpaOrigin>() != null && parentBedroom.GetChild(i) != null)
             {
-                grandpas[i].GetComponent<Scr_Character>().player = player;
+                grandpas[i].GetComponent<Scr_GranpaOrigin>().player = player;
                 Bedrooms[i] = parentBedroom.GetChild(i);
-                grandpas[i].GetComponent<Scr_Character>().bedroom = Bedrooms[i];
+                grandpas[i].GetComponent<Scr_GranpaOrigin>().bedroom = Bedrooms[i];
             }
             else Debug.Log($"1 ou 2 elements manquant dans la paire chambre/vieux numero {i}");
         }
