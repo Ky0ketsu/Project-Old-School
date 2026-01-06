@@ -67,7 +67,7 @@ public class Scr_Player_Slap : MonoBehaviour
 
         if (canSlap)
         {
-            if (player.GetButton("Slap"))
+            if (player.GetButtonUp("Slap"))
             {
                 canSlap = false;
                 if (Physics.Raycast(transform.position + Vector3.up * 1.5f, viewDirection.forward, out hit, 3f, layerMask))
