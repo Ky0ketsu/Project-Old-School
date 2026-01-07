@@ -42,6 +42,8 @@ public class Scr_GrandpaManager : MonoBehaviour
             }
             else Debug.Log($"1 ou 2 elements manquant dans la paire chambre/vieux numero {i}");
         }
+
+        
     }
 
     public void CountGrandpa()

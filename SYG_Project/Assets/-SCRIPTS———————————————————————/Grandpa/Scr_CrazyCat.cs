@@ -10,6 +10,21 @@ public class Scr_CrazyCat : Scr_GranpaOrigin
     [SerializeField]
     private float timerNotShowPlayer;
 
+    [SerializeField]
+    bool catIsSlaped;
+
+    [SerializeField]
+    GameObject catPrefab;
+    GameObject currentCat;
+    [SerializeField]
+    private Transform[] catSpawnPoint;
+
+    protected override void Start()
+    {
+        base.Start();
+        currentCat = Instantiate(catPrefab, catSpawnPoint[Random.Range(0, catSpawnPoint.Length)].position, Quaternion.identity);
+        currentCat.GetComponent<Scr_Cat>().crazyCat = this;
+    }
 
     void CheckCanViewPlayer()
     {
@@ -31,5 +46,43 @@ public class Scr_CrazyCat : Scr_GranpaOrigin
                 Debug.DrawRay(transform.position + Vector3.up, (player.position - transform.position).normalized * Vector3.Distance(transform.position, player.position), Color.red);
             }
         }
+    }
+
+
+
+    public override void Slaped()
+    {
+        Debug.Log("Trouve le chat");
+    }
+
+    public override void Update()
+    {
+        if (GAME.MANAGER.CurrentState != State.gameplay) return;
+
+        CheckCanViewPlayer();
+
+
+        if (inBedroom == true)
+        {
+            UpdateTimer();
+        }
+        else if (ArrivedToDestination())
+        {
+            if (controlledMove)
+            {
+                timer = 10f;
+                inBedroom = true;
+                ActivateAgent(false);
+            }
+            else if (shearchPlayer) SetRandomDestination(transform.position, 10f);
+            else SetDestinationToPlayer();
+        }
+
+        if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
+    }
+
+    void SetDestinationToPlayer()
+    {
+        targetPosition = player.position;
     }
 }
