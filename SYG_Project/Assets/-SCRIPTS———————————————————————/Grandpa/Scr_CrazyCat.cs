@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scr_CrazyCat : Scr_GranpaOrigin
+public class Scr_CrazyCat : Scr_GrandpaOrigin
 {
     [SerializeField] bool shearchPlayer;
     [SerializeField] LayerMask layerMask;
@@ -15,6 +15,8 @@ public class Scr_CrazyCat : Scr_GranpaOrigin
 
     [SerializeField]
     GameObject catPrefab;
+    [SerializeField]
+    public bool catIsSpawned = false;
     GameObject currentCat;
     [SerializeField]
     private Transform[] catSpawnPoint;
@@ -22,8 +24,7 @@ public class Scr_CrazyCat : Scr_GranpaOrigin
     protected override void Start()
     {
         base.Start();
-        currentCat = Instantiate(catPrefab, catSpawnPoint[Random.Range(0, catSpawnPoint.Length)].position, Quaternion.identity);
-        currentCat.GetComponent<Scr_Cat>().crazyCat = this;
+        
     }
 
     void CheckCanViewPlayer()
@@ -53,6 +54,12 @@ public class Scr_CrazyCat : Scr_GranpaOrigin
     public override void Slaped()
     {
         Debug.Log("Trouve le chat");
+        if (catIsSpawned == false)
+        {
+            currentCat = Instantiate(catPrefab, catSpawnPoint[Random.Range(0, catSpawnPoint.Length)].position, Quaternion.identity);
+            currentCat.GetComponent<Scr_Cat>().crazyCat = this;
+            catIsSpawned = true;
+        }
     }
 
     public override void Update()

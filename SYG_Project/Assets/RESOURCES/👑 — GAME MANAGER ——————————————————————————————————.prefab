@@ -1334,6 +1334,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 51594691eb31bb14e90825634dda4c0c, type: 3}
   audioCameraAction: {fileID: 579554289262807585}
   prefab: {fileID: 0}
+  timer: 0
 --- !u!1 &4073694866238742723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,7 +1628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6752fc81209664f8b189308050203e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialTimer: 10
+  initialTimer: 300
   currentTimer: 0
 --- !u!1 &4287450506311971390
 GameObject:
