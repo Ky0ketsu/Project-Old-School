@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scr_CrazyCat : Scr_GrandpaOrigin
+public class Scr_CrazyCat : GrandpaParent
 {
     [SerializeField] bool shearchPlayer;
     [SerializeField] LayerMask layerMask;
@@ -51,7 +51,7 @@ public class Scr_CrazyCat : Scr_GrandpaOrigin
 
 
 
-    public override void Slaped()
+    public override void Slap()
     {
         Debug.Log("Trouve le chat");
         if (catIsSpawned == false)

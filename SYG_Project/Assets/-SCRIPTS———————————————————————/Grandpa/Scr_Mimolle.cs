@@ -2,7 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
-public class Scr_Mimolle : Scr_GrandpaOrigin
+public class Scr_Mimolle : GrandpaParent
 {
     [SerializeField] bool shearchPlayer;
     [SerializeField] LayerMask layerMask;

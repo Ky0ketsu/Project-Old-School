@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using UnityEngine;
 
-public class Scr_Rex : Scr_GrandpaOrigin
+public class Scr_Rex : GrandpaParent
 {
     [SerializeField]
     int life;
@@ -17,12 +17,13 @@ public class Scr_Rex : Scr_GrandpaOrigin
     public List<AudioClip> cryList;
     [SerializeField] AudioSource audioPshht;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         life = 3;
     }
 
-    public override void Slaped()
+    public override void Slap()
     {
         DeacreasedHp();
         Debug.Log(life);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Scr_Speeder : Scr_GrandpaOrigin
+public class Scr_Speeder : GrandpaParent
 {
     [SerializeField, Range(0f, 50f)] float speed;
     private float currentSpeed;
@@ -63,7 +63,7 @@ public class Scr_Speeder : Scr_GrandpaOrigin
                 
             } // fin du petit while
 
-            if (currentIndex < 3)
+            if (currentIndex < minimumDistante)
             {
                 break;
             }

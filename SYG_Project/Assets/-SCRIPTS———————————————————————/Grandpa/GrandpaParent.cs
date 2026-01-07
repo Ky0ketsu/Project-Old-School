@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Scr_GrandpaOrigin : MonoBehaviour , ISlapable
+public class GrandpaParent : MonoBehaviour , ISlapable
 {
 
     [SerializeField] 
@@ -59,6 +59,7 @@ public class Scr_GrandpaOrigin : MonoBehaviour , ISlapable
         targetPosition = transform.position;
     }
 
+
     //recherche une position aleatoire autour de lui même
     public virtual void SetRandomDestination(Vector3 center, float randomMaxDistance)
     {
@@ -78,28 +79,14 @@ public class Scr_GrandpaOrigin : MonoBehaviour , ISlapable
         agent.SetDestination(targetPosition);
     }
 
-    //public void ReplaceOnMesh()
-    //{
-    //    NavMeshHit hit;
-    //    if (NavMesh.SamplePosition(transform.position, out hit, 10f, NavMesh.AllAreas))
-    //    {
-    //        transform.position = hit.position;
-    //        Debug.Log("Replace");
-    //    }
 
-      
-    //}
-
-    public virtual void Slaped()
+    public virtual void Slap()
     {
         Debug.Log($"{transform.name} a pris une claque");
         GoBedroom();
     }
 
-    public void Slap()
-    {
-        Slaped();
-    }
+
 
     public virtual void GoBedroom()
     {
