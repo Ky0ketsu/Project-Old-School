@@ -15,6 +15,8 @@ public class Scr_CrazyCat : Scr_GrandpaOrigin
 
     [SerializeField]
     GameObject catPrefab;
+    [SerializeField]
+    public bool catIsSpawned = false;
     GameObject currentCat;
     [SerializeField]
     private Transform[] catSpawnPoint;
@@ -22,8 +24,7 @@ public class Scr_CrazyCat : Scr_GrandpaOrigin
     protected override void Start()
     {
         base.Start();
-        currentCat = Instantiate(catPrefab, catSpawnPoint[Random.Range(0, catSpawnPoint.Length)].position, Quaternion.identity);
-        currentCat.GetComponent<Scr_Cat>().crazyCat = this;
+        
     }
 
     void CheckCanViewPlayer()
@@ -53,6 +54,12 @@ public class Scr_CrazyCat : Scr_GrandpaOrigin
     public override void Slaped()
     {
         Debug.Log("Trouve le chat");
+        if (catIsSpawned == false)
+        {
+            currentCat = Instantiate(catPrefab, catSpawnPoint[Random.Range(0, catSpawnPoint.Length)].position, Quaternion.identity);
+            currentCat.GetComponent<Scr_Cat>().crazyCat = this;
+            catIsSpawned = true;
+        }
     }
 
     public override void Update()
