@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using UnityEngine;
 
-public class Scr_Rex : Scr_GranpaOrigin
+public class Scr_Rex : Scr_GrandpaOrigin
 {
     [SerializeField]
     int life;

@@ -48,10 +48,14 @@ public class Scr_GrandpaManager : MonoBehaviour
 
     public void CountGrandpa()
     {
-        if (grandpas[0].GetComponent<Scr_Mimolle>().inBedroom == true && grandpas[1].GetComponent<Scr_CrazyCat>().inBedroom == true &&
-            grandpas[2].GetComponent<Scr_Rex>().inBedroom == true && grandpas[3].GetComponent<Scr_Speeder>().inBedroom == true)
+        foreach(GameObject grandpa in grandpas)
         {
-            Debug.Log("win");
+            if(grandpa.GetComponent<Scr_GrandpaOrigin>().inBedroom == false)
+            {
+                return;
+            }
         }
+
+        Debug.Log("win");
     }
 }

@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Scr_GranpaOrigin : MonoBehaviour , ISlapable
+public class Scr_GrandpaOrigin : MonoBehaviour , ISlapable
 {
 
     [SerializeField] 
@@ -24,7 +24,7 @@ public class Scr_GranpaOrigin : MonoBehaviour , ISlapable
     [SerializeField]
     protected bool controlledMove;
 
-    [SerializeField] protected bool inBedroom;
+    [SerializeField] public bool inBedroom;
     [SerializeField] protected float timer;
 
 

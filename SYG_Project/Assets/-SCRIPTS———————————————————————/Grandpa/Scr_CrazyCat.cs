@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scr_CrazyCat : Scr_GranpaOrigin
+public class Scr_CrazyCat : Scr_GrandpaOrigin
 {
     [SerializeField] bool shearchPlayer;
     [SerializeField] LayerMask layerMask;
