@@ -64,5 +64,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockPosition: 1
   lockRotation: 1
-  lockScale: 1
+  lockScale: 0
   lockParenting: 1
