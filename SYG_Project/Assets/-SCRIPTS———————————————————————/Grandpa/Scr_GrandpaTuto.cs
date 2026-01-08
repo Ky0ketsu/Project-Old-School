@@ -12,7 +12,7 @@ public class Scr_GrandpaTuto : GrandpaParent
         player.GetComponent<Scr_Tuto>().timer = 0; 
     }
 
-    private void Update()
+    protected override void Update()
     {
         if (player.GetComponent<Scr_Tuto>().tutoCompleted == true) Destroy(gameObject); 
     }

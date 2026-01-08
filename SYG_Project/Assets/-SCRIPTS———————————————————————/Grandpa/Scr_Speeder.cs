@@ -92,7 +92,7 @@ public class Scr_Speeder : GrandpaParent
 
     } // fin de SetRandomDestination
 
-    public override void Update()
+    protected override void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
         if (inBedroom == true)

@@ -72,7 +72,7 @@ public class Scr_Rex : GrandpaParent
         canMove = true;
     }
 
-    public override void Update()
+    protected override void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
         if (inBedroom == true)

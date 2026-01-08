@@ -93,7 +93,7 @@ public class GrandpaParent : MonoBehaviour , ISlapable
         Debug.DrawLine(transform.position, targetPosition, Color.magenta, 10f);
     }
 
-    public virtual void Update()
+    protected virtual void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
 

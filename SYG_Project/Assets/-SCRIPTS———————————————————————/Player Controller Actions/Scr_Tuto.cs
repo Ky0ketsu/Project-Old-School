@@ -9,7 +9,7 @@ public class Scr_Tuto : MonoBehaviour
 {
     public GameObject grandpaTuto;
     public GameObject door;
-    public Scr_TabletMove scriptTablet;
+    public TabletAction scriptTablet;
     public GameObject tablet; 
 
     public bool tutoCompleted = false;
@@ -45,10 +45,10 @@ public class Scr_Tuto : MonoBehaviour
         {
             if (tabletStopped == false)
             {
-                scriptTablet = Object.FindAnyObjectByType<Scr_TabletMove>();
+                scriptTablet = Object.FindAnyObjectByType<TabletAction>();
                 GameObject TabletGO = scriptTablet.gameObject;
-                TabletGO.GetComponent<Scr_TabletMove>().enabled = false;
-                if (TabletGO.GetComponent<Scr_TabletMove>().enabled == false)
+                TabletGO.GetComponent<TabletAction>().enabled = false;
+                if (TabletGO.GetComponent<TabletAction>().enabled == false)
                 {
                     tabletStopped = true;
                 }
@@ -58,7 +58,7 @@ public class Scr_Tuto : MonoBehaviour
         if (didHeSlap == true)
         {
             GameObject TabletGO = scriptTablet.gameObject;
-            TabletGO.GetComponent<Scr_TabletMove>().enabled = true;
+            TabletGO.GetComponent<TabletAction>().enabled = true;
 
             if (player.GetButton("Slap"))
             {
