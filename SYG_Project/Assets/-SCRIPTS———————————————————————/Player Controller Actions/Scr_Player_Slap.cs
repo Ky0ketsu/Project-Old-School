@@ -37,6 +37,7 @@ public class Scr_Player_Slap : MonoBehaviour
 
     private void Start()
     {
+        ServicesLocator.Get<PlayerService>().player = gameObject;
         player = ReInput.players.GetPlayer(playerID);
         if (GAME.MANAGER.CurrentState == State.gameplay) EnableSlap();
     }
@@ -54,27 +55,21 @@ public class Scr_Player_Slap : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position + Vector3.up * 1.5f , viewDirection.forward, out hit , 3f, layerMask))
-        {
-            Debug.DrawRay (transform.position + Vector3.up * 1.5f , viewDirection.forward * hit.distance, Color.green);
-        }
-        else
-        {
-            Debug.DrawRay(transform.position + Vector3.up * 1.5f , viewDirection.forward * 3f, Color.red);
-        }
+        if (GAME.MANAGER.CurrentState != State.gameplay) return;
 
+        RaycastHit hit;
 
         if (canSlap)
         {
-            if (player.GetButtonUp("Slap"))
+            if (Physics.Raycast(transform.position + Vector3.up * 1.5f, viewDirection.forward, out hit, 3f, layerMask))
             {
-                canSlap = false;
-                if (Physics.Raycast(transform.position + Vector3.up * 1.5f, viewDirection.forward, out hit, 3f, layerMask))
+                Debug.DrawRay(transform.position + Vector3.up * 1.5f, viewDirection.forward * hit.distance, Color.green);
+
+                if (player.GetButtonUp("Slap"))
                 {
+                    canSlap = false;
                     ISlapable slapable = hit.transform.GetComponentInParent<ISlapable>();
 
-                    
                     if (slapable != null)
                     {
                         Debug.Log(slapable);
@@ -82,28 +77,27 @@ public class Scr_Player_Slap : MonoBehaviour
                     }
                     else Debug.Log(" je suis null");
                 }
-                Slap();
             }
+            else Debug.DrawRay(transform.position + Vector3.up * 1.5f, viewDirection.forward * 3f, Color.red);
+
+            Slap();
+            
         }
     }
 
     void Slap()
     {
-        if(audioSlap != null) 
-            {
-            int r = Random.Range(0, slapList.Count);
-            audioSlap.clip = slapList[r];
-            if (audioSlap != null)
-                {
-                    audioSlap.Play();
-                }
-            else Debug.Log("Pas de son");
-            }
+        if(audioSlap != null)
+        {
+            ServicesLocator.Get<IAudioService>().PlayAudioOneShot (slapList [Random.Range (0, slapList.Count) ] );
+        }
+
         StartCoroutine(SlapAnimation());
     }
 
     IEnumerator SlapAnimation()
     {
+        // **********************************
         slapSprite.DOLocalMove(initialSlapPosition + new Vector3(1, 1.5f, 0), 0.3f).SetEase(Ease.InCubic);
         yield return new WaitForSeconds(0.3f);
         slapSprite.DOLocalMove(initialSlapPosition + new Vector3(-1.5f, 1f, 0), 0.5f).SetEase(Ease.OutExpo);
@@ -113,5 +107,5 @@ public class Scr_Player_Slap : MonoBehaviour
         slapSprite.DOLocalRotate(initialSlapRotation, 0.5f).SetEase(Ease.OutExpo);
         yield return new WaitForSeconds(0.2f);
         canSlap = true;
-    }
+    } // *********************************
 }

@@ -23,6 +23,11 @@ public class AudioService : MonoBehaviour , IAudioService
 
     public void PlayAudioOneShot(AudioClip audio)
     {
+        if (audio == null)
+        {
+            Debug.LogWarning("Il n'y a pas de son a joué");
+            return; 
+        }
         _audioData.PlayOneShot(audio);
         Debug.Log("Je lance un son OneShot");
     }
@@ -30,6 +35,12 @@ public class AudioService : MonoBehaviour , IAudioService
 
     public void PlayAudio(AudioClip audio)
     {
+        if (_audioData == null)
+        {
+            Debug.LogWarning("il n'y a pas de son a joué");
+            return;
+        }
+
         _audioData.clip = audio;
         _audioData.Play(0);
         Debug.Log("Je lance le son");

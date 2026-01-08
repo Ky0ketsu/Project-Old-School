@@ -14,8 +14,8 @@ public class PlayerService : MonoBehaviour, IPlayerService
         ServicesLocator.Unregister<IPlayerService>();
     }
 
-    [SerializeField]
-    private GameObject _player;
+    [HideInInspector]
+    public GameObject player;
 
     public void StunPlayer()
     {
