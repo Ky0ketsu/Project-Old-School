@@ -36,7 +36,7 @@ public class ServicesLocator : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Service {typeof(TInterface).Name} n'etais pas enregistré");
+            Debug.LogWarning($"Service {typeof(TInterface).Name} n'était pas enregistré");
         }
 
     }

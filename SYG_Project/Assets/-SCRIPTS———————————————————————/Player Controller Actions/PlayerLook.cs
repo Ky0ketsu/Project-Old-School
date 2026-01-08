@@ -22,14 +22,12 @@ public class PlayerLook : MonoBehaviour
         else return false;
         }
     }
-    HealthScript health => GetComponent<HealthScript>();
 
     void Awake()
     {
         EVENTS.OnGameplay += EnableLook;
         EVENTS.OnGameplayExit += DisableLook;
         EVENTS.OnMouseSensitivityChange += ChangeMouseSensitivity;
-        health.OnSpawn += ResetLook;
     }
 
     void OnDestroy()
@@ -37,7 +35,6 @@ public class PlayerLook : MonoBehaviour
         EVENTS.OnGameplay -= EnableLook;
         EVENTS.OnGameplayExit -= DisableLook;
         EVENTS.OnMouseSensitivityChange -= ChangeMouseSensitivity;
-        health.OnSpawn -= ResetLook;
     }
 
 
@@ -70,7 +67,6 @@ public class PlayerLook : MonoBehaviour
         if (CanLook)
         {
             if (horizontalPivot) GetHorizontalAngle();
-            //if (verticalPivot) GetVerticalAngle();
             ApplyToCamera();
         }
     }
@@ -83,14 +79,6 @@ public class PlayerLook : MonoBehaviour
         while (vAngle>360f) vAngle-=360f;
         while (vAngle<-360f) vAngle += 360f;
     }
-
-    /*void GetVerticalAngle()
-    {
-        inputY = -player.GetAxis("LookVertical") * lookSpeed.y;
-        if (MouseInput) inputY *= mouseSensitivity.y;
-        hAngle += inputY;
-        hAngle = Mathf.Clamp(hAngle,-maxVerticalAngle,maxVerticalAngle);
-    }*/
 
     void ApplyToCamera()
     {

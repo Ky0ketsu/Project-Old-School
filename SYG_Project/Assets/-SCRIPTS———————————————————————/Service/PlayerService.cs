@@ -19,17 +19,12 @@ public class PlayerService : MonoBehaviour, IPlayerService
 
     public void StunPlayer()
     {
-
+        
     }
 
-    public void EnableMovePlayer()
+    public void SetPlayer(GameObject player)
     {
-
+        player = this.player;
     }
 
-    public void DisableMovePlayer()
-    {
-
-    }
-    
 }

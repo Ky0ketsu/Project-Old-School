@@ -26,13 +26,22 @@ public class Scr_CrazyCat : GrandpaParent
 
     private Transform[] _catSpawnPoint;
 
+    private void Start()
+    {
+        _catSpawnPoint = new Transform[_catSpawnPointParent.childCount];
+        for(int i = 0; i < _catSpawnPointParent.childCount; i++)
+        {
+            _catSpawnPoint[i] = _catSpawnPointParent.GetChild(i);
+        }
+    }
+
 
     void CheckCanViewPlayer()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position) * 1.05f, layerMask))
         {
-            if (hit.transform.GetComponent<Scr_Player_Slap>() != null)
+            if (hit.transform.GetComponent<SlapAction>() != null)
             {
                 _shearchingPlayer = false;
                 _timerNotShowPlayer = 3f;

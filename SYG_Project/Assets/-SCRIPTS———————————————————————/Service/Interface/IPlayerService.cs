@@ -5,6 +5,5 @@ using UnityEngine;
 public interface IPlayerService
 {
     public void StunPlayer();
-    public void DisableMovePlayer();
-    public void EnableMovePlayer();
+    public void SetPlayer(GameObject player);
 }

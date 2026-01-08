@@ -13,7 +13,6 @@ public class Scr_Cat : MonoBehaviour , ISlapable
     [SerializeField]
     private GameObject SpawnFX;
     private GameObject SpawnedFX;
-    private bool canTimer = false; 
 
     [SerializeField]
     private float timerForFX = 111111110; 

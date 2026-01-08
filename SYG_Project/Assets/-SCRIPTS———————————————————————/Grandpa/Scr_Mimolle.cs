@@ -17,7 +17,7 @@ public class Scr_Mimolle : GrandpaParent
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position) * 1.05f, layerMask))
         {
-            if (hit.transform.GetComponent<Scr_Player_Slap>() != null && timerAfterkickPlayer == 0)
+            if (hit.transform.GetComponent<SlapAction>() != null && timerAfterkickPlayer == 0)
             {
                 shearchPlayer = false;
                 timerNotShowPlayer = 3f;
@@ -103,9 +103,9 @@ public class Scr_Mimolle : GrandpaParent
         if (Physics.Raycast(transform.position + Vector3.up, player.position - transform.position, out hit, 2.3f, layerMask))
         {
 
-            if (hit.transform.GetComponentInParent<Scr_PlayerStun>() != null)
+            if (hit.transform.GetComponentInParent<PlayerStunAction>() != null)
             {
-                hit.transform.GetComponentInParent<Scr_PlayerStun>().Stun();
+                hit.transform.GetComponentInParent<PlayerStunAction>().Stun();
                 timerAfterkickPlayer = 15f;
             }
             else Debug.Log("mimolle na pas toucher");

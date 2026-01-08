@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scr_PlayerStun : MonoBehaviour
+public class PlayerStunAction : MonoBehaviour
 {
     [SerializeField]
     Transform cameraTransform;
@@ -55,7 +55,7 @@ public class Scr_PlayerStun : MonoBehaviour
     }
 
     IEnumerator StunRoutine()
-    {
+    {//************************
         transform.GetComponent<PlayerMove>().CanRun = false;
         transform.GetComponent<PlayerLook>().CanLook = false;
         cameraTransform.DOMoveY(initialY + 2f, 1f).SetEase(Ease.InExpo);
@@ -73,5 +73,5 @@ public class Scr_PlayerStun : MonoBehaviour
         transform.GetComponent<PlayerLook>().CanLook = true;
         canStun = true;
         
-    }
+    }//************************************
 }

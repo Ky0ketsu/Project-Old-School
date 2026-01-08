@@ -4,22 +4,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Scr_Player_Slap : MonoBehaviour
+public class SlapAction : MonoBehaviour
 {
 
     
 
-    [SerializeField] int playerID = 0;
-    [SerializeField] private bool canSlap;
+    [HideInInspector]
+    int playerID = 0;
+    [HideInInspector]
     Player player;
-    public List<AudioClip> slapList;
-    [SerializeField] AudioSource audioSlap;
+
+
+    [SerializeField]
+    private bool _canSlap;
+
     [SerializeField] Transform slapSprite;
     [HideInInspector] Vector3 initialSlapPosition, initialSlapRotation;
 
-    [SerializeField] private Transform viewDirection;
-    public LayerMask layerMask;
-    [SerializeField] ParticleSystem slapParticule;
+    [SerializeField]
+    private Transform _viewDirection;
+
+    [SerializeField]
+    private LayerMask _layerMask;
+
+    [SerializeField]
+    ParticleSystem slapFX;
+    public List<AudioClip> slapList;
+
+
     void Awake()
     {
 
@@ -37,63 +49,50 @@ public class Scr_Player_Slap : MonoBehaviour
 
     private void Start()
     {
-        ServicesLocator.Get<PlayerService>().player = gameObject;
+        ServicesLocator.Get<IPlayerActionService>().SetSlapAction(this);
         player = ReInput.players.GetPlayer(playerID);
         if (GAME.MANAGER.CurrentState == State.gameplay) EnableSlap();
+        ServicesLocator.Get<IPlayerService>().SetPlayer(gameObject);
     }
 
     void EnableSlap()
     {
-        canSlap = true;
+        _canSlap = true;
     }
 
     void DisableSlap()
     {
-        canSlap = false;
+        _canSlap = false;
     }
 
-
-    void Update()
+    public void SlapWanted()
     {
-        if (GAME.MANAGER.CurrentState != State.gameplay) return;
-
         RaycastHit hit;
 
-        if (canSlap)
+        if (!_canSlap) return;
+
+        if (Physics.Raycast(transform.position + Vector3.up * 1.5f, _viewDirection.forward, out hit, 3f, _layerMask))
         {
-            if (Physics.Raycast(transform.position + Vector3.up * 1.5f, viewDirection.forward, out hit, 3f, layerMask))
+            Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * hit.distance, Color.green, 5f);
+            
+
+            ISlapable slapable = hit.transform.GetComponentInParent<ISlapable>();
+            if (slapable != null)
             {
-                Debug.DrawRay(transform.position + Vector3.up * 1.5f, viewDirection.forward * hit.distance, Color.green);
-
-                if (player.GetButtonUp("Slap"))
-                {
-                    canSlap = false;
-                    ISlapable slapable = hit.transform.GetComponentInParent<ISlapable>();
-
-                    if (slapable != null)
-                    {
-                        Debug.Log(slapable);
-                        slapable.Slap();
-                    }
-                    else Debug.Log(" je suis null");
-                    Slap();
-                }
+                Debug.Log(slapable);
+                slapable.Slap();
             }
-            else Debug.DrawRay(transform.position + Vector3.up * 1.5f, viewDirection.forward * 3f, Color.red);
+            else Debug.Log(" je suis null");
 
-            
-            
+            if (slapList != null)
+            {
+                ServicesLocator.Get<IAudioService>().PlayAudioOneShot(slapList[Random.Range(0, slapList.Count)]);
+            }
+
+            _canSlap = false;
+            StartCoroutine(SlapAnimation());
         }
-    }
-
-    void Slap()
-    {
-        if(audioSlap != null)
-        {
-            ServicesLocator.Get<IAudioService>().PlayAudioOneShot (slapList [Random.Range (0, slapList.Count) ] );
-        }
-
-        StartCoroutine(SlapAnimation());
+        else   Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * 3f, Color.red, 5f);
     }
 
     IEnumerator SlapAnimation()
@@ -107,6 +106,6 @@ public class Scr_Player_Slap : MonoBehaviour
         slapSprite.DOLocalMove(initialSlapPosition, 0.2f).SetEase(Ease.InCubic);
         slapSprite.DOLocalRotate(initialSlapRotation, 0.5f).SetEase(Ease.OutExpo);
         yield return new WaitForSeconds(0.2f);
-        canSlap = true;
+        _canSlap = true;
     } // *********************************
 }
