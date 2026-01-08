@@ -22,14 +22,14 @@ public class TabletAction : MonoBehaviour
     private void Start()
     {
         initTransform = transform.position;
-        ServicesLocator.Get<IPlayerActionService>().SetTabletAction(this);
+        ServicesLocator.Get<IPlayerActionService>()?.SetTabletAction(this);
         player = ReInput.players.GetPlayer(0);
     }
 
 
     public void EnterTabletView()
     {
-        ServicesLocator.Get<IAudioService>().PlayAudioOneShot(cameraActionOpenList[Random.Range(0, cameraActionOpenList.Count)]);
+        ServicesLocator.Get<IAudioService>()?.PlayAudioOneShot(cameraActionOpenList[Random.Range(0, cameraActionOpenList.Count)]);
         selfTransform.DOLocalMove(new Vector3(transform.position.x, 0, transform.position.z), 0.5f, false);
     }
 
