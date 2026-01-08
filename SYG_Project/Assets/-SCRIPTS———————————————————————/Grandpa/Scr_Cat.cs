@@ -15,7 +15,7 @@ public class Scr_Cat : MonoBehaviour , ISlapable
     private GameObject SpawnedFX;
 
     [SerializeField]
-    private float timerForFX = 111111110; 
+    private float timerForFX; 
 
     public void Awake()
     {
@@ -30,11 +30,11 @@ public class Scr_Cat : MonoBehaviour , ISlapable
 
     public void Update()
     {
-        timerForFX += Time.deltaTime;
+        timerForFX -= Time.deltaTime;
 
-        if (timerForFX >= 15)
+        if (timerForFX <= 0)
         {
-            timerForFX = 0;
+            timerForFX = 15;
 
             SpawnedFX = Instantiate(SpawnFX, transform); 
         }
