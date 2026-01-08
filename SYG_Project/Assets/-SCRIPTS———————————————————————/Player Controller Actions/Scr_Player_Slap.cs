@@ -76,11 +76,12 @@ public class Scr_Player_Slap : MonoBehaviour
                         slapable.Slap();
                     }
                     else Debug.Log(" je suis null");
+                    Slap();
                 }
             }
             else Debug.DrawRay(transform.position + Vector3.up * 1.5f, viewDirection.forward * 3f, Color.red);
 
-            Slap();
+            
             
         }
     }
