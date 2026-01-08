@@ -13,7 +13,6 @@ public class Scr_Cat : MonoBehaviour , ISlapable
     public void Slap()
     {
         crazyCat.GoBedroom();
-        crazyCat.GetComponent<Scr_CrazyCat>().catIsSpawned = false;
         Destroy(gameObject);
     }
 }

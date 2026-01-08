@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class IAudioService : MonoBehaviour
+public interface IAudioService
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public void PlayAudioOneShot(AudioClip audio);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void PlayAudio(AudioClip audio);
+    public void StopAudio();
+    public void PauseAudio();
+    public void ResumeAudio();
 }

@@ -17,9 +17,8 @@ public class Scr_Rex : GrandpaParent
     public List<AudioClip> cryList;
     [SerializeField] AudioSource audioPshht;
 
-    protected override void Start()
+    void Start()
     {
-        base.Start();
         life = 3;
     }
 
@@ -84,7 +83,7 @@ public class Scr_Rex : GrandpaParent
         {
             if (controlledMove)
             {
-                timer = 10f;
+                exitBedroomTimer = 10f;
                 inBedroom = true;
                 ActivateAgent(false);
             }

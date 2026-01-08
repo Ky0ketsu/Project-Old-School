@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class Scr_CrazyCat : GrandpaParent
 {
-    [SerializeField] bool shearchPlayer;
-    [SerializeField] LayerMask layerMask;
-
     [SerializeField]
-    private float timerNotShowPlayer;
+    LayerMask layerMask;
 
-    [SerializeField]
-    bool catIsSlaped;
+
+    private bool _shearchingPlayer;
+    private float _timerNotShowPlayer;
+    
 
     [SerializeField]
     GameObject catPrefab;
-    [SerializeField]
-    public bool catIsSpawned = false;
-    GameObject currentCat;
-    [SerializeField]
-    private Transform[] catSpawnPoint;
+    
+    private bool _catIsSpawned = false;
+    
 
-    protected override void Start()
-    {
-        base.Start();
-        
-    }
+     private GameObject _currentCat;
+
+
+    [SerializeField]
+    private Transform _catSpawnPointParent;
+
+    private Transform[] _catSpawnPoint;
+
 
     void CheckCanViewPlayer()
     {
@@ -34,15 +34,15 @@ public class Scr_CrazyCat : GrandpaParent
         {
             if (hit.transform.GetComponent<Scr_Player_Slap>() != null)
             {
-                shearchPlayer = false;
-                timerNotShowPlayer = 3f;
+                _shearchingPlayer = false;
+                _timerNotShowPlayer = 3f;
 
                 Debug.DrawRay(transform.position + Vector3.up, (player.position - transform.position).normalized * Vector3.Distance(transform.position, player.position), Color.green);
             }
             else
             {
-                if (timerNotShowPlayer > 0) timerNotShowPlayer -= Time.deltaTime;
-                if (timerNotShowPlayer <= 0) timerNotShowPlayer = 0f; shearchPlayer = true;
+                if (_timerNotShowPlayer > 0) _timerNotShowPlayer -= Time.deltaTime;
+                if (_timerNotShowPlayer <= 0) _timerNotShowPlayer = 0f; _shearchingPlayer = true;
 
                 Debug.DrawRay(transform.position + Vector3.up, (player.position - transform.position).normalized * Vector3.Distance(transform.position, player.position), Color.red);
             }
@@ -54,11 +54,11 @@ public class Scr_CrazyCat : GrandpaParent
     public override void Slap()
     {
         Debug.Log("Trouve le chat");
-        if (catIsSpawned == false)
+        if (_catIsSpawned == false)
         {
-            currentCat = Instantiate(catPrefab, catSpawnPoint[Random.Range(0, catSpawnPoint.Length)].position, Quaternion.identity);
-            currentCat.GetComponent<Scr_Cat>().crazyCat = this;
-            catIsSpawned = true;
+            _currentCat = Instantiate(catPrefab, _catSpawnPoint[Random.Range(0, _catSpawnPoint.Length)].position, Quaternion.identity);
+            _currentCat.GetComponent<Scr_Cat>().crazyCat = this;
+            _catIsSpawned = true;
         }
     }
 
@@ -77,11 +77,11 @@ public class Scr_CrazyCat : GrandpaParent
         {
             if (controlledMove)
             {
-                timer = 10f;
+                exitBedroomTimer = 10f;
                 inBedroom = true;
                 ActivateAgent(false);
             }
-            else if (shearchPlayer) SetRandomDestination(transform.position, 10f);
+            else if (_shearchingPlayer) SetRandomDestination(transform.position, 10f);
             else SetDestinationToPlayer();
         }
 

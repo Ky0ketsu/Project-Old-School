@@ -13,14 +13,14 @@ public class Scr_RandomizeSpawnObject : MonoBehaviour
 
     private void Start()
     {
+        spawnPointList = new Transform[parentSpawnPoint.childCount];
+
         if (parentSpawnPoint == null || spawnPointList == null)
         {
             Debug.LogWarning("Le placement random a echoué");
             return;
         }
 
-
-        spawnPointList = new Transform[parentSpawnPoint.childCount];
         for(int i = 0; i < spawnPointList.Length; i++)
         {
             spawnPointList[i] = parentSpawnPoint.GetChild(i).transform;

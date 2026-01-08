@@ -70,7 +70,7 @@ public class Scr_Mimolle : GrandpaParent
         {
             if (controlledMove)
             {
-                timer = 10f;
+                exitBedroomTimer = 10f;
                 inBedroom = true;
                 ActivateAgent(false);
             }

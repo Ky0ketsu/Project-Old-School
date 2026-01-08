@@ -9,8 +9,17 @@ public class FXSevice : MonoBehaviour, IFXService
         ServicesLocator.Register<IFXService>(this);
     }
 
+    void OnDestroy()
+    {
+        ServicesLocator.Unregister<IFXService>();
+    }
+
     public void PlayFx(GameObject prefabFX, Vector3 position)
     {
         Instantiate(prefabFX, position, Quaternion.identity);
     }
+
+    
+
+
 }

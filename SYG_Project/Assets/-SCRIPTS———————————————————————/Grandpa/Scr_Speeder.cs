@@ -22,7 +22,7 @@ public class Scr_Speeder : GrandpaParent
 
 
 
-    bool isStun;
+    private bool _isStun;
 
     public override void SetRandomDestination(Vector3 center, float randomMaxDistance)
     {
@@ -103,11 +103,11 @@ public class Scr_Speeder : GrandpaParent
         {
             if (controlledMove)
             {
-                timer = 10f;
+                exitBedroomTimer = 10f;
                 inBedroom = true;
                 ActivateAgent(false);
             }
-            else if (!isStun)
+            else if (!_isStun)
             {
                 currentSpeed = 0;
                 Stun(2f);
@@ -122,7 +122,7 @@ public class Scr_Speeder : GrandpaParent
             }
         }
 
-        if (!isStun && currentSpeed < speed) currentSpeed += 3f * Time.deltaTime * (1 + currentSpeed / 10);
+        if (!_isStun && currentSpeed < speed) currentSpeed += 3f * Time.deltaTime * (1 + currentSpeed / 10);
 
         if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
         agent.speed = currentSpeed;
@@ -150,7 +150,7 @@ public class Scr_Speeder : GrandpaParent
 
     void Stun(float stunTime)
     {
-        isStun = true;
+        _isStun = true;
 
         StartCoroutine(StunRoutine(stunTime));
         
@@ -160,6 +160,6 @@ public class Scr_Speeder : GrandpaParent
     {
         yield return new WaitForSeconds(StunTime);
         SetRandomDestination(transform.position, 10f);
-        isStun = false;
+        _isStun = false;
     }
 }
