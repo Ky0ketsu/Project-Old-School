@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8880479553256877282
 Transform:
@@ -46,7 +46,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5357598636501413679
 Transform:
@@ -143,6 +143,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3D_Lights1_v1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9b6bd88586632f74b89c2c81b7926af0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -162,10 +167,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8880479553256877282}
     m_Modifications:
+    - target: {fileID: 147801983820534830, guid: f5bb468581bfb154099a607f55d2dddb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6236278245687930952, guid: f5bb468581bfb154099a607f55d2dddb,
         type: 3}
       propertyPath: m_Name
       value: Ambiance_Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236278245687930952, guid: f5bb468581bfb154099a607f55d2dddb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7954279938945958251, guid: f5bb468581bfb154099a607f55d2dddb,
         type: 3}
