@@ -364,6 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canSlap: 0
   slapSprite: {fileID: 1354020908540602091}
+  _viewDirection: {fileID: 0}
   _layerMask:
     serializedVersion: 2
     m_Bits: 635089
@@ -808,7 +809,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5c0793530d0cc2848a4759160e2e4d89, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8886d3419decb4249ab21503d9651d6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -843,14 +844,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7519185128016768628}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11203384, y: 0.35075054, z: -0.21605198, w: 0.904292}
-  m_LocalPosition: {x: 0.58, y: 0.017, z: 1.32}
+  m_LocalRotation: {x: 0.04452013, y: 0.3655072, z: 0.18093187, w: 0.91196835}
+  m_LocalPosition: {x: 0.36, y: -0.59, z: 1.56}
   m_LocalScale: {x: 0.4762803, y: 0.4762803, z: 0.4762803}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8806110436564125960}
   m_Father: {fileID: 3839695463424431248}
-  m_LocalEulerAnglesHint: {x: -2.927, y: 43.131, z: -28.031}
+  m_LocalEulerAnglesHint: {x: -2.927, y: 43.131, z: 21.286}
 --- !u!1 &7549112046711679581
 GameObject:
   m_ObjectHideFlags: 0
