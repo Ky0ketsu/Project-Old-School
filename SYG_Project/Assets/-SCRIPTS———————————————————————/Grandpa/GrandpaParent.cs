@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Scr_Character : MonoBehaviour , ISlapable
+public class GrandpaParent : MonoBehaviour , ISlapable
 {
 
     [SerializeField] 
@@ -24,8 +24,10 @@ public class Scr_Character : MonoBehaviour , ISlapable
     [SerializeField]
     protected bool controlledMove;
 
-    [SerializeField] protected bool inBedroom;
-    [SerializeField] protected float timer;
+    [SerializeField]
+    public bool inBedroom;
+    [SerializeField]
+    protected float exitBedroomTimer;
 
 
     [SerializeField]
@@ -33,6 +35,7 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     private void Awake()
     {
+        targetPosition = transform.position;
         EVENTS.OnGameplay += EnableMove;
         EVENTS.OnGameplayExit += DisableMove;
         agent = GetComponent<NavMeshAgent>();
@@ -54,12 +57,9 @@ public class Scr_Character : MonoBehaviour , ISlapable
         canMove = false;
     }
 
-    private void Start()
-    {
-        targetPosition = transform.position;
-    }
+    
 
-    //recherche une position aleatoire autour de lui même
+
     public virtual void SetRandomDestination(Vector3 center, float randomMaxDistance)
     {
         NavMeshHit hit;
@@ -67,7 +67,6 @@ public class Scr_Character : MonoBehaviour , ISlapable
         while (foundDestination==false)
         {
             Vector3 randomPoint = center + new Vector3(Random.Range(-randomMaxDistance, randomMaxDistance), 0, Random.Range(-randomMaxDistance, randomMaxDistance));
-            //regarde si le point touche le nav mesh
             if (NavMesh.SamplePosition(randomPoint, out hit, 10f, NavMesh.AllAreas))
             {
                 targetPosition = hit.position;
@@ -78,28 +77,14 @@ public class Scr_Character : MonoBehaviour , ISlapable
         agent.SetDestination(targetPosition);
     }
 
-    //public void ReplaceOnMesh()
-    //{
-    //    NavMeshHit hit;
-    //    if (NavMesh.SamplePosition(transform.position, out hit, 10f, NavMesh.AllAreas))
-    //    {
-    //        transform.position = hit.position;
-    //        Debug.Log("Replace");
-    //    }
 
-      
-    //}
-
-    public virtual void Slaped()
+    public virtual void Slap()
     {
         Debug.Log($"{transform.name} a pris une claque");
         GoBedroom();
     }
 
-    public void Slap()
-    {
-        Slaped();
-    }
+
 
     public virtual void GoBedroom()
     {
@@ -108,18 +93,17 @@ public class Scr_Character : MonoBehaviour , ISlapable
         Debug.DrawLine(transform.position, targetPosition, Color.magenta, 10f);
     }
 
-    public virtual void Update()
+    protected virtual void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
-        if (inBedroom == true)
-        {
-            UpdateTimer();
-        }
+
+        if (inBedroom == true)  UpdateTimer();
+
         else if (ArrivedToDestination())
         {
             if (controlledMove)
             {
-                timer = 10f;
+                exitBedroomTimer = 10f;
                 inBedroom = true;
                 ActivateAgent(false);
             }
@@ -134,24 +118,24 @@ public class Scr_Character : MonoBehaviour , ISlapable
         return (agent.destination - transform.position).magnitude < 2f;
     }
 
-    // temps avant que le vieux resorte du sa chambre
+
      protected void UpdateTimer()
     {
-        timer -= Time.deltaTime;
+        exitBedroomTimer -= Time.deltaTime;
 
-        if (timer <= 5)
+        if (exitBedroomTimer <= 5)
         {
             bedroom.GetComponent<Scr_Door>().halfOpen = true;
         }
 
-        if (timer <= 0)
+        if (exitBedroomTimer <= 0)
         {
             ActivateAgent(true);
         }
 
         if (bedroom.GetComponent<Scr_Door>().slaped == true)
         {
-            timer = 10f;
+            exitBedroomTimer = 10f;
             bedroom.GetComponent<Scr_Door>().CloseDoor();
             bedroom.GetComponent<Scr_Door>().slaped = false;
         }
@@ -159,27 +143,24 @@ public class Scr_Character : MonoBehaviour , ISlapable
 
     protected void ActivateAgent(bool wanted)
     {
+        graphics.SetActive(wanted); colliders.SetActive(wanted);
+        agent.enabled = wanted;
+        canMove = wanted;
+
+
         if (wanted)
         {
-            //transform.position += Vector3.up * 10f;
-            graphics.SetActive(true);
-            colliders.SetActive(true);
-            agent.enabled = true;
-            canMove = true;
             bedroom.GetComponent<Scr_Door>().CloseDoor();
             controlledMove = false;
             SetRandomDestination(transform.position, 10f);
             inBedroom = false;
-            if (leaveBedroomFX) Instantiate(leaveBedroomFX, transform.position, Quaternion.identity);
+
+
+            if (leaveBedroomFX != null) ServicesLocator.Get<IFXService>().PlayFx(leaveBedroomFX, transform.position);
             else Debug.Log("Pas de FX");
         }
         else
         {
-            //transform.position -= Vector3.up * 10f;
-            graphics.SetActive(false);
-            colliders.SetActive(false);
-            agent.enabled = false;
-            canMove = false;
             bedroom.GetComponent<Scr_Door>().CloseDoor();
         }
     }

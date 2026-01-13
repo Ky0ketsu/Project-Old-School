@@ -1,11 +1,9 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Scr_Speeder : Scr_Character
+public class Scr_Speeder : GrandpaParent
 {
     [SerializeField, Range(0f, 50f)] float speed;
     private float currentSpeed;
@@ -24,7 +22,7 @@ public class Scr_Speeder : Scr_Character
 
 
 
-    bool isStun;
+    private bool _isStun;
 
     public override void SetRandomDestination(Vector3 center, float randomMaxDistance)
     {
@@ -33,7 +31,7 @@ public class Scr_Speeder : Scr_Character
         int currentDirIndex = Random.Range(0, dir.Length);
         
 
-        while(mouvIsSet == false)
+        while(mouvIsSet == false && center != bedroom.position)
         {
             NavMeshHit hit;
 
@@ -65,7 +63,7 @@ public class Scr_Speeder : Scr_Character
                 
             } // fin du petit while
 
-            if (currentIndex < 3)
+            if (currentIndex < minimumDistante)
             {
                 break;
             }
@@ -75,7 +73,7 @@ public class Scr_Speeder : Scr_Character
         } // fin du while
 
 
-        if(mouvIsSet == true )
+        if(mouvIsSet == true && center != bedroom.position)
         {
             agent.SetDestination(targetPosition);
 
@@ -86,12 +84,15 @@ public class Scr_Speeder : Scr_Character
             int dd = Random.Range(0, glissList.Count);
             audioGliss.clip = glissList[dd];
             audioGliss.Play();
-
+        }
+        else
+        {
+            agent.SetDestination(bedroom.position);
         }
 
     } // fin de SetRandomDestination
 
-    public override void Update()
+    protected override void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
         if (inBedroom == true)
@@ -102,11 +103,11 @@ public class Scr_Speeder : Scr_Character
         {
             if (controlledMove)
             {
-                timer = 10f;
+                exitBedroomTimer = 10f;
                 inBedroom = true;
                 ActivateAgent(false);
             }
-            else if (!isStun)
+            else if (!_isStun)
             {
                 currentSpeed = 0;
                 Stun(2f);
@@ -121,15 +122,35 @@ public class Scr_Speeder : Scr_Character
             }
         }
 
-        if (!isStun && currentSpeed < speed) currentSpeed += 3f * Time.deltaTime * (1 + currentSpeed / 10);
+        if (!_isStun && currentSpeed < speed) currentSpeed += 3f * Time.deltaTime * (1 + currentSpeed / 10);
 
         if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
         agent.speed = currentSpeed;
+
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, 5f, layerMask))
+        {
+            Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.yellow);
+
+            if (hit.transform.GetComponent<Scr_FireDoor>() != null)
+            {
+                hit.transform.GetComponent<Scr_FireDoor>().ChangeDoorState();
+                Debug.Log("Speeder claque la porte");
+            }
+        }
+        else
+        {
+            Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.red);
+        }
     }
+
+    [SerializeField]
+    LayerMask layerMask;
 
     void Stun(float stunTime)
     {
-        isStun = true;
+        _isStun = true;
 
         StartCoroutine(StunRoutine(stunTime));
         
@@ -139,6 +160,6 @@ public class Scr_Speeder : Scr_Character
     {
         yield return new WaitForSeconds(StunTime);
         SetRandomDestination(transform.position, 10f);
-        isStun = false;
+        _isStun = false;
     }
 }

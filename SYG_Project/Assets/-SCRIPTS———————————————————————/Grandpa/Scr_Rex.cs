@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using UnityEngine;
 
-public class Scr_Rex : Scr_Character
+public class Scr_Rex : GrandpaParent
 {
     [SerializeField]
     int life;
@@ -17,12 +17,12 @@ public class Scr_Rex : Scr_Character
     public List<AudioClip> cryList;
     [SerializeField] AudioSource audioPshht;
 
-    private void Start()
+    void Start()
     {
         life = 3;
     }
 
-    public override void Slaped()
+    public override void Slap()
     {
         DeacreasedHp();
         Debug.Log(life);
@@ -30,8 +30,6 @@ public class Scr_Rex : Scr_Character
 
     void DeacreasedHp()
     {
-
-
         if(life > 0)
         {
         life--; 
@@ -44,6 +42,7 @@ public class Scr_Rex : Scr_Character
         if(life == 0 )
         {
             controlledMove = true;
+            agent.SetDestination(bedroom.position);
         }
 
         if (life < 0 && !isStun)
@@ -73,7 +72,7 @@ public class Scr_Rex : Scr_Character
         canMove = true;
     }
 
-    public override void Update()
+    protected override void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
         if (inBedroom == true)
@@ -84,7 +83,7 @@ public class Scr_Rex : Scr_Character
         {
             if (controlledMove)
             {
-                timer = 10f;
+                exitBedroomTimer = 10f;
                 inBedroom = true;
                 ActivateAgent(false);
             }

@@ -7,22 +7,29 @@ public class Scr_RandomizeSpawnObject : MonoBehaviour
     [SerializeField]
     private Transform parentSpawnPoint;
 
-    [SerializeField]
+    
     private Transform[] spawnPointList;
-
-    [SerializeField]
-    private Transform[] objectList = new Transform[4];
+    private Transform[] objectList;
 
     private void Start()
     {
+        if (spawnPointList != null) return;
         spawnPointList = new Transform[parentSpawnPoint.childCount];
+
+        if (parentSpawnPoint == null || spawnPointList == null)
+        {
+            Debug.LogWarning("Le placement random a echoué");
+            return;
+        }
 
         for(int i = 0; i < spawnPointList.Length; i++)
         {
             spawnPointList[i] = parentSpawnPoint.GetChild(i).transform;
         }
 
-        for(int i = 0;i < objectList.Length; i++)
+
+        objectList = new Transform[transform.childCount];
+        for (int i = 0;i < objectList.Length; i++)
         {
             objectList[i] = transform.GetChild(i).transform;
         }
