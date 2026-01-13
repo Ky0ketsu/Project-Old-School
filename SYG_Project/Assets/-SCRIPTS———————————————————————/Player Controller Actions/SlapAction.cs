@@ -89,10 +89,13 @@ public class SlapAction : MonoBehaviour
                 ServicesLocator.Get<IAudioService>().PlayAudioOneShot(slapList[Random.Range(0, slapList.Count)]);
             }
 
-            _canSlap = false;
-            StartCoroutine(SlapAnimation());
+            
+            
         }
         else   Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * 3f, Color.red, 5f);
+
+        _canSlap = false;
+        StartCoroutine(SlapAnimation());
     }
 
     IEnumerator SlapAnimation()
