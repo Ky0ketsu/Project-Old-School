@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &662891880956426954
 Transform:
@@ -118,10 +118,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8455066877880033093, guid: 339472a46763bb84dae1e1ba3d43bd1d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 743234858986758706, guid: 339472a46763bb84dae1e1ba3d43bd1d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 339472a46763bb84dae1e1ba3d43bd1d,
         type: 3}
       propertyPath: m_Name
       value: 3D_Chair_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 339472a46763bb84dae1e1ba3d43bd1d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

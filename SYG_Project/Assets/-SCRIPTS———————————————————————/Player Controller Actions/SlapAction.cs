@@ -49,10 +49,11 @@ public class SlapAction : MonoBehaviour
 
     private void Start()
     {
-        ServicesLocator.Get<IPlayerActionService>().SetSlapAction(this);
+        
         player = ReInput.players.GetPlayer(playerID);
         if (GAME.MANAGER.CurrentState == State.gameplay) EnableSlap();
-        ServicesLocator.Get<IPlayerService>().SetPlayer(gameObject);
+        ServicesLocator.Get<IPlayerActionService>()?.SetSlapAction(this);
+        ServicesLocator.Get<IPlayerService>()?.SetPlayer(gameObject);
     }
 
     void EnableSlap()
@@ -89,10 +90,13 @@ public class SlapAction : MonoBehaviour
                 ServicesLocator.Get<IAudioService>().PlayAudioOneShot(slapList[Random.Range(0, slapList.Count)]);
             }
 
-            _canSlap = false;
-            StartCoroutine(SlapAnimation());
+            
+            
         }
         else   Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * 3f, Color.red, 5f);
+
+        _canSlap = false;
+        StartCoroutine(SlapAnimation());
     }
 
     IEnumerator SlapAnimation()

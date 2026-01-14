@@ -19,6 +19,6 @@ MonoBehaviour:
     fadeInDuration: 5
     fadeOutDuration: 1
     tracks:
-    - clipTitle: MusicGame
-      clip: {fileID: 8300000, guid: b5a87106d4405e64dba4ec3d7b46690b, type: 3}
-      volume: 0.606
+    - clipTitle: Music Game V2
+      clip: {fileID: 8300000, guid: 6595721289c3bb1498e374aa14196046, type: 3}
+      volume: 1

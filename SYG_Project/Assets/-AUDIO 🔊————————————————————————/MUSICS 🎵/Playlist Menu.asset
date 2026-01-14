@@ -21,4 +21,4 @@ MonoBehaviour:
     tracks:
     - clipTitle: Music Menu
       clip: {fileID: 8300000, guid: cfd75273560a5504fbba79245d827f8e, type: 3}
-      volume: 0.514
+      volume: 0.394

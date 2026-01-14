@@ -69,10 +69,12 @@ public class Scr_FireDoor : MonoBehaviour, ISlapable
 
     public void OpenDoor()
     {
+        
         rightDoor.DORotate(Vector3.up * rightRotaOpen, 1f).SetEase(Ease.InCubic);
         leftDoor.DORotate(Vector3.up * leftRotaOpen, 1f).SetEase(Ease.InCubic);
         Debug.Log("Porte ouverte");
-
+        
+        if (GAME.MANAGER.CurrentState != State.gameplay) { return;}
         int r = Random.Range(0, openList.Count);
         audioFireDoor.clip = openList[r];
         audioFireDoor.Play();

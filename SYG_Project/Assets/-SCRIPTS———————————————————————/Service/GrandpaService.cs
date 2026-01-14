@@ -30,10 +30,12 @@ public class GrandpaService : MonoBehaviour, IGranpaService
 
     private void Start()
     {
+        if (_parentBedroom == null) return;
         for (int i = 0; i < _Bedrooms.Length; i++)
         {
             _Bedrooms[i] = _parentBedroom.GetChild(i);
         }
+        if (_grandpaParent == null) return;
         for (int i = 0; i < _grandpas.Length; i++)
         {
             _grandpas[i] = _grandpaParent.GetChild(i);
@@ -42,6 +44,7 @@ public class GrandpaService : MonoBehaviour, IGranpaService
 
     public void SpawnGrandpa()
     {
+        if (_grandpas == null) return;
         for (int i = 0; i < _grandpas.Length; i++)
         {
             _grandpas[i] = _grandpaParent.GetChild(i);

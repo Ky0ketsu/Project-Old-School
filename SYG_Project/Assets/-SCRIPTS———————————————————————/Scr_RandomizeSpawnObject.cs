@@ -13,6 +13,7 @@ public class Scr_RandomizeSpawnObject : MonoBehaviour
 
     private void Start()
     {
+        if (spawnPointList != null) return;
         spawnPointList = new Transform[parentSpawnPoint.childCount];
 
         if (parentSpawnPoint == null || spawnPointList == null)

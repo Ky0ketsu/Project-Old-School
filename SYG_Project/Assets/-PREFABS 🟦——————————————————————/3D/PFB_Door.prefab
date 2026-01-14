@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7022159889457279973
 Transform:
@@ -90,10 +90,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5117323327171870727, guid: ebc320bfecaa1d94b974eeef519cb657,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ebc320bfecaa1d94b974eeef519cb657,
         type: 3}
       propertyPath: m_Name
       value: 3D_Door_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ebc320bfecaa1d94b974eeef519cb657,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740328499511322095, guid: ebc320bfecaa1d94b974eeef519cb657,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
