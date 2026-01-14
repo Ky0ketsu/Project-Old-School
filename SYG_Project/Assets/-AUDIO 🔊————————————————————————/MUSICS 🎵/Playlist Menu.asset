@@ -15,10 +15,10 @@ MonoBehaviour:
   playlist:
     looping: 1
     randomizeTracks: 0
-    timeScale: 0
+    timeScale: 1
     fadeInDuration: 1
     fadeOutDuration: 1
     tracks:
-    - clipTitle: Music Menu
-      clip: {fileID: 8300000, guid: cfd75273560a5504fbba79245d827f8e, type: 3}
-      volume: 0.394
+    - clipTitle: Music Menu V2
+      clip: {fileID: 8300000, guid: be5188c7fecf96846a470e0ff9f7cf5f, type: 3}
+      volume: 0.486
