@@ -7,6 +7,8 @@ public class PlayerActionService : MonoBehaviour, IPlayerActionService
 {
     Player player;
 
+    public bool TUTOCanUseTablet = true; 
+
     private void Awake()
     {
         ServicesLocator.Register<IPlayerActionService>(this);
@@ -32,14 +34,14 @@ public class PlayerActionService : MonoBehaviour, IPlayerActionService
             _pressTime += Time.deltaTime;
         }
 
-        if(_pressTime > 1f)
+        if(_pressTime > 0.7f)
         {
             EnterTabletView();
         }
 
         if(player.GetButtonUp("Slap"))
         {
-            if(_pressTime < 1f)
+            if(_pressTime < 0.7f)
             {
                 Slap();
             }
@@ -61,7 +63,7 @@ public class PlayerActionService : MonoBehaviour, IPlayerActionService
     public void EnterTabletView()
     {
         if(tabletAction == null) return; 
-        tabletAction.EnterTabletView();
+        if(TUTOCanUseTablet == true) tabletAction.EnterTabletView();
     }
     public void ExitTabletView()
     {

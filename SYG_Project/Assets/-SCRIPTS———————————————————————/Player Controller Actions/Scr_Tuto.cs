@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using Rewired;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Scr_Tuto : MonoBehaviour
 {
-    public GameObject grandpaTuto;
-    public GameObject door;
     public TabletAction scriptTablet;
-    public GameObject tablet; 
 
     public bool tutoCompleted = false;
 
@@ -22,22 +20,29 @@ public class Scr_Tuto : MonoBehaviour
 
     private Player player;
 
+    public GameObject TutoText;
+    TextMeshProUGUI textmeshpro;
+
+    [SerializeField] PlayerActionService playerActionService;
 
     private void Start()
     {
         player = ReInput.players.GetPlayer(0);
+        textmeshpro = TutoText.GetComponent<TextMeshProUGUI>();
     }
     private void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) { return; }
         if (tutoCompleted == true)
         {
+            Destroy(TutoText);
             Destroy(this); 
         }
         if (tutoCompleted == false)
         {
             gameObject.GetComponent<PlayerMove>().enabled = false;
             gameObject.GetComponent<PlayerLook>().enabled = false;
+            textmeshpro.enabled = true; 
 
         }
 
@@ -48,6 +53,9 @@ public class Scr_Tuto : MonoBehaviour
                 scriptTablet = Object.FindAnyObjectByType<TabletAction>();
                 GameObject TabletGO = scriptTablet.gameObject;
                 TabletGO.GetComponent<TabletAction>().enabled = false;
+
+                playerActionService.TUTOCanUseTablet = false;
+
                 if (TabletGO.GetComponent<TabletAction>().enabled == false)
                 {
                     tabletStopped = true;
@@ -57,8 +65,11 @@ public class Scr_Tuto : MonoBehaviour
 
         if (didHeSlap == true)
         {
+            textmeshpro.SetText("Hold Space or Left Click to look at your TABLET"); 
             GameObject TabletGO = scriptTablet.gameObject;
             TabletGO.GetComponent<TabletAction>().enabled = true;
+
+            playerActionService.TUTOCanUseTablet = true;
 
             if (player.GetButton("Slap"))
             {
@@ -82,12 +93,5 @@ public class Scr_Tuto : MonoBehaviour
             gameObject.GetComponent<PlayerLook>().enabled = true;
             tutoCompleted = true; 
         }
-        
     }
-
-    
-
-
-
-
 }

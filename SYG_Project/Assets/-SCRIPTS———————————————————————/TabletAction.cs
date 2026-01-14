@@ -15,7 +15,6 @@ public class TabletAction : MonoBehaviour
     public List<AudioClip> cameraActionOpenList;
     public List<AudioClip> cameraActionCloseList;
     [SerializeField] AudioSource audioCameraAction;
-    public GameObject prefab ;
 
     Player player;
 
