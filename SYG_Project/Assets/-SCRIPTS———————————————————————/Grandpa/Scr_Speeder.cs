@@ -14,11 +14,9 @@ public class Scr_Speeder : GrandpaParent
     public List<AudioClip> stunList;
     public List<AudioClip> crashList;
     public List<AudioClip> runList;
-    public List<AudioClip> glissList;
     [SerializeField] AudioSource audioAction;
     [SerializeField] AudioSource audioCrash;
     [SerializeField] AudioSource audioRun;
-    [SerializeField] AudioSource audioGliss;
 
 
 
@@ -81,9 +79,6 @@ public class Scr_Speeder : GrandpaParent
             audioRun.clip = runList[d];
             audioRun.Play();
 
-            int dd = Random.Range(0, glissList.Count);
-            audioGliss.clip = glissList[dd];
-            audioGliss.Play();
         }
         else
         {
@@ -111,6 +106,7 @@ public class Scr_Speeder : GrandpaParent
             {
                 currentSpeed = 0;
                 Stun(2f);
+                audioRun.Stop();
 
                 int r = Random.Range(0, stunList.Count);
                 audioAction.clip = stunList[r];
