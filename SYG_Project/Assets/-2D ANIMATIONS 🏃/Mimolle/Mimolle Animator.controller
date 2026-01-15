@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ness left anim
+  m_Name: Mimolle right anim
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -23,7 +23,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: adca60a18bf24e4478b88b2e322af98a, type: 2}
+  m_Motion: {fileID: 7400000, guid: be28ce11618809446af5851704f53c68, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -252,7 +252,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d4eee7adbada5c64ca9bbffb5981c2af, type: 2}
+  m_Motion: {fileID: 7400000, guid: 5787da1c3c90f5844a3b252f009b1cca, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -340,7 +340,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ness right anim
+  m_Name: Mimolle left anim
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -356,10 +356,10 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a159baea3a8407748bf0a18c801d795e, type: 2}
+  m_Motion: {fileID: 7400000, guid: b933ebf8dd0382a4bafe1d059babcff5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_MirrorParameter: goFront
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!1101 &6182459329883092910
@@ -457,7 +457,7 @@ AnimatorStateMachine:
     m_Position: {x: 90, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5109899923355818928}
-    m_Position: {x: 630, y: 270, z: 0}
+    m_Position: {x: 640, y: 270, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
