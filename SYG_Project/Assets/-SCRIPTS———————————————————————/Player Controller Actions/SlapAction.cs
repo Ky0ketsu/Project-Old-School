@@ -28,7 +28,7 @@ public class SlapAction : MonoBehaviour
     private LayerMask _layerMask;
 
     [SerializeField]
-    ParticleSystem slapFX;
+    GameObject slapFX;
     public List<AudioClip> slapList;
     public List<AudioClip> slapmissList;
 
@@ -83,7 +83,10 @@ public class SlapAction : MonoBehaviour
             {
                 Debug.Log(slapable);
                 slapable.Slap();
-                slapFX.Play();
+                Transform transformfx = slapFX.transform;
+                transformfx.position = hit.point;
+
+                Instantiate(slapFX, transformfx);
                 
             }
             else Debug.Log(" je suis null");

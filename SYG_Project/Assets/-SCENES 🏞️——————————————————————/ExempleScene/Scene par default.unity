@@ -1382,7 +1382,8 @@ PrefabInstance:
         type: 3}
       propertyPath: slapFX
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 275393124680440564, guid: 25c453c7e3966fb4f8887f45665e86bd,
+        type: 3}
     - target: {fileID: 6697002344033776022, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: slapParticule
@@ -2976,6 +2977,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640247996662259579, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3845492946609195995, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
