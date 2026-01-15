@@ -21,6 +21,7 @@ public class PlayerActionService : MonoBehaviour, IPlayerActionService
     }
 
     [HideInInspector]
+    private bool tabletOpen = false;
     public SlapAction slapAction;
     [HideInInspector]
     public TabletAction tabletAction;
@@ -34,8 +35,10 @@ public class PlayerActionService : MonoBehaviour, IPlayerActionService
             _pressTime += Time.deltaTime;
         }
 
-        if(_pressTime > 0.7f)
+        if(_pressTime > 0.7f && tabletOpen == false)
         {
+            
+            tabletOpen = true;
             EnterTabletView();
         }
 
@@ -47,7 +50,11 @@ public class PlayerActionService : MonoBehaviour, IPlayerActionService
             }
             else
             {
-                ExitTabletView();
+                if(tabletOpen == true)
+                {
+                    tabletOpen = false;
+                    ExitTabletView();
+                }
             }
             _pressTime = 0;
         }
