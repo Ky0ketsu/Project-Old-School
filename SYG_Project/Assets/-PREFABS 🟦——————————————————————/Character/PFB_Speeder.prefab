@@ -587,7 +587,7 @@ MonoBehaviour:
   minimumDistante: 3
   stunList:
   - {fileID: 8300000, guid: 6570cde46cba6d54eab09e255b9ac3a1, type: 3}
-  - {fileID: 8300000, guid: 5f7a32cb6379c924d955680f80ba3c27, type: 3}
+  - {fileID: 8300000, guid: 00f9b726ecfb89143894917125a5329a, type: 3}
   crashList:
   - {fileID: 8300000, guid: 415e583388ca25e4d859f72a33f6b675, type: 3}
   - {fileID: 8300000, guid: d1ec44ea07bae234ab876b2ac2060745, type: 3}
