@@ -19,6 +19,6 @@ MonoBehaviour:
     fadeInDuration: 1
     fadeOutDuration: 1
     tracks:
-    - clipTitle: Music End
-      clip: {fileID: 8300000, guid: a09341d0482bf394ba0bb7ed35ddbed1, type: 3}
+    - clipTitle: Game End V2
+      clip: {fileID: 8300000, guid: 89ca6f4b2ad15d24cb3c4863f00da1be, type: 3}
       volume: 0.606

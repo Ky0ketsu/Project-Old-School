@@ -24,17 +24,20 @@ public class Scr_Tuto : MonoBehaviour
     TextMeshProUGUI textmeshpro;
 
     [SerializeField] PlayerActionService playerActionService;
+    [SerializeField] Scr_GameTimer Scr_GameTimer;
 
     private void Start()
     {
         player = ReInput.players.GetPlayer(0);
         textmeshpro = TutoText.GetComponent<TextMeshProUGUI>();
+        Scr_GameTimer = FindAnyObjectByType<Scr_GameTimer>();
     }
     private void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) { return; }
         if (tutoCompleted == true)
         {
+            Scr_GameTimer.EnableTimer();
             Destroy(TutoText);
             Destroy(this); 
         }
@@ -55,6 +58,8 @@ public class Scr_Tuto : MonoBehaviour
                 TabletGO.GetComponent<TabletAction>().enabled = false;
 
                 playerActionService.TUTOCanUseTablet = false;
+
+                Scr_GameTimer.DisableTimer();
 
                 if (TabletGO.GetComponent<TabletAction>().enabled == false)
                 {

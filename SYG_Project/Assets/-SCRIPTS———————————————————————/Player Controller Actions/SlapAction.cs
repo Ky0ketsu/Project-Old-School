@@ -30,6 +30,7 @@ public class SlapAction : MonoBehaviour
     [SerializeField]
     ParticleSystem slapFX;
     public List<AudioClip> slapList;
+    public List<AudioClip> slapmissList;
 
 
     void Awake()
@@ -82,6 +83,7 @@ public class SlapAction : MonoBehaviour
             {
                 Debug.Log(slapable);
                 slapable.Slap();
+                
             }
             else Debug.Log(" je suis null");
 
@@ -90,10 +92,16 @@ public class SlapAction : MonoBehaviour
                 ServicesLocator.Get<IAudioService>().PlayAudioOneShot(slapList[Random.Range(0, slapList.Count)]);
             }
 
+
             
             
         }
-        else   Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * 3f, Color.red, 5f);
+        else   
+        {
+            Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * 3f, Color.red, 5f);
+            Debug.Log("Loupé");
+            ServicesLocator.Get<IAudioService>().PlayAudioOneShot(slapmissList[Random.Range(0, slapmissList.Count)]);
+        }
 
         _canSlap = false;
         StartCoroutine(SlapAnimation());

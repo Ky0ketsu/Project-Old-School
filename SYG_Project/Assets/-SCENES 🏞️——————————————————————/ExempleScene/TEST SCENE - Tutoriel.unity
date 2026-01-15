@@ -1220,6 +1220,8 @@ MonoBehaviour:
   timer: 0
   TutoText: {fileID: 1682131076}
   playerActionService: {fileID: 2050298723}
+  Scr_GameTimer: {fileID: 2596095885452429581, guid: cab094cc4a9369849b95469c4d1f108f,
+    type: 3}
 --- !u!4 &990656720 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
