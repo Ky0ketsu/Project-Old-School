@@ -83,6 +83,7 @@ public class SlapAction : MonoBehaviour
             {
                 Debug.Log(slapable);
                 slapable.Slap();
+                slapFX.Play();
                 
             }
             else Debug.Log(" je suis null");
