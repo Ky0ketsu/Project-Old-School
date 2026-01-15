@@ -31,7 +31,7 @@ public class Scr_GameTimer : MonoBehaviour
         EVENTS.OnGameStart -= SetTimer;
     }
 
-    private void EnableTimer()
+    public void EnableTimer()
     {
         isPlaying = true;
     }
