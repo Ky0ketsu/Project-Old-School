@@ -100,7 +100,11 @@ public class SlapAction : MonoBehaviour
         {
             Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * 3f, Color.red, 5f);
             Debug.Log("Loupé");
-            ServicesLocator.Get<IAudioService>().PlayAudioOneShot(slapmissList[Random.Range(0, slapmissList.Count)]);
+            if (slapmissList.Count > 0)
+            {
+                ServicesLocator.Get<IAudioService>().PlayAudioOneShot(slapmissList[Random.Range(0, slapmissList.Count)]);
+
+            }
         }
 
         _canSlap = false;

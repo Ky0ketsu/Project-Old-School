@@ -41,7 +41,7 @@ public class Scr_GameTimer : MonoBehaviour
         isPlaying = false;
     }
 
-    void SetTimer()
+    public void SetTimer()
     {
         currentTimer = initialTimer;
     }
