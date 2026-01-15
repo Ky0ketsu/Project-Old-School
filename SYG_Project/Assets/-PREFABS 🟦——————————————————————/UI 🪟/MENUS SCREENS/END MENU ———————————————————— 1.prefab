@@ -172,7 +172,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 454.4
+  m_fontSize: 454.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -976,7 +976,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 454.4
+  m_fontSize: 454.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1400,7 +1400,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playlist
       value: 
-      objectReference: {fileID: 11400000, guid: 199997931a0e9c14ca25704c8eb6dd43,
+      objectReference: {fileID: 11400000, guid: 808f62f91f0f2f04582829987d8fc0df,
         type: 2}
     - target: {fileID: 4908601220036635885, guid: 4718fd3374358834fb027b3d71339589,
         type: 3}
