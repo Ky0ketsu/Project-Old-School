@@ -98,7 +98,7 @@ public class Scr_Speeder : GrandpaParent
         {
             if (controlledMove)
             {
-                exitBedroomTimer = 10f;
+                exitBedroomTimer = 100f;
                 inBedroom = true;
                 ActivateAgent(false);
             }

@@ -83,7 +83,7 @@ public class Scr_Rex : GrandpaParent
         {
             if (controlledMove)
             {
-                exitBedroomTimer = 10f;
+                exitBedroomTimer = 100f;
                 inBedroom = true;
                 ActivateAgent(false);
             }
