@@ -373,6 +373,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0e35046aea77dfa4fa995bf2dd8306fd, type: 3}
   - {fileID: 8300000, guid: 692995f9d917e204584a0574c33f092f, type: 3}
   - {fileID: 8300000, guid: e4b3a07af3d95b142b2eacf80e5a44c8, type: 3}
+  slapmissList:
+  - {fileID: 8300000, guid: f3f62f5a7c1defd4db4f73d19e1d940c, type: 3}
+  - {fileID: 8300000, guid: 608c524d601545640961b58f1ec4266f, type: 3}
+  - {fileID: 8300000, guid: d322e0f19e94cbe41bf2a8651f57b073, type: 3}
 --- !u!114 &8637207622344538560
 MonoBehaviour:
   m_ObjectHideFlags: 0
