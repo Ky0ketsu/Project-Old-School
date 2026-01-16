@@ -18,6 +18,8 @@ public class Scr_Speeder : GrandpaParent
     [SerializeField] AudioSource audioCrash;
     [SerializeField] AudioSource audioRun;
 
+    public GameObject stunFX;
+
 
 
     private bool _isStun;
@@ -111,6 +113,12 @@ public class Scr_Speeder : GrandpaParent
                 int r = Random.Range(0, stunList.Count);
                 audioAction.clip = stunList[r];
                 audioAction.Play();
+
+                //Transform transformfx = slapFX.transform;
+                //transformfx.position;
+
+                Instantiate(stunFX, transform.position+(transform.up*1.5f),transform.rotation);
+
 
                 int rr = Random.Range(0, crashList.Count);
                 audioCrash.clip = crashList[rr];

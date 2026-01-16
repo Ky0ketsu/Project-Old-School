@@ -598,6 +598,7 @@ MonoBehaviour:
   audioAction: {fileID: 6374451790335880815}
   audioCrash: {fileID: 1650566317385804853}
   audioRun: {fileID: 5019808516356951413}
+  stunFX: {fileID: 1558990608093960050, guid: c39ee3991f8f22c4e94a0ad369f4090d, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
