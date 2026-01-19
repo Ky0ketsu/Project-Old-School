@@ -83,10 +83,14 @@ public class SlapAction : MonoBehaviour
             {
                 Debug.Log(slapable);
                 slapable.Slap();
-                Transform transformfx = slapFX.transform;
-                transformfx.position = hit.point;
 
-                GameObject slapVFX = Instantiate(slapFX, transformfx);
+
+                //Transform transformfx = slapFX.transform;
+                //transformfx.position = hit.point;
+
+                
+
+                GameObject slapVFX = Instantiate(slapFX, hit.point, Quaternion.identity);
                 Destroy(slapVFX, 1f);
                 
             }
