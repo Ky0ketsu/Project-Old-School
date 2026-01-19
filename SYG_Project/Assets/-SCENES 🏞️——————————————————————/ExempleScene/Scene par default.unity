@@ -1747,6 +1747,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u2014 LIGHTING \U0001F4A1\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014"
       objectReference: {fileID: 0}
+    - target: {fileID: 8732616440700587425, guid: dd713a5c71757c64db730ee3bcd60ab9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3350,6 +3355,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1536012910612643179, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536012910612643179, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1794074187165240167, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3493,7 +3508,7 @@ PrefabInstance:
     - target: {fileID: 2570390858060993777, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 25508
+      value: 25523
       objectReference: {fileID: 0}
     - target: {fileID: 2577698229773571606, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
@@ -3788,7 +3803,7 @@ PrefabInstance:
     - target: {fileID: 4539956040627820855, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 10599
+      value: 10614
       objectReference: {fileID: 0}
     - target: {fileID: 4592314032688374603, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
