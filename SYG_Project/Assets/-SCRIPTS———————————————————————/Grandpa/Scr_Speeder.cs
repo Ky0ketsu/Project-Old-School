@@ -117,7 +117,10 @@ public class Scr_Speeder : GrandpaParent
                 //Transform transformfx = slapFX.transform;
                 //transformfx.position;
 
-                Instantiate(stunFX, transform.position+(transform.up*1.5f),transform.rotation);
+                GameObject stunVFX  = Instantiate(stunFX, transform.position+(transform.up*1.5f),transform.rotation);
+                Destroy(stunVFX, 2f);
+                
+                
 
 
                 int rr = Random.Range(0, crashList.Count);
@@ -165,5 +168,6 @@ public class Scr_Speeder : GrandpaParent
         yield return new WaitForSeconds(StunTime);
         SetRandomDestination(transform.position, 10f);
         _isStun = false;
+        
     }
 }

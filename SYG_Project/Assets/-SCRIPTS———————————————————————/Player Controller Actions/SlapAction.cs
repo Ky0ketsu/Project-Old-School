@@ -86,7 +86,8 @@ public class SlapAction : MonoBehaviour
                 Transform transformfx = slapFX.transform;
                 transformfx.position = hit.point;
 
-                Instantiate(slapFX, transformfx);
+                GameObject slapVFX = Instantiate(slapFX, transformfx);
+                Destroy(slapVFX, 1f);
                 
             }
             else Debug.Log(" je suis null");
