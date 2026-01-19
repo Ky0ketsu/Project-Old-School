@@ -15,7 +15,7 @@ public class Scr_Cat : MonoBehaviour , ISlapable
     private GameObject SpawnedFX;
 
     [SerializeField]
-    private float timerForFX; 
+    private float timerForFX = 0; 
 
     public void Awake()
     {
