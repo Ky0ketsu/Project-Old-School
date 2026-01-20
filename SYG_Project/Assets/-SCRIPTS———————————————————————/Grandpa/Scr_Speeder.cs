@@ -77,6 +77,7 @@ public class Scr_Speeder : GrandpaParent
         {
             agent.SetDestination(targetPosition);
 
+            if (GAME.MANAGER.CurrentState != State.gameplay) { return;}
             int d = Random.Range(0, runList.Count);
             audioRun.clip = runList[d];
             audioRun.Play();
