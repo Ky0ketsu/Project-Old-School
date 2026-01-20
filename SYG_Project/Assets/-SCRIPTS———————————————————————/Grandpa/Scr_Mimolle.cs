@@ -8,28 +8,31 @@ public class Scr_Mimolle : GrandpaParent
     [SerializeField] LayerMask layerMask;
 
     [SerializeField]
-    private float timerNotShowPlayer;
+    private float _timerNotShowPlayer;
 
-    private float timerAfterkickPlayer;
+    private float _timerAfterkickPlayer;
 
     void CheckCanViewPlayer()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position) * 1.05f, layerMask))
         {
-            if (hit.transform.GetComponent<SlapAction>() != null && timerAfterkickPlayer == 0)
+            if (hit.transform.GetComponent<SlapAction>() != null && _timerAfterkickPlayer == 0)
             {
-                shearchPlayer = false;
-                timerNotShowPlayer = 3f;
+                if (!CanSeePlayer()) return;
 
-                Debug.DrawRay(transform.position + Vector3.up, (player.position - transform.position).normalized * Vector3.Distance(transform.position, player.position), Color.green);
+                shearchPlayer = false;
+                _timerNotShowPlayer = 3f;
+                SetDestinationToPlayer();
+
+                Debug.DrawLine(transform.position + Vector3.up, player.position, Color.green);
             }
             else
             {
-                if (timerNotShowPlayer > 0) timerNotShowPlayer -= Time.deltaTime;
-                if (timerNotShowPlayer <= 0) timerNotShowPlayer = 0f; shearchPlayer = true;
+                if (_timerNotShowPlayer > 0) _timerNotShowPlayer -= Time.deltaTime;
+                if (_timerNotShowPlayer <= 0) _timerNotShowPlayer = 0f; shearchPlayer = true;
 
-                Debug.DrawRay(transform.position + Vector3.up, (player.position - transform.position).normalized * Vector3.Distance(transform.position, player.position), Color.red);
+                Debug.DrawLine(transform.position + Vector3.up, player.position, Color.red);
             }
         }
     }
@@ -37,11 +40,12 @@ public class Scr_Mimolle : GrandpaParent
     void SetDestinationToPlayer()
     {
         targetPosition = player.position;
+        SetRandomDestination(targetPosition, 0f);
     }
 
     void CheckCanHitPlayer()
     {
-        if (Vector3.Distance(transform.position, player.position) <= 2f && timerAfterkickPlayer == 0)
+        if (Vector3.Distance(transform.position, player.position) <= 2f && _timerAfterkickPlayer == 0)
         {
             AttackPlayer();
         }
@@ -51,15 +55,16 @@ public class Scr_Mimolle : GrandpaParent
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
 
-        if (!shearchPlayer) CheckCanHitPlayer();
+
+
+        if (!shearchPlayer && !controlledMove) CheckCanHitPlayer();
         CheckCanViewPlayer();
 
         if (timerCanAttack > 0) timerCanAttack -= Time.deltaTime;
         else canAttack = true;
 
-
-        if (timerAfterkickPlayer > 0) timerAfterkickPlayer -= Time.deltaTime;
-        else timerAfterkickPlayer = 0;
+        if (_timerAfterkickPlayer > 0) _timerAfterkickPlayer -= Time.deltaTime;
+        else _timerAfterkickPlayer = 0;
 
 
         if (inBedroom == true)
@@ -75,7 +80,6 @@ public class Scr_Mimolle : GrandpaParent
                 ActivateAgent(false);
             }
             else if(shearchPlayer) SetRandomDestination(transform.position, 10f);
-            else SetDestinationToPlayer();
         }
 
         if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
@@ -106,7 +110,7 @@ public class Scr_Mimolle : GrandpaParent
             if (hit.transform.GetComponentInParent<PlayerStunAction>() != null)
             {
                 hit.transform.GetComponentInParent<PlayerStunAction>().Stun();
-                timerAfterkickPlayer = 15f;
+                _timerAfterkickPlayer = 15f;
             }
             else Debug.Log("mimolle na pas toucher");
         }

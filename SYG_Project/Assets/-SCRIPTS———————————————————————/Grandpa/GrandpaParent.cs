@@ -57,8 +57,6 @@ public class GrandpaParent : MonoBehaviour , ISlapable
         canMove = false;
     }
 
-    
-
 
     public virtual void SetRandomDestination(Vector3 center, float randomMaxDistance)
     {
@@ -163,5 +161,24 @@ public class GrandpaParent : MonoBehaviour , ISlapable
         {
             bedroom.GetComponent<Scr_Door>().CloseDoor();
         }
+    }
+
+    private float _viewAngle = 60f;
+    [SerializeField]
+    private LayerMask _obstacleMask;
+
+    protected bool CanSeePlayer()
+    { 
+        Vector3 dirToPlayer = (player.position - transform.position).normalized;
+        if (Vector3.Angle(transform.forward, dirToPlayer) < _viewAngle / 2f)
+        {
+            float dist = Vector3.Distance(transform.position, player.position);
+            if (!Physics.Raycast(transform.position, dirToPlayer, dist, _obstacleMask))
+            {
+                Debug.DrawLine(transform.position, player.position, Color.green, 0.5f);
+                return true;
+            }
+        }
+        return false;
     }
 }
