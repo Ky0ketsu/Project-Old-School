@@ -19,6 +19,6 @@ MonoBehaviour:
     fadeInDuration: 1
     fadeOutDuration: 1
     tracks:
-    - clipTitle: Music Menu V2
-      clip: {fileID: 8300000, guid: be5188c7fecf96846a470e0ff9f7cf5f, type: 3}
+    - clipTitle: Music End V3
+      clip: {fileID: 8300000, guid: 08c5148cdc8c34641a71e08c5f0993d6, type: 3}
       volume: 0.606
