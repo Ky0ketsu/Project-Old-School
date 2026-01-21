@@ -152,9 +152,9 @@ public class Scr_Speeder : GrandpaParent
         {
             Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.yellow);
 
-            if (hit.transform.GetComponent<Scr_FireDoor>() != null)
+            if (hit.transform.GetComponent<FireDoor>() != null)
             {
-                hit.transform.GetComponent<Scr_FireDoor>().ChangeDoorState();
+                hit.transform.GetComponent<FireDoor>().ChangeDoorState();
                 Debug.Log("Speeder claque la porte");
             }
         }

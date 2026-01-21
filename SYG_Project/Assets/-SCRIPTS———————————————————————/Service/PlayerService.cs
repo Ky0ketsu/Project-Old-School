@@ -6,15 +6,15 @@ public class PlayerService : MonoBehaviour, IPlayerService
 {
     void Awake()
     {
-        ServicesLocator.Register<IPlayerService>(this);
+        ServicesLocator.Register<PlayerService>(this);
     }
 
     void OnDestroy()
     {
-        ServicesLocator.Unregister<IPlayerService>();
+        ServicesLocator.Unregister<PlayerService>();
     }
 
-    [HideInInspector]
+    [SerializeField]
     public GameObject player;
 
     public void StunPlayer()

@@ -54,7 +54,7 @@ public class SlapAction : MonoBehaviour
         player = ReInput.players.GetPlayer(playerID);
         if (GAME.MANAGER.CurrentState == State.gameplay) EnableSlap();
         ServicesLocator.Get<IPlayerActionService>()?.SetSlapAction(this);
-        ServicesLocator.Get<IPlayerService>()?.SetPlayer(gameObject);
+        ServicesLocator.Get<PlayerService>()?.SetPlayer(gameObject);
     }
 
     void EnableSlap()
