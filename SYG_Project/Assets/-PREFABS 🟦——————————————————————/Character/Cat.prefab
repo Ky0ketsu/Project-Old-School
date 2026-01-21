@@ -149,7 +149,7 @@ MonoBehaviour:
   crazyCat: {fileID: 0}
   SlapFX: {fileID: 6089237566075303425, guid: 3e49fdfa3493d33458c6af54e340ec94, type: 3}
   SpawnFX: {fileID: 4347387274897106560, guid: 242550cba23f43049b2577c98807a83a, type: 3}
-  timerForFX: 11111
+  timerForFX: 0
 --- !u!1 &6228889606467774448
 GameObject:
   m_ObjectHideFlags: 0

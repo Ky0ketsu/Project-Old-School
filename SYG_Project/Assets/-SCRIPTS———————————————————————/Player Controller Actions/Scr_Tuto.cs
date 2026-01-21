@@ -8,6 +8,9 @@ using UnityEngine;
 
 public class Scr_Tuto : MonoBehaviour
 {
+    public bool CAN_THE_PLAYER_MOVE_ON_TUTO = true; 
+
+    
     public TabletAction scriptTablet;
 
     public bool tutoCompleted = false;
@@ -16,7 +19,8 @@ public class Scr_Tuto : MonoBehaviour
     public bool didHeCamera = false;
     bool tabletStopped = false;
     
-    public float timer = 0;
+    public float timerForCamera = 0;
+    public float timerForTextTuto = 0; 
 
     private Player player;
 
@@ -26,25 +30,45 @@ public class Scr_Tuto : MonoBehaviour
     [SerializeField] PlayerActionService playerActionService;
     [SerializeField] Scr_GameTimer Scr_GameTimer;
 
+    [SerializeField] GameObject DoorToOpen;
+    [SerializeField] GameObject[] GRANDPA_TO_START;
+    [SerializeField] GameObject GRANDPAS;
+
     private void Start()
     {
         player = ReInput.players.GetPlayer(0);
         textmeshpro = TutoText.GetComponent<TextMeshProUGUI>();
         Scr_GameTimer = FindAnyObjectByType<Scr_GameTimer>();
+        DoorToOpen.GetComponent<Scr_FireDoor>().CAN_BE_CLOSED = false;
+
+        for(int i = 0; i < GRANDPA_TO_START.Length; i++)
+        {
+            GRANDPA_TO_START[i] = GRANDPAS.transform.GetChild(i).gameObject;
+            GRANDPA_TO_START[i].gameObject.SetActive(false);
+        }
     }
     private void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) { return; }
         if (tutoCompleted == true)
         {
+            for (int i = 0; i < GRANDPA_TO_START.Length; i++)
+            {
+                GRANDPA_TO_START[i].gameObject.SetActive(true);
+            }
             Scr_GameTimer.EnableTimer();
+            Scr_GameTimer.SetTimer();
             Destroy(TutoText);
             Destroy(this); 
         }
         if (tutoCompleted == false)
         {
-            gameObject.GetComponent<PlayerMove>().enabled = false;
-            gameObject.GetComponent<PlayerLook>().enabled = false;
+            if (CAN_THE_PLAYER_MOVE_ON_TUTO == false)
+            {
+                gameObject.GetComponent<PlayerMove>().enabled = false;
+                gameObject.GetComponent<PlayerLook>().enabled = false;
+            }
+           
             textmeshpro.enabled = true; 
 
         }
@@ -70,7 +94,7 @@ public class Scr_Tuto : MonoBehaviour
 
         if (didHeSlap == true)
         {
-            textmeshpro.SetText("Hold Space or Left Click to look at your TABLET"); 
+            textmeshpro.SetText("They go to their room and will come out of it after some time \n Hold Space or Left Click to look at your TABLET"); 
             GameObject TabletGO = scriptTablet.gameObject;
             TabletGO.GetComponent<TabletAction>().enabled = true;
 
@@ -78,16 +102,16 @@ public class Scr_Tuto : MonoBehaviour
 
             if (player.GetButton("Slap"))
             {
-                if (timer >= 0.25f)
+                if (timerForCamera >= 0.25f)
                 {
                     didHeCamera = true;
-                    timer = 0;
+                    timerForCamera = 0;
                 }
-                timer += Time.deltaTime;
+                timerForCamera += Time.deltaTime;
             }
             if (player.GetButtonUp("Slap"))
             {
-                timer = 0; 
+                timerForCamera = 0; 
             }
         }
         
@@ -96,7 +120,20 @@ public class Scr_Tuto : MonoBehaviour
             didHeSlap = false;
             gameObject.GetComponent<PlayerMove>().enabled = true;
             gameObject.GetComponent<PlayerLook>().enabled = true;
-            tutoCompleted = true; 
+            textmeshpro.SetText("Seems like other grandpas need to be cured!! \n Bring them back to their room before the end of the timer on your TABLET");
+            timerForTextTuto += Time.deltaTime;
+            if (timerForTextTuto > 7)
+            {
+                didHeCamera = false;
+                textmeshpro.SetText("SLAP the door to start \n And you better close behind you, insolent >:c");
+                DoorToOpen.GetComponent<Scr_FireDoor>().CAN_BE_CLOSED = true;
+            }
+
+        }
+
+        if (DoorToOpen.GetComponent<Scr_FireDoor>().isClosed == false)
+        {
+            tutoCompleted = true;
         }
     }
 }

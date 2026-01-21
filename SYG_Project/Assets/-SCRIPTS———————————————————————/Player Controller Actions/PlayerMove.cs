@@ -1,5 +1,6 @@
 using UnityEngine;
 using Rewired;
+using DG.Tweening;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMove : MonoBehaviour
@@ -49,7 +50,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         HorizontalMovement();
-        VerticalMovement();
+        //VerticalMovement();
         ApplyMovement();
     }
 
@@ -72,10 +73,29 @@ public class PlayerMove : MonoBehaviour
         movement.z = CanRun ? inputs.y * maxSpeed : 0;
     }
 
+    [SerializeField]
+    private bool _wobble;
+    [SerializeField]
+    public Transform cameraPlayer;
+
     void ApplyMovement()
     {
-        if (lookScript!=null) MovementRelativeToCamera();
+        if (lookScript != null) MovementRelativeToCamera();
         character.Move(movement * Time.deltaTime);
+
+
+
+        if (_wobble == false && movement.magnitude != 0)
+        {
+            cameraPlayer.DOLocalMoveY(-0.2f, 0.4f).SetLoops(-1, LoopType.Yoyo);
+            _wobble = true;
+        }
+        if (_wobble == true && movement.magnitude == 0)
+        {
+            cameraPlayer.DOKill();
+            cameraPlayer.DOLocalMoveY(0, 0.4f);
+            _wobble = false;
+        }
     }
 
     void MovementRelativeToCamera()

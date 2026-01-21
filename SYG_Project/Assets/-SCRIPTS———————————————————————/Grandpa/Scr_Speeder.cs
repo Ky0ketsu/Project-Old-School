@@ -18,6 +18,8 @@ public class Scr_Speeder : GrandpaParent
     [SerializeField] AudioSource audioCrash;
     [SerializeField] AudioSource audioRun;
 
+    public GameObject stunFX;
+
 
 
     private bool _isStun;
@@ -47,12 +49,12 @@ public class Scr_Speeder : GrandpaParent
                 Debug.Log(dir[currentDirIndex]);
                 Debug.Log(currentPickPosition);
 
-                Debug.DrawLine(lastPickPosition, currentPickPosition, Color.yellow, 1f);
+               // Debug.DrawLine(lastPickPosition, currentPickPosition, Color.yellow, 1f);
 
                 if (NavMesh.SamplePosition(currentPickPosition, out hit, 1f, NavMesh.AllAreas))
                 {
                     currentIndex++;
-                    Debug.DrawLine(transform.position, hit.position,Color.green,1f);
+                    //Debug.DrawLine(transform.position, hit.position,Color.green,1f);
                 }
                 else
                 { 
@@ -65,6 +67,7 @@ public class Scr_Speeder : GrandpaParent
             {
                 break;
             }
+            Debug.DrawLine(transform.position, lastPickPosition, Color.white, 1f);
             targetPosition = lastPickPosition;
             mouvIsSet = true;
 
@@ -75,6 +78,7 @@ public class Scr_Speeder : GrandpaParent
         {
             agent.SetDestination(targetPosition);
 
+            if (GAME.MANAGER.CurrentState != State.gameplay) { return;}
             int d = Random.Range(0, runList.Count);
             audioRun.clip = runList[d];
             audioRun.Play();
@@ -98,7 +102,7 @@ public class Scr_Speeder : GrandpaParent
         {
             if (controlledMove)
             {
-                exitBedroomTimer = 10f;
+                exitBedroomTimer = 100f;
                 inBedroom = true;
                 ActivateAgent(false);
             }
@@ -111,6 +115,15 @@ public class Scr_Speeder : GrandpaParent
                 int r = Random.Range(0, stunList.Count);
                 audioAction.clip = stunList[r];
                 audioAction.Play();
+
+                //Transform transformfx = slapFX.transform;
+                //transformfx.position;
+
+                GameObject stunVFX  = Instantiate(stunFX, transform.position+(transform.up*1.5f),transform.rotation);
+                Destroy(stunVFX, 2f);
+                
+                
+
 
                 int rr = Random.Range(0, crashList.Count);
                 audioCrash.clip = crashList[rr];
@@ -157,5 +170,6 @@ public class Scr_Speeder : GrandpaParent
         yield return new WaitForSeconds(StunTime);
         SetRandomDestination(transform.position, 10f);
         _isStun = false;
+        
     }
 }

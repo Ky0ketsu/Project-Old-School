@@ -8,7 +8,7 @@ public class Scr_GrandpaTuto : GrandpaParent
     {
         Debug.Log("tu as sauvé tuto");
         player.GetComponent<Scr_Tuto>().didHeSlap = true;
-        player.GetComponent<Scr_Tuto>().timer = 0; 
+        player.GetComponent<Scr_Tuto>().timerForCamera = 0; 
         SetRandomDestination(bedroom.transform.position, 0);
     }
 

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Scr_FireDoor : MonoBehaviour, ISlapable
 {
+    public bool CAN_BE_CLOSED = true;
     public bool isClosed = false;
     public GameObject doorToSpawn;
     public GameObject loadedDoor;
@@ -34,16 +35,20 @@ public class Scr_FireDoor : MonoBehaviour, ISlapable
 
     public void ChangeDoorState()
     {
-        isClosed = !isClosed;
+        if (CAN_BE_CLOSED == true)
+        {
+            isClosed = !isClosed;
 
-        if (isClosed == true)
-        {
-            CloseDoor();
+            if (isClosed == true)
+            {
+                CloseDoor();
+            }
+            else
+            {
+                OpenDoor();
+            }
         }
-        else
-        {
-            OpenDoor();
-        }
+        
     }
 
     [HideInInspector]

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using UnityEngine;
+using DG.Tweening;
 
 public class Scr_Rex : GrandpaParent
 {
@@ -45,7 +46,7 @@ public class Scr_Rex : GrandpaParent
             agent.SetDestination(bedroom.position);
         }
 
-        if (life < 0 && !isStun)
+        if (life <= 0 && !isStun)
         {
             Stun();
 
@@ -53,13 +54,12 @@ public class Scr_Rex : GrandpaParent
             audioPshht.clip = cryList[r];
             audioPshht.Play();
         }
-
-
     }
 
     private bool isStun;
     void Stun()
     {
+        Debug.Log("Rex CRY");
         isStun = true;
         StartCoroutine(StunRoutine());
         canMove = false;
@@ -83,7 +83,7 @@ public class Scr_Rex : GrandpaParent
         {
             if (controlledMove)
             {
-                exitBedroomTimer = 10f;
+                exitBedroomTimer = 100f;
                 inBedroom = true;
                 ActivateAgent(false);
             }
@@ -98,7 +98,15 @@ public class Scr_Rex : GrandpaParent
             if (life < 3)
             {
                 if (timerAfterHit > 0) timerAfterHit -= Time.deltaTime;
-                else { life++; Debug.Log(life); }
+                else 
+                {
+                    life=3; Debug.Log(life);
+                    transform.DOLocalMoveY(0.1f, 0.15f, false);
+                    new WaitForSeconds(0.1f);
+                    transform.DOLocalMoveY(-0.1f, 0.15f, false);
+                    SetRandomDestination(transform.position, 10f);
+
+                }
             }
         }
 

@@ -357,7 +357,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -461,6 +461,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_Speeder
       objectReference: {fileID: 0}
+    - target: {fileID: 2592650528302666769, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7ee981ed7f203ef45a7c9c2b5e3716c2, type: 2}
     - target: {fileID: 3816018980468687929, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
         type: 3}
       propertyPath: m_Color.b
@@ -598,6 +603,7 @@ MonoBehaviour:
   audioAction: {fileID: 6374451790335880815}
   audioCrash: {fileID: 1650566317385804853}
   audioRun: {fileID: 5019808516356951413}
+  stunFX: {fileID: 1558990608093960050, guid: c39ee3991f8f22c4e94a0ad369f4090d, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 0

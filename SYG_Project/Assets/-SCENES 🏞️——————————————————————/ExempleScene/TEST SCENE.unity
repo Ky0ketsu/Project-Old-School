@@ -426,6 +426,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 2335248854849461060, guid: 428f130ab651001429ae0417e750edc9,
+        type: 3}
+      propertyPath: m_CameraType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362576177752582038, guid: 428f130ab651001429ae0417e750edc9,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 2a1adca19092a174a8d8cc3b1a4ab024, type: 2}
     - target: {fileID: 2738981537344083640, guid: 428f130ab651001429ae0417e750edc9,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -511,6 +521,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 4486179965882011392, guid: 428f130ab651001429ae0417e750edc9,
+        type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486179965882011392, guid: 428f130ab651001429ae0417e750edc9,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: fad130424c8f1414a84ad98db6c7de8c, type: 2}
     - target: {fileID: 5107788097164549462, guid: 428f130ab651001429ae0417e750edc9,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -551,11 +571,21 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 6804093145798283935, guid: 428f130ab651001429ae0417e750edc9,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: d03f6265f9f8c974f8c612f1bd7babd6, type: 2}
     - target: {fileID: 7279616191852087689, guid: 428f130ab651001429ae0417e750edc9,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7541244224194797766, guid: 428f130ab651001429ae0417e750edc9,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 74aa089aa864cf342b887b2ad97c2e74, type: 2}
     - target: {fileID: 7705883053190753284, guid: 428f130ab651001429ae0417e750edc9,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2260,6 +2290,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 8640055910880549037, guid: d0a1ca072e4ad4f4c9af18f172ec604e, type: 3}
     - {fileID: 5116845061071279549, guid: d0a1ca072e4ad4f4c9af18f172ec604e, type: 3}
+    - {fileID: 8581474162042237625, guid: d0a1ca072e4ad4f4c9af18f172ec604e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a1ca072e4ad4f4c9af18f172ec604e, type: 3}
