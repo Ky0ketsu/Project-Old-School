@@ -184,7 +184,6 @@ GameObject:
   - component: {fileID: 6979929602460552896}
   - component: {fileID: 4397203099155591131}
   - component: {fileID: 1005895522779142772}
-  - component: {fileID: 7158342068000738428}
   m_Layer: 3
   m_Name: PreviewCamera (destroyed on play)
   m_TagString: Untagged
@@ -302,22 +301,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &7158342068000738428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8243285957861735283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef9955b2624f96349884ff5efcfefaee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockPosition: 1
-  lockRotation: 1
-  lockScale: 1
-  lockParenting: 1
 --- !u!1 &8856991593547552516
 GameObject:
   m_ObjectHideFlags: 0

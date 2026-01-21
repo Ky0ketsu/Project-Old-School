@@ -49,12 +49,12 @@ public class Scr_Speeder : GrandpaParent
                 Debug.Log(dir[currentDirIndex]);
                 Debug.Log(currentPickPosition);
 
-                Debug.DrawLine(lastPickPosition, currentPickPosition, Color.yellow, 1f);
+               // Debug.DrawLine(lastPickPosition, currentPickPosition, Color.yellow, 1f);
 
                 if (NavMesh.SamplePosition(currentPickPosition, out hit, 1f, NavMesh.AllAreas))
                 {
                     currentIndex++;
-                    Debug.DrawLine(transform.position, hit.position,Color.green,1f);
+                    //Debug.DrawLine(transform.position, hit.position,Color.green,1f);
                 }
                 else
                 { 
@@ -67,6 +67,7 @@ public class Scr_Speeder : GrandpaParent
             {
                 break;
             }
+            Debug.DrawLine(transform.position, lastPickPosition, Color.white, 1f);
             targetPosition = lastPickPosition;
             mouvIsSet = true;
 
@@ -77,6 +78,7 @@ public class Scr_Speeder : GrandpaParent
         {
             agent.SetDestination(targetPosition);
 
+            if (GAME.MANAGER.CurrentState != State.gameplay) { return;}
             int d = Random.Range(0, runList.Count);
             audioRun.clip = runList[d];
             audioRun.Play();
