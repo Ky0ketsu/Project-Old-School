@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Rewired;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,16 +9,22 @@ public class PlayerStunAction : MonoBehaviour
     [SerializeField]
     Transform cameraTransform;
 
-    private float initialY;
-    private bool canStun;
+    private float _initialY;
+    private Vector3 _initialRota;
+    private bool _canStun;
 
     public List<AudioClip> stunList;
     [SerializeField] AudioSource audioStun;
 
+    [HideInInspector]
+    private Rigidbody rigid;
+
     private void Start()
     {
-        canStun = true;
+        _canStun = true;
+        rigid = GetComponent<Rigidbody>();
     }
+
 
     private void Update()
     {
@@ -34,14 +41,15 @@ public class PlayerStunAction : MonoBehaviour
 
     public void Stun()
     {
-        if (!canStun) return;
+        if (!_canStun) return;
         if (cameraTransform == null)
         {
             Debug.Log("Pas de camera");
             return;
         }
-        canStun = false;
-        initialY = cameraTransform.position.y;
+        _canStun = false;
+        _initialY = cameraTransform.position.y;
+        _initialRota = cameraTransform.eulerAngles;
         Debug.Log("Player Stun");
 
         if(audioStun != null) 
@@ -55,23 +63,31 @@ public class PlayerStunAction : MonoBehaviour
     }
 
     IEnumerator StunRoutine()
-    {//************************
-        transform.GetComponent<PlayerMove>().CanRun = false;
-        transform.GetComponent<PlayerLook>().CanLook = false;
-        cameraTransform.DOMoveY(initialY + 2f, 1f).SetEase(Ease.InExpo);
-        cameraTransform.DOLocalRotate(new Vector3(0, 0, 90), 2f).SetEase(Ease.OutExpo);
-        yield return new WaitForSeconds(1f);
-        
-        cameraTransform.DOMoveY(initialY - 1.5f, 1.5f).SetEase(Ease.OutBounce);
-        
-        yield return new WaitForSeconds(5f);
+    {
+        Vector3 dirToMimolle = (ServicesLocator.Get<GrandpaService>().grandpas[0].position - transform.position).normalized;
+        SetMove(false);
 
-        cameraTransform.DOMoveY(initialY, 3f).SetEase(Ease.InCubic);
-        cameraTransform.DOLocalRotate(new Vector3(0, 0, 0), 2f).SetEase(Ease.InOutCubic);
-        yield return new WaitForSeconds(3f);
-        transform.GetComponent<PlayerMove>().CanRun = true;
-        transform.GetComponent<PlayerLook>().CanLook = true;
-        canStun = true;
+        cameraTransform.DORotate(dirToMimolle, 0.2f).SetEase(Ease.InOutCubic);
+        yield return new WaitForSeconds(0.6f);
+        cameraTransform.DOMoveY(_initialY + 0.2f, 0.4f).SetEase(Ease.InExpo);
+        rigid.AddForce(-dirToMimolle * 3);
+        yield return new WaitForSeconds(0.4f);
+        cameraTransform.DOMoveY(_initialY - 1.5f, 0.5f).SetEase(Ease.OutBounce);
+        yield return new WaitForSeconds(2f);
+        cameraTransform.DOMoveY(_initialY, 2f).SetEase(Ease.InCubic);
+        cameraTransform.DORotate(_initialRota, 2f).SetEase(Ease.InOutCubic);
+        yield return new WaitForSeconds(2f);
+
+
+        SetMove(true);
+        _canStun = true;
         
-    }//************************************
+    }
+
+
+    void SetMove(bool wanted)
+    {
+        transform.GetComponent<PlayerMove>().CanRun = wanted;
+        transform.GetComponent<PlayerLook>().CanLook= wanted;
+    }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3669094233732406825}
   - component: {fileID: 7407770392680098614}
   - component: {fileID: 8841799462964102189}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PFB_FakeDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

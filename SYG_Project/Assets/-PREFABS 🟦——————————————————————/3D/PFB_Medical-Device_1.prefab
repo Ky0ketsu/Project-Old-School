@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4686868985485205212}
   - component: {fileID: 804027761656808660}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PFB_Medical-Device_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,6 +114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1969907442247869216, guid: 7ca659c84d2d6a94c9d2f660f1d4a68d,
         type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -1969907442247869216, guid: 7ca659c84d2d6a94c9d2f660f1d4a68d,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -124,13 +129,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7ca659c84d2d6a94c9d2f660f1d4a68d,
         type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7ca659c84d2d6a94c9d2f660f1d4a68d,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1601661360599471645, guid: 7ca659c84d2d6a94c9d2f660f1d4a68d,
         type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601661360599471645, guid: 7ca659c84d2d6a94c9d2f660f1d4a68d,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420054148558846294, guid: 7ca659c84d2d6a94c9d2f660f1d4a68d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7420054148558846294, guid: 7ca659c84d2d6a94c9d2f660f1d4a68d,
         type: 3}
