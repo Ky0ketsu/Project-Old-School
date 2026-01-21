@@ -13,18 +13,18 @@ public class GrandpaService : MonoBehaviour, IGranpaService
     private Transform _grandpaParent;
 
     private Transform[] _Bedrooms = new Transform[4];
-    private Transform[] _grandpas = new Transform[4];
+    public Transform[] grandpas = new Transform[4];
 
     
     private void Awake()
     {
-        ServicesLocator.Register<IGranpaService>(this);
+        ServicesLocator.Register<GrandpaService>(this);
         EVENTS.OnGameStart += SpawnGrandpa;
     }
 
     private void OnDestroy()
     {
-        ServicesLocator.Unregister<IGranpaService>();
+        ServicesLocator.Unregister<GrandpaService>();
         EVENTS.OnGameStart -= SpawnGrandpa;
     }
 
@@ -36,25 +36,25 @@ public class GrandpaService : MonoBehaviour, IGranpaService
             _Bedrooms[i] = _parentBedroom.GetChild(i);
         }
         if (_grandpaParent == null) return;
-        for (int i = 0; i < _grandpas.Length; i++)
+        for (int i = 0; i < grandpas.Length; i++)
         {
-            _grandpas[i] = _grandpaParent.GetChild(i);
+            grandpas[i] = _grandpaParent.GetChild(i);
         }
     }
 
     public void SpawnGrandpa()
     {
-        if (_grandpas == null) return;
-        for (int i = 0; i < _grandpas.Length; i++)
+        if (grandpas == null) return;
+        for (int i = 0; i < grandpas.Length; i++)
         {
-            _grandpas[i] = _grandpaParent.GetChild(i);
+            grandpas[i] = _grandpaParent.GetChild(i);
 
 
-            if (_grandpas[i].GetComponent<GrandpaParent>() != null && _parentBedroom.GetChild(i) != null)
+            if (grandpas[i].GetComponent<GrandpaParent>() != null && _parentBedroom.GetChild(i) != null)
             {
-                _grandpas[i].GetComponent<GrandpaParent>().player = player;
+                grandpas[i].GetComponent<GrandpaParent>().player = player;
                 _Bedrooms[i] = _parentBedroom.GetChild(i);
-                _grandpas[i].GetComponent<GrandpaParent>().bedroom = _Bedrooms[i];
+                grandpas[i].GetComponent<GrandpaParent>().bedroom = _Bedrooms[i];
             }
             else Debug.Log($"1 ou 2 elements manquant dans la paire chambre/vieux numero {i}");
         }
@@ -64,7 +64,7 @@ public class GrandpaService : MonoBehaviour, IGranpaService
 
     public void CheckBedroom()
     {
-        foreach(Transform grandpa in _grandpas)
+        foreach(Transform grandpa in grandpas)
         {
             if(grandpa.GetComponent<GrandpaParent>().inBedroom == false)
             {

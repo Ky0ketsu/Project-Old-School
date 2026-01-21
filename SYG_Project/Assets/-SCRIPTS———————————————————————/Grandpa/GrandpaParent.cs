@@ -116,9 +116,18 @@ public class GrandpaParent : MonoBehaviour , ISlapable
         return (agent.destination - transform.position).magnitude < 2f;
     }
 
+    [HideInInspector]
+    private Scr_GameTimer timer;
+
+    protected virtual void Start()
+    {
+        timer = FindAnyObjectByType<Scr_GameTimer>();
+    }
 
      protected void UpdateTimer()
     {
+        if (timer.currentTimer <= 60) return;
+
         exitBedroomTimer -= Time.deltaTime;
 
         if (exitBedroomTimer <= 5)

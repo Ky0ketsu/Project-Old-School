@@ -26,8 +26,10 @@ public class Scr_CrazyCat : GrandpaParent
 
     private Transform[] _catSpawnPoint;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         _catSpawnPoint = new Transform[_catSpawnPointParent.childCount];
         for(int i = 0; i < _catSpawnPointParent.childCount; i++)
         {
@@ -90,8 +92,8 @@ public class Scr_CrazyCat : GrandpaParent
                 inBedroom = true;
                 ActivateAgent(false);
             }
-            else if (_shearchingPlayer) SetRandomDestination(transform.position, 10f);
-            else SetDestinationToPlayer();
+            else SetRandomDestination(transform.position, 10f);
+            
         }
 
         if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
