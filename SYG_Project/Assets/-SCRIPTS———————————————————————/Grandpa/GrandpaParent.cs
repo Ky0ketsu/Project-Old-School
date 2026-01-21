@@ -86,8 +86,8 @@ public class GrandpaParent : MonoBehaviour , ISlapable
 
     public virtual void GoBedroom()
     {
-        controlledMove = true;
         SetRandomDestination(bedroom.position,0);
+        controlledMove = true;
         Debug.DrawLine(transform.position, targetPosition, Color.magenta, 10f);
     }
 

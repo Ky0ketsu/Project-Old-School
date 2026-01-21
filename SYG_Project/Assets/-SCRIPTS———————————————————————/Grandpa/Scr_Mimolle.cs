@@ -38,9 +38,12 @@ public class Scr_Mimolle : GrandpaParent
     }
 
     void SetDestinationToPlayer()
-    {
-        targetPosition = player.position;
-        SetRandomDestination(targetPosition, 0f);
+    { 
+        if (controlledMove == false)
+        {
+            targetPosition = player.position;
+            SetRandomDestination(targetPosition, 0f);
+        }
     }
 
     void CheckCanHitPlayer()
@@ -48,6 +51,15 @@ public class Scr_Mimolle : GrandpaParent
         if (Vector3.Distance(transform.position, player.position) <= 2f && _timerAfterkickPlayer == 0)
         {
             AttackPlayer();
+        }
+    }
+
+    public override void Slap()
+    {
+        if (CanSeePlayer() == false)
+        {
+            Debug.Log($"{transform.name} a pris une claque");
+            GoBedroom();
         }
     }
 

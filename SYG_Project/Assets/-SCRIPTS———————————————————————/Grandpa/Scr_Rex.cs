@@ -101,7 +101,11 @@ public class Scr_Rex : GrandpaParent
                 else 
                 {
                     life=3; Debug.Log(life);
-                    transform.DOLocalMoveY(0.2f, 0.15f, false);
+                    transform.DOLocalMoveY(0.1f, 0.15f, false);
+                    new WaitForSeconds(0.1f);
+                    transform.DOLocalMoveY(-0.1f, 0.15f, false);
+                    SetRandomDestination(transform.position, 10f);
+
                 }
             }
         }
