@@ -26,10 +26,8 @@ public class Scr_CrazyCat : GrandpaParent
 
     private Transform[] _catSpawnPoint;
 
-    protected override void Start()
+    void Start()
     {
-        base.Start();
-
         _catSpawnPoint = new Transform[_catSpawnPointParent.childCount];
         for(int i = 0; i < _catSpawnPointParent.childCount; i++)
         {
@@ -40,6 +38,8 @@ public class Scr_CrazyCat : GrandpaParent
 
     void CheckCanViewPlayer()
     {
+        if (!CanSeePlayer()) return;
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position) * 1.05f, layerMask))
         {
@@ -92,7 +92,8 @@ public class Scr_CrazyCat : GrandpaParent
                 inBedroom = true;
                 ActivateAgent(false);
             }
-            else SetRandomDestination(transform.position, 10f);
+            else if(!_shearchingPlayer) SetRandomDestination(transform.position, 10f);
+            else SetDestinationToPlayer();
             
         }
 
@@ -102,5 +103,6 @@ public class Scr_CrazyCat : GrandpaParent
     void SetDestinationToPlayer()
     {
         targetPosition = player.position;
+        SetRandomDestination(player.position, 0f);
     }
 }
