@@ -1,10 +1,11 @@
 using DG.Tweening;
+using Rewired;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Scr_FireDoor : MonoBehaviour, ISlapable
+public class FireDoor : MonoBehaviour, ISlapable
 {
     public bool CAN_BE_CLOSED = true;
     public bool isClosed = false;
@@ -18,15 +19,25 @@ public class Scr_FireDoor : MonoBehaviour, ISlapable
     public List<AudioClip> closeList;
     [SerializeField] AudioSource audioFireDoor;
 
+
     [SerializeField]
     Transform rightDoor;
-    public float rightRotaClose;
-    public float rightRotaOpen;
+    [SerializeField]
+    private float _maxRightRotaForward;
+    [SerializeField]
+    private float _maxRightRotaBackward;
+    [HideInInspector]
+    private float _initialRightRota;
+
 
     [SerializeField]
     Transform leftDoor;
-    public float leftRotaClose;
-    public float leftRotaOpen;
+    [SerializeField]
+    private float _maxLeftRotaForward;
+    [SerializeField]
+    private float _maxLeftRotaBackward;
+    [HideInInspector]
+    private float _initialLeftRota;
 
     public void Slap()
     {
@@ -64,25 +75,47 @@ public class Scr_FireDoor : MonoBehaviour, ISlapable
     public void CloseDoor()
     {
         Debug.Log("Porte fermer");
-        rightDoor.DORotate(Vector3.up * rightRotaClose, 1f).SetEase(Ease.InCubic);
-        leftDoor.DORotate(Vector3.up * leftRotaClose, 1f).SetEase(Ease.InCubic);
+        RotateDoor(_initialRightRota, _initialLeftRota);
 
-        int r = Random.Range(0, closeList.Count);
+
+
+        //-------------------------
+
+        
+        /*int r = Random.Range(0, closeList.Count);
         audioFireDoor.clip = closeList[r];
-        audioFireDoor.Play();
+        audioFireDoor.Play();*/
     }
 
     public void OpenDoor()
     {
-        
-        rightDoor.DORotate(Vector3.up * rightRotaOpen, 1f).SetEase(Ease.InCubic);
-        leftDoor.DORotate(Vector3.up * leftRotaOpen, 1f).SetEase(Ease.InCubic);
+        if (IsForward()) RotateDoor(_maxRightRotaBackward, _maxLeftRotaBackward);
+        else RotateDoor(_maxRightRotaForward, _maxLeftRotaForward);
+
         Debug.Log("Porte ouverte");
         
+        //------------------------
         if (GAME.MANAGER.CurrentState != State.gameplay) { return;}
-        int r = Random.Range(0, openList.Count);
+
+
+        /*int r = Random.Range(0, openList.Count);
         audioFireDoor.clip = openList[r];
-        audioFireDoor.Play();
+        audioFireDoor.Play();*/
     }
 
+    void RotateDoor(float Right, float Left)
+    {
+        rightDoor.DOLocalRotate(Vector3.up * _initialRightRota, 1f).SetEase(Ease.InElastic);
+        leftDoor.DOLocalRotate(Vector3.up * _initialLeftRota, 1f).SetEase(Ease.InElastic);
+    }
+
+    protected bool IsForward()
+    {
+        Vector3 dirToPlayer = (ServicesLocator.Get<PlayerService>().player.transform.position - transform.position).normalized;
+        if (Vector3.Angle(transform.forward, dirToPlayer) < 180 / 2f)
+        {
+            return true;
+        }
+        return false;
+    }
 }

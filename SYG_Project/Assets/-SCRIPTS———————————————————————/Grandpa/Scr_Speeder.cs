@@ -8,7 +8,18 @@ public class Scr_Speeder : GrandpaParent
     [SerializeField, Range(0f, 50f)] float speed;
     private float currentSpeed;
 
-    private Vector3[] dir = new Vector3[8] { Vector3.forward, -Vector3.forward, Vector3.right, -Vector3.right, (Vector3.forward+Vector3.left).normalized, (Vector3.forward+ Vector3.right).normalized,(Vector3.back + Vector3.left).normalized,( Vector3.back+ Vector3.right ).normalized};
+    private Vector3[] dir = new Vector3[8]
+    {
+      Vector3.forward,
+      -Vector3.forward,
+      Vector3.right,
+      -Vector3.right,
+      (Vector3.forward + Vector3.left).normalized,
+      (Vector3.forward + Vector3.right).normalized,
+      (Vector3.back + Vector3.left).normalized,
+      (Vector3.back + Vector3.right).normalized
+    };
+    
     [SerializeField] float minimumDistante = 3f;
 
     public List<AudioClip> stunList;
@@ -26,12 +37,11 @@ public class Scr_Speeder : GrandpaParent
 
     public override void SetRandomDestination(Vector3 center, float randomMaxDistance)
     {
-
-        bool mouvIsSet = false;
+        bool mouvIsDefine = false;
         int currentDirIndex = Random.Range(0, dir.Length);
         
 
-        while(mouvIsSet == false && center != bedroom.position)
+        while(mouvIsDefine == false)
         {
             NavMeshHit hit;
 
@@ -49,12 +59,10 @@ public class Scr_Speeder : GrandpaParent
                 Debug.Log(dir[currentDirIndex]);
                 Debug.Log(currentPickPosition);
 
-               // Debug.DrawLine(lastPickPosition, currentPickPosition, Color.yellow, 1f);
 
                 if (NavMesh.SamplePosition(currentPickPosition, out hit, 1f, NavMesh.AllAreas))
                 {
                     currentIndex++;
-                    //Debug.DrawLine(transform.position, hit.position,Color.green,1f);
                 }
                 else
                 { 
@@ -69,24 +77,26 @@ public class Scr_Speeder : GrandpaParent
             }
             Debug.DrawLine(transform.position, lastPickPosition, Color.white, 1f);
             targetPosition = lastPickPosition;
-            mouvIsSet = true;
+            mouvIsDefine = true;
 
         } // fin du while
 
 
-        if(mouvIsSet == true && center != bedroom.position)
+        if(!controlledMove)
         {
             agent.SetDestination(targetPosition);
 
             if (GAME.MANAGER.CurrentState != State.gameplay) { return;}
+
             int d = Random.Range(0, runList.Count);
             audioRun.clip = runList[d];
             audioRun.Play();
-
+            Debug.Log("Je fonce");
         }
         else
         {
             agent.SetDestination(bedroom.position);
+            Debug.Log("Je rentre");
         }
 
     } // fin de SetRandomDestination
@@ -142,9 +152,9 @@ public class Scr_Speeder : GrandpaParent
         {
             Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.yellow);
 
-            if (hit.transform.GetComponent<Scr_FireDoor>() != null)
+            if (hit.transform.GetComponent<FireDoor>() != null)
             {
-                hit.transform.GetComponent<Scr_FireDoor>().ChangeDoorState();
+                hit.transform.GetComponent<FireDoor>().ChangeDoorState();
                 Debug.Log("Speeder claque la porte");
             }
         }
@@ -152,6 +162,13 @@ public class Scr_Speeder : GrandpaParent
         {
             Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.red);
         }
+    }
+
+    public override void Slap()
+    {
+        if (!_isStun) return;
+        Debug.Log($"{transform.name} a pris une claque");
+        GoBedroom();
     }
 
     [SerializeField]

@@ -18,7 +18,7 @@ public class Scr_Rex : GrandpaParent
     public List<AudioClip> cryList;
     [SerializeField] AudioSource audioPshht;
 
-    void Start()
+    protected override void Start()
     {
         life = 3;
     }
