@@ -40,6 +40,8 @@ public class Scr_CrazyCat : GrandpaParent
 
     void CheckCanViewPlayer()
     {
+        if (!CanSeePlayer()) return;
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position) * 1.05f, layerMask))
         {
@@ -47,6 +49,7 @@ public class Scr_CrazyCat : GrandpaParent
             {
                 _shearchingPlayer = false;
                 _timerNotShowPlayer = 3f;
+                SetDestinationToPlayer();
 
                 Debug.DrawRay(transform.position + Vector3.up, (player.position - transform.position).normalized * Vector3.Distance(transform.position, player.position), Color.green);
             }
@@ -102,5 +105,6 @@ public class Scr_CrazyCat : GrandpaParent
     void SetDestinationToPlayer()
     {
         targetPosition = player.position;
+        SetRandomDestination(player.position, 0f);
     }
 }
