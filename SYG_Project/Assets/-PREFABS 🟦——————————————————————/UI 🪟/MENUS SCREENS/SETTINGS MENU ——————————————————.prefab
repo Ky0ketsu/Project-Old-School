@@ -999,6 +999,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 46960876874496888, guid: 9101ee62cbb4c024095e742e34da13a0,
         type: 3}
+      propertyPath: m_text
+      value: RETOUR
+      objectReference: {fileID: 0}
+    - target: {fileID: 46960876874496888, guid: 9101ee62cbb4c024095e742e34da13a0,
+        type: 3}
       propertyPath: m_fontSize
       value: 30
       objectReference: {fileID: 0}
@@ -1085,7 +1090,7 @@ PrefabInstance:
     - target: {fileID: 4959895939460964732, guid: 9101ee62cbb4c024095e742e34da13a0,
         type: 3}
       propertyPath: m_Name
-      value: BACK Button Graphics
+      value: RETOUR Button Graphics
       objectReference: {fileID: 0}
     - target: {fileID: 5982882668673742733, guid: 9101ee62cbb4c024095e742e34da13a0,
         type: 3}
@@ -1290,7 +1295,7 @@ PrefabInstance:
     - target: {fileID: 7934111980042489120, guid: 4f741495c62431347baac8daba514962,
         type: 3}
       propertyPath: m_text
-      value: SOUND EFFECTS
+      value: EFFETS SONORES
       objectReference: {fileID: 0}
     - target: {fileID: 7934111980042489120, guid: 4f741495c62431347baac8daba514962,
         type: 3}
@@ -1394,7 +1399,7 @@ PrefabInstance:
     - target: {fileID: 7934111980042489120, guid: 4f741495c62431347baac8daba514962,
         type: 3}
       propertyPath: m_text
-      value: GLOBAL VOLUME
+      value: "VOLUME G\xC9N\xC9RAL"
       objectReference: {fileID: 0}
     - target: {fileID: 7934111980042489120, guid: 4f741495c62431347baac8daba514962,
         type: 3}
@@ -1508,7 +1513,7 @@ PrefabInstance:
     - target: {fileID: 7934111980042489120, guid: 4f741495c62431347baac8daba514962,
         type: 3}
       propertyPath: m_text
-      value: LANGUAGE
+      value: LANGUE
       objectReference: {fileID: 0}
     - target: {fileID: 8546289960536185586, guid: 4f741495c62431347baac8daba514962,
         type: 3}
@@ -1607,7 +1612,7 @@ PrefabInstance:
     - target: {fileID: 7934111980042489120, guid: 4f741495c62431347baac8daba514962,
         type: 3}
       propertyPath: m_text
-      value: UI VOLUME
+      value: SONS INTERFACE
       objectReference: {fileID: 0}
     - target: {fileID: 7934111980042489120, guid: 4f741495c62431347baac8daba514962,
         type: 3}
@@ -2098,7 +2103,7 @@ PrefabInstance:
     - target: {fileID: 8292530123029169051, guid: 320f4e026f5aacf42a600f7c1117eb2c,
         type: 3}
       propertyPath: m_text
-      value: INPUTS
+      value: "CONTR\xD4LES"
       objectReference: {fileID: 0}
     - target: {fileID: 8292530123029169051, guid: 320f4e026f5aacf42a600f7c1117eb2c,
         type: 3}
@@ -2313,7 +2318,7 @@ PrefabInstance:
     - target: {fileID: 1110266019508630711, guid: 1ce8ab23beb9c194084bf585736ee606,
         type: 3}
       propertyPath: m_Name
-      value: FRENCH Button Graphics
+      value: "FRAN\xC7AIS Button Graphics"
       objectReference: {fileID: 0}
     - target: {fileID: 1781765247320007238, guid: 1ce8ab23beb9c194084bf585736ee606,
         type: 3}
@@ -2363,7 +2368,7 @@ PrefabInstance:
     - target: {fileID: 5412118048594685619, guid: 1ce8ab23beb9c194084bf585736ee606,
         type: 3}
       propertyPath: m_text
-      value: FRENCH
+      value: "FRAN\xC7AIS"
       objectReference: {fileID: 0}
     - target: {fileID: 5412118048594685619, guid: 1ce8ab23beb9c194084bf585736ee606,
         type: 3}
@@ -2735,7 +2740,7 @@ PrefabInstance:
     - target: {fileID: 8292530123029169051, guid: 320f4e026f5aacf42a600f7c1117eb2c,
         type: 3}
       propertyPath: m_text
-      value: GENERAL
+      value: "G\xC9N\xC9RAL"
       objectReference: {fileID: 0}
     - target: {fileID: 8292530123029169051, guid: 320f4e026f5aacf42a600f7c1117eb2c,
         type: 3}
@@ -2923,7 +2928,7 @@ PrefabInstance:
     - target: {fileID: 7934111980042489120, guid: 4f741495c62431347baac8daba514962,
         type: 3}
       propertyPath: m_text
-      value: VOICES
+      value: VOIX
       objectReference: {fileID: 0}
     - target: {fileID: 8546289960536185586, guid: 4f741495c62431347baac8daba514962,
         type: 3}
@@ -2967,7 +2972,7 @@ PrefabInstance:
     - target: {fileID: 1713239819919326938, guid: e6006960ee25fdd4e8769b5b3e136c89,
         type: 3}
       propertyPath: m_text
-      value: SETTINGS
+      value: "PARAM\xC8TRES"
       objectReference: {fileID: 0}
     - target: {fileID: 1713239819919326938, guid: e6006960ee25fdd4e8769b5b3e136c89,
         type: 3}
@@ -3076,7 +3081,7 @@ PrefabInstance:
     - target: {fileID: 722590726480801720, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_text
-      value: RESET TO DEFAULT
+      value: "R\xC9GLAGES PAR D\xC9FAUT"
       objectReference: {fileID: 0}
     - target: {fileID: 722590726480801720, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
@@ -3171,7 +3176,7 @@ PrefabInstance:
     - target: {fileID: 5653400515240392124, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_Name
-      value: RESET TO DEFAULT Button Graphics
+      value: "R\xC9GLAGES PAR D\xC9FAUT Button Graphics"
       objectReference: {fileID: 0}
     - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
@@ -3498,7 +3503,7 @@ PrefabInstance:
     - target: {fileID: 7934111980042489120, guid: 4f741495c62431347baac8daba514962,
         type: 3}
       propertyPath: m_text
-      value: MUSIC
+      value: MUSIQUE
       objectReference: {fileID: 0}
     - target: {fileID: 8546289960536185586, guid: 4f741495c62431347baac8daba514962,
         type: 3}
@@ -3597,7 +3602,7 @@ PrefabInstance:
     - target: {fileID: 7934111980042489120, guid: 4f741495c62431347baac8daba514962,
         type: 3}
       propertyPath: m_text
-      value: MOUSE SENSITIVITY
+      value: "SENSIBILIT\xC9 SOURIS"
       objectReference: {fileID: 0}
     - target: {fileID: 8546289960536185586, guid: 4f741495c62431347baac8daba514962,
         type: 3}
@@ -3792,7 +3797,7 @@ PrefabInstance:
     - target: {fileID: 1110266019508630711, guid: 1ce8ab23beb9c194084bf585736ee606,
         type: 3}
       propertyPath: m_Name
-      value: ENGLISH Button Graphics
+      value: ANGLAIS Button Graphics
       objectReference: {fileID: 0}
     - target: {fileID: 1781765247320007238, guid: 1ce8ab23beb9c194084bf585736ee606,
         type: 3}
@@ -3847,7 +3852,7 @@ PrefabInstance:
     - target: {fileID: 5412118048594685619, guid: 1ce8ab23beb9c194084bf585736ee606,
         type: 3}
       propertyPath: m_text
-      value: ENGLISH
+      value: ANGLAIS
       objectReference: {fileID: 0}
     - target: {fileID: 5412118048594685619, guid: 1ce8ab23beb9c194084bf585736ee606,
         type: 3}
