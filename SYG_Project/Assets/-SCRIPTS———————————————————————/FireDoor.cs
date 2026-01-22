@@ -26,7 +26,7 @@ public class FireDoor : MonoBehaviour, ISlapable
     private float _maxRightRotaForward;
     [SerializeField]
     private float _maxRightRotaBackward;
-    [HideInInspector]
+    [SerializeField]
     private float _initialRightRota;
 
 
@@ -36,7 +36,7 @@ public class FireDoor : MonoBehaviour, ISlapable
     private float _maxLeftRotaForward;
     [SerializeField]
     private float _maxLeftRotaBackward;
-    [HideInInspector]
+    [SerializeField]
     private float _initialLeftRota;
 
     public void Slap()
@@ -75,7 +75,7 @@ public class FireDoor : MonoBehaviour, ISlapable
     public void CloseDoor()
     {
         Debug.Log("Porte fermer");
-        RotateDoor(_initialRightRota, _initialLeftRota);
+        CloseDoorAnimation();
 
 
 
@@ -89,8 +89,8 @@ public class FireDoor : MonoBehaviour, ISlapable
 
     public void OpenDoor()
     {
-        if (IsForward()) RotateDoor(_maxRightRotaBackward, _maxLeftRotaBackward);
-        else RotateDoor(_maxRightRotaForward, _maxLeftRotaForward);
+        if (!IsForward()) OpenDoorAnimation(_maxRightRotaForward, _maxLeftRotaForward);
+        else OpenDoorAnimation(_maxRightRotaBackward, _maxLeftRotaBackward);
 
         Debug.Log("Porte ouverte");
         
@@ -103,10 +103,16 @@ public class FireDoor : MonoBehaviour, ISlapable
         audioFireDoor.Play();*/
     }
 
-    void RotateDoor(float Right, float Left)
+    void CloseDoorAnimation()
     {
-        rightDoor.DOLocalRotate(Vector3.up * _initialRightRota, 1f).SetEase(Ease.InElastic);
-        leftDoor.DOLocalRotate(Vector3.up * _initialLeftRota, 1f).SetEase(Ease.InElastic);
+        rightDoor.DOLocalRotate(Vector3.up * _initialRightRota, 3.5f).SetEase(Ease.OutElastic);
+        leftDoor.DOLocalRotate(Vector3.up * _initialLeftRota, 3.5f).SetEase(Ease.OutElastic);
+    }
+
+    void OpenDoorAnimation(float Right, float Left)
+    {
+        rightDoor.DOLocalRotate(Vector3.up * Right, 1f).SetEase(Ease.OutBounce);
+        leftDoor.DOLocalRotate(Vector3.up * Left, 1f).SetEase(Ease.OutBounce);
     }
 
     protected bool IsForward()

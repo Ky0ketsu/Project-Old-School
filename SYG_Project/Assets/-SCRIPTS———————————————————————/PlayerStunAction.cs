@@ -65,7 +65,10 @@ public class PlayerStunAction : MonoBehaviour
     IEnumerator StunRoutine()
     {
         Vector3 dirToMimolle = (ServicesLocator.Get<GrandpaService>().grandpas[0].position - transform.position).normalized;
+        Debug.DrawRay(transform.position, dirToMimolle * Vector3.Distance(ServicesLocator.Get<GrandpaService>().grandpas[0].position, transform.position), Color.red, 5f);
         SetMove(false);
+
+        while(transform.eulerAngles != dirToMimolle)
 
         cameraTransform.DORotate(dirToMimolle, 0.2f).SetEase(Ease.InOutCubic);
         yield return new WaitForSeconds(0.6f);
