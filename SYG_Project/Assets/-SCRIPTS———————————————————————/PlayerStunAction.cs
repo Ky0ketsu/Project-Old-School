@@ -68,14 +68,12 @@ public class PlayerStunAction : MonoBehaviour
         Debug.DrawRay(transform.position, dirToMimolle * Vector3.Distance(ServicesLocator.Get<GrandpaService>().grandpas[0].position, transform.position), Color.red, 5f);
         SetMove(false);
 
-        while(transform.eulerAngles != dirToMimolle)
-
-        cameraTransform.DORotate(dirToMimolle, 0.2f).SetEase(Ease.InOutCubic);
-        yield return new WaitForSeconds(0.6f);
-        cameraTransform.DOMoveY(_initialY + 0.2f, 0.4f).SetEase(Ease.InExpo);
+        cameraTransform.DORotate(cameraTransform.TransformDirection(dirToMimolle), 1f).SetEase(Ease.InOutCubic);
+        yield return new WaitForSeconds(1f);
+        cameraTransform.DOMoveY(_initialY + 0.2f, 0.6f).SetEase(Ease.InExpo);
         rigid.AddForce(-dirToMimolle * 3);
-        yield return new WaitForSeconds(0.4f);
-        cameraTransform.DOMoveY(_initialY - 1.5f, 0.5f).SetEase(Ease.OutBounce);
+        yield return new WaitForSeconds(0.6f);
+        cameraTransform.DOMoveY(_initialY - 1.5f, 0.7f).SetEase(Ease.OutBounce);
         yield return new WaitForSeconds(2f);
         cameraTransform.DOMoveY(_initialY, 2f).SetEase(Ease.InCubic);
         cameraTransform.DORotate(_initialRota, 2f).SetEase(Ease.InOutCubic);
