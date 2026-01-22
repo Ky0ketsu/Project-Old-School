@@ -38,7 +38,7 @@ public class Scr_Tuto : MonoBehaviour
         player = ReInput.players.GetPlayer(0);
 
         Scr_GameTimer = FindAnyObjectByType<Scr_GameTimer>();
-        DoorToOpen.GetComponent<Scr_FireDoor>().CAN_BE_CLOSED = false;
+        DoorToOpen.GetComponent<FireDoor>().CAN_BE_CLOSED = false;
 
         for(int i = 0; i < GRANDPA_TO_START.Length; i++)
         {
@@ -137,12 +137,12 @@ public class Scr_Tuto : MonoBehaviour
                 TutoText = GameObject.Find("START");
                 TutoText.GetComponent<TextMeshProUGUI>().enabled = true;
 
-                DoorToOpen.GetComponent<Scr_FireDoor>().CAN_BE_CLOSED = true;
+                DoorToOpen.GetComponent<FireDoor>().CAN_BE_CLOSED = true;
             }
 
         }
 
-        if (DoorToOpen.GetComponent<Scr_FireDoor>().isClosed == false)
+        if (DoorToOpen.GetComponent<FireDoor>().isClosed == false)
         {
             tutoCompleted = true;
         }
