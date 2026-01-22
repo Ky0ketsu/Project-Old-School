@@ -117,16 +117,12 @@ public class GrandpaParent : MonoBehaviour , ISlapable
     }
 
     [HideInInspector]
-    private Scr_GameTimer timer;
-
-    protected virtual void Start()
-    {
-        timer = FindAnyObjectByType<Scr_GameTimer>();
-    }
+    private Scr_GameTimer scr_timer;
 
      protected void UpdateTimer()
     {
-        if (timer.currentTimer <= 60) return;
+        if (scr_timer == null) scr_timer = GAME.MANAGER.Timer;
+        if (scr_timer.currentTimer <= 60) return;
 
         exitBedroomTimer -= Time.deltaTime;
 

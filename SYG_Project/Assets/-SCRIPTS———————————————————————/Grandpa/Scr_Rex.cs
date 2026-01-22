@@ -1,16 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using UnityEngine;
-using DG.Tweening;
 
 public class Scr_Rex : GrandpaParent
 {
     [SerializeField]
     int life;
-
-    float timerAfterHit;
-
 
 
     public List<AudioClip> inflateList;
@@ -18,7 +13,12 @@ public class Scr_Rex : GrandpaParent
     public List<AudioClip> cryList;
     [SerializeField] AudioSource audioPshht;
 
-    protected override void Start()
+    [SerializeField]
+    private Animator _animator;
+    [SerializeField]
+    private float _speed, _escapeSpeed;
+
+    void Start()
     {
         life = 3;
     }
@@ -29,6 +29,15 @@ public class Scr_Rex : GrandpaParent
         Debug.Log(life);
     }
 
+    IEnumerator EscapeRoutine()
+    {
+        _animator.speed = _escapeSpeed;
+        agent.speed = 5f;
+        yield return new WaitForSeconds(3f);
+        _animator.speed = _speed;
+        agent.speed = 2f;
+    }
+
     void DeacreasedHp()
     {
         if(life > 0)
@@ -37,9 +46,11 @@ public class Scr_Rex : GrandpaParent
         int r = Random.Range(0, deflateList.Count);
         audioPshht.clip = deflateList[r];
         audioPshht.Play();
+        SetRandomDestination(transform.position, 200f);
+        
+        StartCoroutine(EscapeRoutine());
         }
         
-        timerAfterHit = 5f;
         if(life == 0 )
         {
             controlledMove = true;
@@ -48,7 +59,7 @@ public class Scr_Rex : GrandpaParent
 
         if (life <= 0 && !isStun)
         {
-            Stun();
+            StartCoroutine(StunRoutine());
 
             int r = Random.Range(0, cryList.Count);
             audioPshht.clip = cryList[r];
@@ -57,17 +68,14 @@ public class Scr_Rex : GrandpaParent
     }
 
     private bool isStun;
-    void Stun()
+    IEnumerator StunRoutine()
     {
         Debug.Log("Rex CRY");
         isStun = true;
-        StartCoroutine(StunRoutine());
         canMove = false;
-    }
 
-    IEnumerator StunRoutine()
-    {
         yield return new WaitForSeconds(4f);
+
         isStun = false;
         canMove = true;
     }
@@ -86,29 +94,12 @@ public class Scr_Rex : GrandpaParent
                 exitBedroomTimer = 100f;
                 inBedroom = true;
                 ActivateAgent(false);
+                life = 3;
             }
             else SetRandomDestination(transform.position, 10f);
         }
 
         if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
-
-
-        if (!isStun)
-        {
-            if (life < 3)
-            {
-                if (timerAfterHit > 0) timerAfterHit -= Time.deltaTime;
-                else 
-                {
-                    life=3; Debug.Log(life);
-                    transform.DOLocalMoveY(0.1f, 0.15f, false);
-                    new WaitForSeconds(0.1f);
-                    transform.DOLocalMoveY(-0.1f, 0.15f, false);
-                    SetRandomDestination(transform.position, 10f);
-
-                }
-            }
-        }
 
         if(life > 0) controlledMove = false;
     }
