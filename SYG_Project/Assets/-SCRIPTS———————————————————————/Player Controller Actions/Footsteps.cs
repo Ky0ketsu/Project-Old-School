@@ -15,6 +15,10 @@ public class Footsteps : MonoBehaviour
     bool moving = false;
     float currentStepSize;
     float normalVolume = 1f;
+
+
+    [SerializeField] float minRandomVolume = 0.5f;
+    [SerializeField] float maxRandomVolume = 1f;
     
     void Start()
     {
@@ -50,7 +54,8 @@ public class Footsteps : MonoBehaviour
         lastStepPosition = transform.position;
         if (currentStepSize<stepSize) currentStepSize = stepSize;
         source.pitch = Random.Range(pitch.x, pitch.y);
-        source.PlayOneShot(feetSounds[Random.Range(0,feetSounds.Length)], volume);
+        float RandomVolume = Random.Range(minRandomVolume, maxRandomVolume);
+        source.PlayOneShot(feetSounds[Random.Range(0,feetSounds.Length)], RandomVolume);
     }
 
     void Air()
