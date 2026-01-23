@@ -107,6 +107,9 @@ public class Scr_Speeder : GrandpaParent
         if (inBedroom == true)
         {
             UpdateTimer();
+            audioAction.Stop();
+            audioRun.Stop();
+            audioCrash.Stop();
         }
         else if (ArrivedToDestination())
         {
@@ -125,9 +128,6 @@ public class Scr_Speeder : GrandpaParent
                 int r = Random.Range(0, stunList.Count);
                 audioAction.clip = stunList[r];
                 audioAction.Play();
-
-                //Transform transformfx = slapFX.transform;
-                //transformfx.position;
 
                 GameObject stunVFX  = Instantiate(stunFX, transform.position+(transform.up*1.5f),transform.rotation);
                 Destroy(stunVFX, 2f);
