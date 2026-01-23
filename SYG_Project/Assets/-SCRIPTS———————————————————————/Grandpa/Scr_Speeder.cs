@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
 public class Scr_Speeder : GrandpaParent
 {
@@ -93,13 +94,15 @@ public class Scr_Speeder : GrandpaParent
             audioRun.Play();
             Debug.Log("Je fonce");
         }
-        else
-        {
-            agent.SetDestination(bedroom.position);
-            Debug.Log("Je rentre");
-        }
 
     } // fin de SetRandomDestination
+
+    public override void GoBedroom()
+    {
+        agent.SetDestination(bedroom.position);
+        controlledMove = true;
+        Debug.DrawLine(transform.position, targetPosition, Color.magenta, 10f);
+    }
 
     protected override void Update()
     {
@@ -129,10 +132,10 @@ public class Scr_Speeder : GrandpaParent
                 //Transform transformfx = slapFX.transform;
                 //transformfx.position;
 
-                GameObject stunVFX  = Instantiate(stunFX, transform.position+(transform.up*1.5f),transform.rotation);
+                GameObject stunVFX = Instantiate(stunFX, transform.position + (transform.up * 1.5f), transform.rotation);
                 Destroy(stunVFX, 2f);
-                
-                
+
+
 
 
                 int rr = Random.Range(0, crashList.Count);
@@ -169,6 +172,7 @@ public class Scr_Speeder : GrandpaParent
         if (!_isStun) return;
         Debug.Log($"{transform.name} a pris une claque");
         GoBedroom();
+        agent.speed = 2;
     }
 
     [SerializeField]

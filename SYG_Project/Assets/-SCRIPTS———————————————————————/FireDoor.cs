@@ -9,11 +9,7 @@ public class FireDoor : MonoBehaviour, ISlapable
 {
     public bool CAN_BE_CLOSED = true;
     public bool isClosed = false;
-    public GameObject doorToSpawn;
-    public GameObject loadedDoor;
 
-    [Range(0, 50f)] public float timerAutoOpenDoor;
-    [SerializeField] private float currentTimer;
 
     public List<AudioClip> openList;
     public List<AudioClip> closeList;
@@ -77,11 +73,7 @@ public class FireDoor : MonoBehaviour, ISlapable
         Debug.Log("Porte fermer");
         CloseDoorAnimation();
 
-
-
         //-------------------------
-
-        
         int r = Random.Range(0, closeList.Count);
         audioFireDoor.clip = closeList[r];
         audioFireDoor.Play();
@@ -92,12 +84,10 @@ public class FireDoor : MonoBehaviour, ISlapable
         if (!IsForward()) OpenDoorAnimation(_maxRightRotaForward, _maxLeftRotaForward);
         else OpenDoorAnimation(_maxRightRotaBackward, _maxLeftRotaBackward);
 
+
         Debug.Log("Porte ouverte");
         
         //------------------------
-        if (GAME.MANAGER.CurrentState != State.gameplay) { return;}
-
-
         int r = Random.Range(0, openList.Count);
         audioFireDoor.clip = openList[r];
         audioFireDoor.Play();
@@ -105,14 +95,20 @@ public class FireDoor : MonoBehaviour, ISlapable
 
     void CloseDoorAnimation()
     {
+        rightDoor.DOKill();
+        leftDoor.DOKill();
         rightDoor.DOLocalRotate(Vector3.up * _initialRightRota, 3.5f).SetEase(Ease.OutElastic);
         leftDoor.DOLocalRotate(Vector3.up * _initialLeftRota, 3.5f).SetEase(Ease.OutElastic);
+        Debug.Log("Je ferme la porte");
     }
 
     void OpenDoorAnimation(float Right, float Left)
     {
+        rightDoor.DOKill();
+        leftDoor.DOKill();
         rightDoor.DOLocalRotate(Vector3.up * Right, 1f).SetEase(Ease.OutBounce);
         leftDoor.DOLocalRotate(Vector3.up * Left, 1f).SetEase(Ease.OutBounce);
+        Debug.Log("J'ouvre la porte");
     }
 
     protected bool IsForward()
