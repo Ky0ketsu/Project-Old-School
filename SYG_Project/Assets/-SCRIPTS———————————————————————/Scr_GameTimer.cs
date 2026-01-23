@@ -8,6 +8,9 @@ public class Scr_GameTimer : MonoBehaviour
 {
     [SerializeField,Range(10, 300)]
     float initialTimer;
+    private bool alreadyPlayed = false;
+    public List<AudioClip> timerList;
+    [SerializeField] AudioSource audioTimer;
 
     [HideInInspector]
     public float currentTimer;
@@ -51,6 +54,14 @@ public class Scr_GameTimer : MonoBehaviour
         if(isPlaying)
         {
             TimerUpdate();
+            if (currentTimer <= 60 && alreadyPlayed == false)
+            {
+                int r = Random.Range(0, timerList.Count);
+                audioTimer.clip = timerList[r];
+                audioTimer.Play();
+
+                alreadyPlayed = true;
+            }
         }
     }
 
