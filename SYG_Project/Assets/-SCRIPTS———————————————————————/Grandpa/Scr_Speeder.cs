@@ -93,13 +93,16 @@ public class Scr_Speeder : GrandpaParent
             audioRun.Play();
             Debug.Log("Je fonce");
         }
-        else
-        {
-            agent.SetDestination(bedroom.position);
-            Debug.Log("Je rentre");
-        }
 
     } // fin de SetRandomDestination
+
+    public override void GoBedroom()
+    {
+        agent.SetDestination(bedroom.position);
+        controlledMove = true;
+        Debug.DrawLine(transform.position, targetPosition, Color.magenta, 10f);
+    }
+
 
     protected override void Update()
     {
