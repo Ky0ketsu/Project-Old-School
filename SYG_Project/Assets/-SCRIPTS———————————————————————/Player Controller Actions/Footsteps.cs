@@ -56,6 +56,7 @@ public class Footsteps : MonoBehaviour
     void Air()
     {
         grounded = false;
+        Debug.LogWarning("le joueur touche pas le sol");
     }
 
     void Landing()

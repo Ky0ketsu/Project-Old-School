@@ -15,7 +15,7 @@ public class Scr_CrazyCat : GrandpaParent
     [SerializeField]
     GameObject catPrefab;
     
-    private bool _catIsSpawned = false;
+    public bool _catIsSpawned = false;
     
 
      private GameObject _currentCat;
@@ -79,6 +79,8 @@ public class Scr_CrazyCat : GrandpaParent
 
         CheckCanViewPlayer();
 
+        if (_shearchingPlayer == true) agent.speed = 2;
+        else if (!controlledMove) SetDestinationToPlayer();
 
         if (inBedroom == true)
         {
@@ -92,9 +94,9 @@ public class Scr_CrazyCat : GrandpaParent
                 inBedroom = true;
                 ActivateAgent(false);
             }
-            else if(!_shearchingPlayer) SetRandomDestination(transform.position, 10f);
+            else if (!_shearchingPlayer) SetRandomDestination(transform.position, 10f);
             else SetDestinationToPlayer();
-            
+
         }
 
         if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
@@ -102,6 +104,7 @@ public class Scr_CrazyCat : GrandpaParent
 
     void SetDestinationToPlayer()
     {
+        agent.speed = 4;
         targetPosition = player.position;
         SetRandomDestination(player.position, 0f);
     }

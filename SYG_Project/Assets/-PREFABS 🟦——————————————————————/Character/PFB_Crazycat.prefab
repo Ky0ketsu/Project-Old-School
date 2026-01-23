@@ -140,8 +140,10 @@ MonoBehaviour:
     m_Bits: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
-  catPrefab: {fileID: 0}
+    m_Bits: 635073
+  catPrefab: {fileID: 3389894155593817283, guid: aa873cecbc2d9d446b709c564645d99a,
+    type: 3}
+  _catIsSpawned: 0
   _catSpawnPointParent: {fileID: 0}
 --- !u!1 &6239196297178949825 stripped
 GameObject:

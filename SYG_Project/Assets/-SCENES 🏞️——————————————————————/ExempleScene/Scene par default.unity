@@ -826,10 +826,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SLAP the door to start
-
-    And you better close behind you, insolent
-    >:c'
+  m_text: "\rCLAQUEZ la porte pour commencer\nEt vous avez int\xE9r\xEAt \xE0 fermer
+    derri\xE8re vous, insolent >:c"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -1733,6 +1731,11 @@ PrefabInstance:
       propertyPath: 'feetSounds.Array.data[2]'
       value: 
       objectReference: {fileID: 8300000, guid: ec32e2011b44eb7439354e4fb3c4e0ab, type: 3}
+    - target: {fileID: 3169480182097322982, guid: 5a34377d222504e459583428626f9f4b,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4366888945474098782, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_Name
@@ -1788,7 +1791,7 @@ PrefabInstance:
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43.94
+      value: 39.24
       objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
@@ -2068,12 +2071,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 962749945}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &979869894 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5783531117993325114, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1687093890565055716}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1000029025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8143670527220471383, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
@@ -2259,10 +2256,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'They go to their room and will come out of it after some time
-
-    Hold
-    Space or Left Click to look at your TABLET'
+  m_text: "Ils retournent dans leurs chambres, ils en resortiront apr\xE8s un certains
+    temps\nRestez appuy\xE9 sur Espace ou Clic Gauche pour regarder votre TABLETTE"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -2418,9 +2413,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press Space or Left Click to SLAP
+  m_text: 'Appuyez sur Espace ou Clic Gauche pour CLAQUER
 
-    SLAP Grandpas to fix them'
+    CLAQUEZ les Papis
+    pour les soigner'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -2556,7 +2552,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834829094}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a8aca0284351774ab341b24249885ca, type: 3}
   m_Name: 
@@ -3108,10 +3104,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Seems like other grandpas need to be cured!!
+  m_text: 'On dirait que d''autres Papis ont besoin de vous!!
 
-    Bring them back to their
-    room before the end of the timer on your TABLET'
+    Ramenez les dans
+    leurs chambres avant la fin du chrono sur votre TABLETTE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -4807,25 +4803,10 @@ PrefabInstance:
       propertyPath: parentSpawnPoint
       value: 
       objectReference: {fileID: 1201520022}
-    - target: {fileID: 137082523530579304, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 217790957052323455, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 245605605304118142, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: MaxDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 245605605304118142, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 610694412042837912, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
@@ -4992,16 +4973,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1210043493}
-    - target: {fileID: 2203979981157313298, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2264344936593057278, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2345168952721701452, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: m_IsActive
@@ -5057,11 +5028,6 @@ PrefabInstance:
       propertyPath: audioFireDoor
       value: 
       objectReference: {fileID: 1719789676}
-    - target: {fileID: 2908484360302156107, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3351030219874217733, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: MaxDistance
@@ -5070,11 +5036,6 @@ PrefabInstance:
     - target: {fileID: 3351030219874217733, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3369712950908866870, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3409048175651245328, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
@@ -5086,42 +5047,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3430549314103836184, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: _speed
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3430549314103836184, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1210043493}
-    - target: {fileID: 3430549314103836184, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 979869894}
-    - target: {fileID: 3430549314103836184, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: _escapeSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3479086230712744352, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3865091231073556775, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: MaxDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3865091231073556775, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4139293451171269571, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5221,16 +5152,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5687274819374140585, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6269853557973033646, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6411373008206473718, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
@@ -5370,23 +5291,6 @@ PrefabInstance:
       objectReference: {fileID: 1210043493}
     - target: {fileID: 6886254896559051479, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
-      propertyPath: catPrefab
-      value: 
-      objectReference: {fileID: 3389894155593817283, guid: aa873cecbc2d9d446b709c564645d99a,
-        type: 3}
-    - target: {fileID: 6886254896559051479, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: leaveBedroomFX
-      value: 
-      objectReference: {fileID: 6089237566075303425, guid: 4811bc64d2d12d749a0af386f0ce3ed1,
-        type: 3}
-    - target: {fileID: 6886254896559051479, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 635073
-      objectReference: {fileID: 0}
-    - target: {fileID: 6886254896559051479, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
       propertyPath: _catSpawnPointParent
       value: 
       objectReference: {fileID: 2085046720}
@@ -5420,26 +5324,6 @@ PrefabInstance:
       propertyPath: 'catSpawnPoint.Array.data[5]'
       value: 
       objectReference: {fileID: 1270036069}
-    - target: {fileID: 6932003218367979035, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046411133654225143, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7153531212988561121, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: MaxDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7153531212988561121, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7304223306103070893, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5555,16 +5439,6 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8581474162042237625, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8657709935648521968, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8730104812521537505, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5605,21 +5479,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1210043493}
-    - target: {fileID: 9065148815681199735, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: MaxDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9065148815681199735, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9131327924204549773, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8545380943367348232, guid: d0a1ca072e4ad4f4c9af18f172ec604e, type: 3}
     - {fileID: 3351030219874217733, guid: d0a1ca072e4ad4f4c9af18f172ec604e, type: 3}

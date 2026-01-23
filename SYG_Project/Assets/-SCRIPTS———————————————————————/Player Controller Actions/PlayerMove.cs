@@ -50,7 +50,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         HorizontalMovement();
-        //VerticalMovement();
+        VerticalMovement();
         ApplyMovement();
     }
 
@@ -83,14 +83,15 @@ public class PlayerMove : MonoBehaviour
         if (lookScript != null) MovementRelativeToCamera();
         character.Move(movement * Time.deltaTime);
 
+        Vector3 moveTemp = new Vector3(movement.x, 0, movement.z);
 
 
-        if (_wobble == false && movement.magnitude != 0)
+        if (_wobble == false && moveTemp.magnitude != 0)
         {
             cameraPlayer.DOLocalMoveY(-0.2f, 0.4f).SetLoops(-1, LoopType.Yoyo);
             _wobble = true;
         }
-        if (_wobble == true && movement.magnitude == 0)
+        if (_wobble == true && moveTemp.magnitude == 0)
         {
             cameraPlayer.DOKill();
             cameraPlayer.DOLocalMoveY(0, 0.4f);

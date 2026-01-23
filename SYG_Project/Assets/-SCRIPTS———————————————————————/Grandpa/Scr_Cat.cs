@@ -26,6 +26,7 @@ public class Scr_Cat : MonoBehaviour , ISlapable
     {
         crazyCat.GoBedroom();
         Destroy(gameObject);
+        crazyCat._catIsSpawned = false;
     }
 
     public void Update()
