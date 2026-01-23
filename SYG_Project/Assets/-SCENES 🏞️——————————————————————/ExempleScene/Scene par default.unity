@@ -1438,7 +1438,7 @@ PrefabInstance:
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.23
+      value: 44.45
       objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
@@ -1448,27 +1448,27 @@ PrefabInstance:
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.53
+      value: 24.64
       objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8340429
       objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.55169964
       objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
@@ -1478,7 +1478,7 @@ PrefabInstance:
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -66.967
       objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
@@ -1903,7 +1903,7 @@ MonoBehaviour:
   TutoText: {fileID: 1144309997}
   playerActionService: {fileID: 2068312052}
   Scr_GameTimer: {fileID: 0}
-  DoorToOpen: {fileID: 0}
+  DoorToOpen: {fileID: 1453938786}
   GRANDPA_TO_START:
   - {fileID: 0}
   - {fileID: 0}
@@ -2018,6 +2018,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53f890ed2b052064c90a8c964bbe3956, type: 3}
+--- !u!1 &1453938786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5411180866071263313, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1687093890565055716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1501570259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
@@ -2453,6 +2459,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536012910612643179, guid: b763f14574b283d41b6815aeab5d0897,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1794074187165240167, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
