@@ -16,6 +16,10 @@ public class Scr_Cat : MonoBehaviour , ISlapable
 
     [SerializeField]
     private float timerForFX = 0; 
+    
+    [SerializeField]
+    public List<AudioClip> meowList;
+    [SerializeField] AudioSource audioCat;
 
     public void Awake()
     {
@@ -38,6 +42,10 @@ public class Scr_Cat : MonoBehaviour , ISlapable
             timerForFX = 15;
 
             SpawnedFX = Instantiate(SpawnFX, transform); 
+
+            int r = Random.Range(0, meowList.Count);
+            audioCat.clip = meowList[r];
+            audioCat.Play();
         }
     }
 }
