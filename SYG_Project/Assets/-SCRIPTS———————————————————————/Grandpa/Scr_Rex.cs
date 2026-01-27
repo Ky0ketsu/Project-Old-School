@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Scr_Rex : GrandpaParent
 {
+
+    [SerializeField] GameObject HealVFX;
+
     [SerializeField]
     int life;
 
@@ -21,7 +24,6 @@ public class Scr_Rex : GrandpaParent
     void Start()
     {
         life = 3;
-        spriteCanSlap = true;
     }
 
     public override void Slap()
@@ -32,13 +34,11 @@ public class Scr_Rex : GrandpaParent
 
     IEnumerator EscapeRoutine()
     {
-        spriteCanSlap = false;
         _animator.speed = _escapeSpeed;
         agent.speed = 5f;
         yield return new WaitForSeconds(3f);
         _animator.speed = _speed;
         agent.speed = 2f;
-        spriteCanSlap = true;
     }
 
     void DeacreasedHp()
@@ -57,22 +57,19 @@ public class Scr_Rex : GrandpaParent
         if(life == 0 )
         {
             controlledMove = true;
-            spriteCanSlap = false;
             agent.SetDestination(bedroom.position);
         }
 
-        /*if (life < 0 && !isStun)
+        if (life <= 0 && !isStun)
         {
             StartCoroutine(StunRoutine());
 
-            int r = Random.Range(0, cryList.Count);
-            audioPshht.clip = cryList[r];
-            audioPshht.Play();
-        }*/
+            Instantiate(HealVFX, transform.position, Quaternion.identity);
+        }
     }
 
     private bool isStun;
-    /*IEnumerator StunRoutine()
+    IEnumerator StunRoutine()
     {
         Debug.Log("Rex CRY");
         isStun = true;
@@ -81,10 +78,8 @@ public class Scr_Rex : GrandpaParent
         yield return new WaitForSeconds(4f);
 
         isStun = false;
-        life = 3;
         canMove = true;
-        spriteCanSlap = true;
-    }*/
+    }
 
     protected override void Update()
     {
