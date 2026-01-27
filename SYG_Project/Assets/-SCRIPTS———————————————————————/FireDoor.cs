@@ -74,6 +74,7 @@ public class FireDoor : MonoBehaviour, ISlapable
         CloseDoorAnimation();
 
         //-------------------------
+        if (GAME.MANAGER.CurrentState != State.gameplay) { return;}
         int r = Random.Range(0, closeList.Count);
         audioFireDoor.clip = closeList[r];
         audioFireDoor.Play();
@@ -88,6 +89,7 @@ public class FireDoor : MonoBehaviour, ISlapable
         Debug.Log("Porte ouverte");
         
         //------------------------
+        if (GAME.MANAGER.CurrentState != State.gameplay) { return;}
         int r = Random.Range(0, openList.Count);
         audioFireDoor.clip = openList[r];
         audioFireDoor.Play();
