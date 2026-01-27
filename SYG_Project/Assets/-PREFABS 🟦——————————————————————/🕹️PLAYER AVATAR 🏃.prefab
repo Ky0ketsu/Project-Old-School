@@ -752,7 +752,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 741e13d72f72aca4c9ff71322dcdcae6, type: 3}
   - {fileID: 8300000, guid: ec32e2011b44eb7439354e4fb3c4e0ab, type: 3}
   pitch: {x: 0.7852284, y: 0.93522835}
-  stepSize: 2.3
+  stepSize: 2.2
+  minRandomVolume: 0.2
+  maxRandomVolume: 0.6
 --- !u!82 &3169480182097322982
 AudioSource:
   m_ObjectHideFlags: 0
@@ -767,7 +769,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
