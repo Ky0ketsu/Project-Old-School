@@ -22,5 +22,6 @@ public class TimerService : MonoBehaviour
         timerObject = gameObject;
     }
 
+    public GameObject sprite;
 
 }

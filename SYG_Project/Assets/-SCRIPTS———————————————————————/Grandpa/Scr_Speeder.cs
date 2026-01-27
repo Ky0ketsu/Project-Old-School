@@ -180,6 +180,7 @@ public class Scr_Speeder : GrandpaParent
     void Stun(float stunTime)
     {
         _isStun = true;
+        spriteCanSlap = true;
 
         StartCoroutine(StunRoutine(stunTime));
         
@@ -189,6 +190,7 @@ public class Scr_Speeder : GrandpaParent
     {
         yield return new WaitForSeconds(StunTime);
         SetRandomDestination(transform.position, 10f);
+        spriteCanSlap = false;
         _isStun = false;
         
     }

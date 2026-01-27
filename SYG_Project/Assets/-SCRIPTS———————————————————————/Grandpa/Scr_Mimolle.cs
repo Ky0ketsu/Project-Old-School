@@ -75,6 +75,12 @@ public class Scr_Mimolle : GrandpaParent
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
 
+        if(!controlledMove)
+        {
+            if (!CanSeePlayer()) spriteCanSlap = true;
+            else spriteCanSlap = false;
+        }
+        else spriteCanSlap = false ;
 
 
         if (!shearchPlayer && !controlledMove) CheckCanHitPlayer();

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class GrandpaParent : MonoBehaviour , ISlapable
 {
+    public bool spriteCanSlap;
 
     [SerializeField] 
     public bool canMove;

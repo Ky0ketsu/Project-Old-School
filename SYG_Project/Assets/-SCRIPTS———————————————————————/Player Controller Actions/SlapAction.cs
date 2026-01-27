@@ -67,38 +67,91 @@ public class SlapAction : MonoBehaviour
         _canSlap = false;
     }
 
-    public void SlapWanted()
+    bool isProxi;
+    GameObject spriteSpine;
+
+    private void Update()
     {
         RaycastHit hit;
-
-        if (!_canSlap) return;
-
         if (Physics.Raycast(transform.position + Vector3.up * 1.5f, _viewDirection.forward, out hit, 3f, _layerMask))
         {
             Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * hit.distance, Color.green, 5f);
-            
 
             ISlapable slapable = hit.transform.GetComponentInParent<ISlapable>();
             if (slapable != null)
             {
-                Debug.Log(slapable);
-                slapable.Slap();
-                GameObject slapVFX = Instantiate(slapFX, hit.point, Quaternion.identity);
-                Destroy(slapVFX, 1f);
-                
-            }
-            else Debug.Log(" je suis null");
+                if(hit.transform.GetComponentInParent<GrandpaParent>() != null)
+                {
+                    if (hit.transform.GetComponentInParent<GrandpaParent>().spriteCanSlap == true)
+                    {
+                        SetSprite(true);
+                    }
+                    else
+                    {
+                        SetSprite(false);
+                    }
 
-            if (slapList != null)
+                    
+                }
+                else
+                {
+                    SetSprite(false);
+                }
+            }
+            else
             {
-                ServicesLocator.Get<IAudioService>().PlayAudioOneShot(slapList[Random.Range(0, slapList.Count)]);
+                SetSprite(false);
             }
-
-
-            
-            
         }
-        else   
+        else
+        {
+            Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * 3f, Color.red, 5f);
+            SetSprite(false);
+        }
+
+    }
+
+    void SetSprite(bool wanted)
+    {
+        if(spriteSpine == null)
+        {
+            spriteSpine = ServicesLocator.Get<TimerService>().sprite;
+        }
+        spriteSpine.SetActive(wanted);
+    }
+
+    public void SlapWanted()
+    {
+    RaycastHit hit;
+
+    if (!_canSlap) return;
+
+    if (Physics.Raycast(transform.position + Vector3.up * 1.5f, _viewDirection.forward, out hit, 3f, _layerMask))
+    {
+        Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * hit.distance, Color.green, 5f);
+
+
+        ISlapable slapable = hit.transform.GetComponentInParent<ISlapable>();
+        if (slapable != null)
+        {
+            Debug.Log(slapable);
+            slapable.Slap();
+            GameObject slapVFX = Instantiate(slapFX, hit.point, Quaternion.identity);
+            Destroy(slapVFX, 1f);
+
+        }
+        else Debug.Log(" je suis null");
+
+        if (slapList != null)
+        {
+            ServicesLocator.Get<IAudioService>().PlayAudioOneShot(slapList[Random.Range(0, slapList.Count)]);
+        }
+
+
+
+
+        }
+        else
         {
             Debug.DrawRay(transform.position + Vector3.up * 1.5f, _viewDirection.forward * 3f, Color.red, 5f);
             Debug.Log("Loupé");

@@ -21,14 +21,17 @@ public class Scr_Cat : MonoBehaviour , ISlapable
     public List<AudioClip> meowList;
     [SerializeField] AudioSource audioCat;
 
-    public void Awake()
+    public bool spriteCanSlap;
+
+    void Start()
     {
-        
+        spriteCanSlap = true;
     }
 
     public void Slap()
     {
         crazyCat.GoBedroom();
+        spriteCanSlap = false;
         Destroy(gameObject);
         crazyCat._catIsSpawned = false;
     }
