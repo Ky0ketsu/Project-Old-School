@@ -566,8 +566,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\rCLAQUEZ la porte pour commencer\nEt vous avez int\xE9r\xEAt \xE0 fermer
-    derri\xE8re vous, insolent >:c"
+  m_text: 'SLAP the door to start
+
+    And you better close behind you, insolent
+    >:c'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -1548,12 +1550,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 834829093}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1008801244 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8320169356399439187, guid: 23d56e67a282d5541830ce5a2583ead6,
-    type: 3}
-  m_PrefabInstance: {fileID: 4000021320453257949}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1056085239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,8 +1626,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ils retournent dans leurs chambres, ils en resortiront apr\xE8s un certains
-    temps\nRestez appuy\xE9 sur Espace ou Clic Gauche pour regarder votre TABLETTE"
+  m_text: 'They go to their room and will come out of it after some time
+
+    Hold
+    Space or Left Click to look at your TABLET'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -1781,10 +1779,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Appuyez sur Espace ou Clic Gauche pour CLAQUER
+  m_text: 'Press Space or Left Click to SLAP
 
-    CLAQUEZ les Papis
-    pour les soigner'
+    SLAP Grandpas to fix them'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -1970,85 +1967,11 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2068312050}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1353153706
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1008801244}
-    m_Modifications:
-    - target: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475334638672896310, guid: 53f890ed2b052064c90a8c964bbe3956,
-        type: 3}
-      propertyPath: m_Name
-      value: Ambiance_Drone
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 53f890ed2b052064c90a8c964bbe3956, type: 3}
 --- !u!1 &1453938786 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5411180866071263313, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
     type: 3}
   m_PrefabInstance: {fileID: 1687093890565055716}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1501570259 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4505736388983328859, guid: 53f890ed2b052064c90a8c964bbe3956,
-    type: 3}
-  m_PrefabInstance: {fileID: 1353153706}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1507748830 stripped
 Transform:
@@ -2158,10 +2081,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'On dirait que d''autres Papis ont besoin de vous!!
+  m_text: 'Seems like other grandpas need to be cured!!
 
-    Ramenez les dans
-    leurs chambres avant la fin du chrono sur votre TABLETTE'
+    Bring them back to their
+    room before the end of the timer on your TABLET'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -4613,11 +4536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8320169356399439187, guid: 23d56e67a282d5541830ce5a2583ead6,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1501570259}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23d56e67a282d5541830ce5a2583ead6, type: 3}
 --- !u!1660057539 &9223372036854775807
