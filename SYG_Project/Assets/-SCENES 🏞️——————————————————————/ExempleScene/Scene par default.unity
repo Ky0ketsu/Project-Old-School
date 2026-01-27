@@ -566,8 +566,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\rCLAQUEZ la porte pour commencer\nEt vous avez int\xE9r\xEAt \xE0 fermer
-    derri\xE8re vous, insolent >:c"
+  m_text: 'SLAP the door to start
+
+    And you better close behind you, insolent
+    >:c'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -1610,8 +1612,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ils retournent dans leurs chambres, ils en resortiront apr\xE8s un certains
-    temps\nRestez appuy\xE9 sur Espace ou Clic Gauche pour regarder votre TABLETTE"
+  m_text: 'They go to their room and will come out of it after some time
+
+    Hold
+    Space or Left Click to look at your TABLET'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -1761,10 +1765,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Appuyez sur Espace ou Clic Gauche pour CLAQUER
+  m_text: 'Press Space or Left Click to SLAP
 
-    CLAQUEZ les Papis
-    pour les soigner'
+    SLAP Grandpas to fix them'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -2138,10 +2141,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'On dirait que d''autres Papis ont besoin de vous!!
+  m_text: 'Seems like other grandpas need to be cured!!
 
-    Ramenez les dans
-    leurs chambres avant la fin du chrono sur votre TABLETTE'
+    Bring them back to their
+    room before the end of the timer on your TABLET'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -2623,7 +2626,7 @@ PrefabInstance:
     - target: {fileID: 2570390858060993777, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 25691
+      value: 25694
       objectReference: {fileID: 0}
     - target: {fileID: 2577698229773571606, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
@@ -2943,7 +2946,7 @@ PrefabInstance:
     - target: {fileID: 4539956040627820855, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 10782
+      value: 10785
       objectReference: {fileID: 0}
     - target: {fileID: 4592314032688374603, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
@@ -3234,7 +3237,7 @@ PrefabInstance:
     - target: {fileID: 6048219403516517831, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 25586
+      value: 25589
       objectReference: {fileID: 0}
     - target: {fileID: 6055309098715455866, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
@@ -3820,6 +3823,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1210043493}
+    - target: {fileID: 660704208383534660, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+        type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 660704208383534660, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+        type: 3}
+      propertyPath: minimumDistante
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 802389017670279862, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: m_TargetTexture

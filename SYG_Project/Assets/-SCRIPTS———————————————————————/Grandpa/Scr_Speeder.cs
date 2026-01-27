@@ -31,7 +31,8 @@ public class Scr_Speeder : GrandpaParent
 
     public GameObject stunFX;
 
-
+    [SerializeField]
+    private LayerMask doorLayer;
 
     private bool _isStun;
 
@@ -39,7 +40,6 @@ public class Scr_Speeder : GrandpaParent
     {
         bool mouvIsDefine = false;
         int currentDirIndex = Random.Range(0, dir.Length);
-        
 
         while(mouvIsDefine == false)
         {
@@ -59,26 +59,35 @@ public class Scr_Speeder : GrandpaParent
                 Debug.Log(dir[currentDirIndex]);
                 Debug.Log(currentPickPosition);
 
-
-                if (NavMesh.SamplePosition(currentPickPosition, out hit, 1f, NavMesh.AllAreas))
+                RaycastHit hitDoor;
+                if (Physics.Raycast(lastPickPosition, dir[currentDirIndex], out hitDoor, 2f, doorLayer))
                 {
-                    currentIndex++;
+                    if (hitDoor.transform.GetComponent<FireDoor>())
+                    {
+                        currentIsOnNavmesh = false;
+                    }
                 }
                 else
-                { 
-                    currentIsOnNavmesh = false;
+                {
+                    if (NavMesh.SamplePosition(currentPickPosition, out hit, 1f, NavMesh.AllAreas))
+                    {
+                        currentIndex++;
+                    }
+                    else
+                    {
+                        currentIsOnNavmesh = false;
+                    }
                 }
-                
             } // fin du petit while
 
             if (currentIndex < minimumDistante)
             {
                 break;
             }
+
             Debug.DrawLine(transform.position, lastPickPosition, Color.white, 1f);
             targetPosition = lastPickPosition;
             mouvIsDefine = true;
-
         } // fin du while
 
 
@@ -116,6 +125,15 @@ public class Scr_Speeder : GrandpaParent
         }
         else if (ArrivedToDestination())
         {
+            RaycastHit hitDoor;
+            if (Physics.Raycast(transform.position, transform.forward, out hitDoor, 2f, doorLayer))
+            {
+                if (hitDoor.transform.GetComponent<FireDoor>().isClosed)
+                {
+                    hitDoor.transform.GetComponent<FireDoor>().ChangeDoorState();
+                }
+            }
+
             if (controlledMove)
             {
                 exitBedroomTimer = 100f;
@@ -149,22 +167,6 @@ public class Scr_Speeder : GrandpaParent
         if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
         agent.speed = currentSpeed;
 
-
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, 5f, layerMask))
-        {
-            Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.yellow);
-
-            if (hit.transform.GetComponent<FireDoor>() != null)
-            {
-                hit.transform.GetComponent<FireDoor>().ChangeDoorState();
-                Debug.Log("Speeder claque la porte");
-            }
-        }
-        else
-        {
-            Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.red);
-        }
     }
 
     public override void Slap()
@@ -174,8 +176,6 @@ public class Scr_Speeder : GrandpaParent
         GoBedroom();
     }
 
-    [SerializeField]
-    LayerMask layerMask;
 
     void Stun(float stunTime)
     {

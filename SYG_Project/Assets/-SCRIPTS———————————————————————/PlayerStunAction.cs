@@ -62,13 +62,20 @@ public class PlayerStunAction : MonoBehaviour
         StartCoroutine(StunRoutine());
     }
 
+    void SetDir()
+    {
+        dirToMimolle = ServicesLocator.Get<GrandpaService>().grandpas[0].position - transform.position;
+        dirToMimolle.Normalize();
+    }
+
+    Vector3 dirToMimolle;
+
     IEnumerator StunRoutine()
     {
-        Vector3 dirToMimolle = (ServicesLocator.Get<GrandpaService>().grandpas[0].position - transform.position).normalized;
-        Debug.DrawRay(transform.position, dirToMimolle * Vector3.Distance(ServicesLocator.Get<GrandpaService>().grandpas[0].position, transform.position), Color.red, 5f);
         SetMove(false);
+        SetDir();
 
-        cameraTransform.DORotate(cameraTransform.TransformDirection(dirToMimolle), 1f).SetEase(Ease.InOutCubic);
+        cameraTransform.DORotate(dirToMimolle, 1f).SetEase(Ease.InOutCubic);
         yield return new WaitForSeconds(1f);
         cameraTransform.DOMoveY(_initialY + 0.2f, 0.6f).SetEase(Ease.InExpo);
         rigid.AddForce(-dirToMimolle * 3);
@@ -89,6 +96,6 @@ public class PlayerStunAction : MonoBehaviour
     void SetMove(bool wanted)
     {
         transform.GetComponent<PlayerMove>().CanRun = wanted;
-        transform.GetComponent<PlayerLook>().CanLook= wanted;
+        transform.GetComponent<PlayerLook>().CanLook = wanted;
     }
 }

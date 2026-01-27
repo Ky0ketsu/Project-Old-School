@@ -35,7 +35,6 @@ public class Scr_CrazyCat : GrandpaParent
         }
     }
 
-
     void CheckCanViewPlayer()
     {
         if (!CanSeePlayer()) return;
@@ -65,7 +64,7 @@ public class Scr_CrazyCat : GrandpaParent
     public override void Slap()
     {
         Debug.Log("Trouve le chat");
-        if (_catIsSpawned == false)
+        if (_catIsSpawned == false && !controlledMove)
         {
             _currentCat = Instantiate(catPrefab, _catSpawnPoint[Random.Range(0, _catSpawnPoint.Length)].position, Quaternion.identity);
             _currentCat.GetComponent<Scr_Cat>().crazyCat = this;
@@ -106,6 +105,7 @@ public class Scr_CrazyCat : GrandpaParent
     {
         agent.speed = 4;
         targetPosition = player.position;
+        if(ArrivedToDestination()) return;
         SetRandomDestination(player.position, 0f);
     }
 }
