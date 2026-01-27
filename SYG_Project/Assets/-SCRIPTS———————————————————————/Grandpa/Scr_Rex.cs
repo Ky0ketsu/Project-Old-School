@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Scr_Rex : GrandpaParent
 {
+
+    [SerializeField] GameObject HealVFX;
+
     [SerializeField]
     int life;
 
@@ -61,9 +64,7 @@ public class Scr_Rex : GrandpaParent
         {
             StartCoroutine(StunRoutine());
 
-            int r = Random.Range(0, cryList.Count);
-            audioPshht.clip = cryList[r];
-            audioPshht.Play();
+            Instantiate(HealVFX, transform.position, Quaternion.identity);
         }
     }
 
