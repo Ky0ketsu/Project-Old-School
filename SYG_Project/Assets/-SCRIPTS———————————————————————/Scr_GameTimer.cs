@@ -15,6 +15,8 @@ public class Scr_GameTimer : MonoBehaviour
     [HideInInspector]
     public float currentTimer;
 
+    public Scr_DroneAmbiance droneScript;
+
 
 
     [HideInInspector]
@@ -25,6 +27,7 @@ public class Scr_GameTimer : MonoBehaviour
         EVENTS.OnGameplay += EnableTimer;
         EVENTS.OnGameplayExit += DisableTimer;
         EVENTS.OnGameStart += SetTimer;
+
     }
 
     private void OnDestroy()
@@ -37,6 +40,7 @@ public class Scr_GameTimer : MonoBehaviour
     public void EnableTimer()
     {
         isPlaying = true;
+        droneScript.gameObject.SetActive(true);
     }
 
     public void DisableTimer()
@@ -76,6 +80,8 @@ public class Scr_GameTimer : MonoBehaviour
         {
             isPlaying=false;
             EVENTS.InvokeGameOver();
+
+            droneScript.gameObject.SetActive(false);
         }
     }
 }
