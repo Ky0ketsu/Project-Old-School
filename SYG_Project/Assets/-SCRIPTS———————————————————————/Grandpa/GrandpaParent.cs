@@ -8,12 +8,12 @@ public class GrandpaParent : MonoBehaviour , ISlapable
 {
 
     [SerializeField] 
-    protected bool canMove;
+    public bool canMove;
 
-    [SerializeField] GameObject graphics, colliders;
+    [SerializeField] public GameObject graphics, colliders;
 
     protected Vector3 targetPosition;
-    protected NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     [SerializeField]
     public Transform player;
