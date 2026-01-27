@@ -2,7 +2,9 @@ using DG.Tweening;
 using Rewired;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PlayerStunAction : MonoBehaviour
 {
@@ -16,13 +18,14 @@ public class PlayerStunAction : MonoBehaviour
     public List<AudioClip> stunList;
     [SerializeField] AudioSource audioStun;
 
-    [HideInInspector]
-    private Rigidbody rigid;
+   
 
     private void Start()
     {
         _canStun = true;
-        rigid = GetComponent<Rigidbody>();
+        if (animator == null) animator = GetComponentInChildren<Animator>().gameObject;
+
+        animator.SetActive(false);
     }
 
 
@@ -62,31 +65,40 @@ public class PlayerStunAction : MonoBehaviour
         StartCoroutine(StunRoutine());
     }
 
-    void SetDir()
+    void EnableMimolle(bool wanted)
     {
-        dirToMimolle = ServicesLocator.Get<GrandpaService>().grandpas[0].position - transform.position;
-        dirToMimolle.Normalize();
+        Scr_Mimolle mimolle = ServicesLocator.Get<GrandpaService>().grandpas[0].GetComponent<Scr_Mimolle>();
+
+        mimolle.canMove = wanted;
+        mimolle.agent.enabled = wanted;
+        mimolle.graphics.SetActive(wanted);
+        mimolle.colliders.SetActive(wanted);
     }
 
-    Vector3 dirToMimolle;
+    GameObject animator;
 
     IEnumerator StunRoutine()
     {
         SetMove(false);
-        SetDir();
 
-        cameraTransform.DORotate(dirToMimolle, 1f).SetEase(Ease.InOutCubic);
-        yield return new WaitForSeconds(1f);
-        cameraTransform.DOMoveY(_initialY + 0.2f, 0.6f).SetEase(Ease.InExpo);
-        rigid.AddForce(-dirToMimolle * 3);
-        yield return new WaitForSeconds(0.6f);
-        cameraTransform.DOMoveY(_initialY - 1.5f, 0.7f).SetEase(Ease.OutBounce);
+        EnableMimolle(false);
+        animator.SetActive(true);
+
+       
+        yield return new WaitForSeconds(0.5f);
+        cameraTransform.DOMoveY(_initialY + 0.2f, 0.3f).SetEase(Ease.InExpo);
+        yield return new WaitForSeconds(0.3f);
+        EnableMimolle(true);
+        animator.SetActive(false);
+        cameraTransform.DOMoveY(_initialY - 1.5f, 0.8f).SetEase(Ease.OutBounce);
+        cameraTransform.DOLocalRotate(Vector3.right * -90, 0.8f).SetEase(Ease.InOutCubic);
         yield return new WaitForSeconds(2f);
         cameraTransform.DOMoveY(_initialY, 2f).SetEase(Ease.InCubic);
-        cameraTransform.DORotate(_initialRota, 2f).SetEase(Ease.InOutCubic);
+        cameraTransform.DOLocalRotate(Vector3.zero, 1.4f).SetEase(Ease.InOutCubic);
         yield return new WaitForSeconds(2f);
 
 
+        
         SetMove(true);
         _canStun = true;
         

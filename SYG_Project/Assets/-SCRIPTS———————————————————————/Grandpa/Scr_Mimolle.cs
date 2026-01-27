@@ -123,7 +123,7 @@ public class Scr_Mimolle : GrandpaParent
             {
                 hit.transform.GetComponentInParent<PlayerStunAction>().Stun();
                 StartCoroutine(AttackRoutine());
-                _timerAfterkickPlayer = 15f;
+                _timerAfterkickPlayer = 5f;
             }
             else Debug.Log("mimolle na pas toucher");
         }

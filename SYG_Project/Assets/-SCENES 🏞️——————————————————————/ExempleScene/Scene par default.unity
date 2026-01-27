@@ -566,10 +566,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SLAP the door to start
-
-    And you better close behind you, insolent
-    >:c'
+  m_text: "\rCLAQUEZ la porte pour commencer\nEt vous avez int\xE9r\xEAt \xE0 fermer
+    derri\xE8re vous, insolent >:c"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -1385,6 +1383,11 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3714713749711871025, guid: 5a34377d222504e459583428626f9f4b,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ad697ccb319b074491296dc64c2da65, type: 2}
     - target: {fileID: 4366888945474098782, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_Name
@@ -1437,10 +1440,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7423862267534900631, guid: 5a34377d222504e459583428626f9f4b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423862267534900631, guid: 5a34377d222504e459583428626f9f4b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423862267534900631, guid: 5a34377d222504e459583428626f9f4b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.45
+      value: 51.903
       objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
@@ -1450,7 +1468,7 @@ PrefabInstance:
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.64
+      value: 22.917
       objectReference: {fileID: 0}
     - target: {fileID: 7793468648195284962, guid: 5a34377d222504e459583428626f9f4b,
         type: 3}
@@ -1612,10 +1630,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'They go to their room and will come out of it after some time
-
-    Hold
-    Space or Left Click to look at your TABLET'
+  m_text: "Ils retournent dans leurs chambres, ils en resortiront apr\xE8s un certains
+    temps\nRestez appuy\xE9 sur Espace ou Clic Gauche pour regarder votre TABLETTE"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -1765,9 +1781,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press Space or Left Click to SLAP
+  m_text: 'Appuyez sur Espace ou Clic Gauche pour CLAQUER
 
-    SLAP Grandpas to fix them'
+    CLAQUEZ les Papis
+    pour les soigner'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -2141,10 +2158,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Seems like other grandpas need to be cured!!
+  m_text: 'On dirait que d''autres Papis ont besoin de vous!!
 
-    Bring them back to their
-    room before the end of the timer on your TABLET'
+    Ramenez les dans
+    leurs chambres avant la fin du chrono sur votre TABLETTE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -2466,7 +2483,7 @@ PrefabInstance:
     - target: {fileID: 1536012910612643179, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1794074187165240167, guid: b763f14574b283d41b6815aeab5d0897,
         type: 3}
