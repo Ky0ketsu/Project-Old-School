@@ -1,5 +1,8 @@
 using DG.Tweening;
+using Rewired;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Scr_Mimolle : GrandpaParent
@@ -11,6 +14,11 @@ public class Scr_Mimolle : GrandpaParent
     private float _timerNotShowPlayer;
 
     private float _timerAfterkickPlayer;
+
+
+    public List<AudioClip> punchList;
+    [SerializeField] AudioSource audioPunch;
+
 
     void CheckCanViewPlayer()
     {
@@ -110,7 +118,17 @@ public class Scr_Mimolle : GrandpaParent
             StartCoroutine(AttackAnimation());
             Invoke("CheckTouchPlayer", 0.6f);
             timerCanAttack = 2f;
+
         }
+
+        
+    }
+
+    void PunchSound()
+    {
+        int r = Random.Range(0, punchList.Count);
+        audioPunch.clip = punchList[r];
+        audioPunch.Play();
     }
 
     void CheckTouchPlayer()
@@ -145,6 +163,7 @@ public class Scr_Mimolle : GrandpaParent
         transform.GetChild(0).DOScaleY(0.7f, 0.45f).SetEase(Ease.InCubic);
         yield return new WaitForSeconds(0.5f);
         transform.GetChild(0).DOScaleY(1f, 0.2f).SetEase(Ease.OutCubic);
+        PunchSound();
        
     }
 }
