@@ -25,7 +25,6 @@ public class Scr_Tuto : MonoBehaviour
     private Player player;
 
     public GameObject TutoText;
-    TextMeshProUGUI textmeshpro;
 
     [SerializeField] PlayerActionService playerActionService;
     [SerializeField] Scr_GameTimer Scr_GameTimer;
@@ -37,9 +36,9 @@ public class Scr_Tuto : MonoBehaviour
     private void Start()
     {
         player = ReInput.players.GetPlayer(0);
-        textmeshpro = TutoText.GetComponent<TextMeshProUGUI>();
+
         Scr_GameTimer = FindAnyObjectByType<Scr_GameTimer>();
-        DoorToOpen.GetComponent<Scr_FireDoor>().CAN_BE_CLOSED = false;
+        DoorToOpen.GetComponent<FireDoor>().CAN_BE_CLOSED = false;
 
         for(int i = 0; i < GRANDPA_TO_START.Length; i++)
         {
@@ -68,8 +67,8 @@ public class Scr_Tuto : MonoBehaviour
                 gameObject.GetComponent<PlayerMove>().enabled = false;
                 gameObject.GetComponent<PlayerLook>().enabled = false;
             }
-           
-            textmeshpro.enabled = true; 
+
+            TutoText.GetComponent<TextMeshProUGUI>().enabled = true;
 
         }
 
@@ -94,7 +93,11 @@ public class Scr_Tuto : MonoBehaviour
 
         if (didHeSlap == true)
         {
-            textmeshpro.SetText("They go to their room and will come out of it after some time \n Hold Space or Left Click to look at your TABLET"); 
+
+            TutoText.GetComponent<TextMeshProUGUI>().enabled = false;
+            TutoText = GameObject.Find("TABLET");
+            TutoText.GetComponent<TextMeshProUGUI>().enabled = true;
+
             GameObject TabletGO = scriptTablet.gameObject;
             TabletGO.GetComponent<TabletAction>().enabled = true;
 
@@ -120,18 +123,26 @@ public class Scr_Tuto : MonoBehaviour
             didHeSlap = false;
             gameObject.GetComponent<PlayerMove>().enabled = true;
             gameObject.GetComponent<PlayerLook>().enabled = true;
-            textmeshpro.SetText("Seems like other grandpas need to be cured!! \n Bring them back to their room before the end of the timer on your TABLET");
+
+            TutoText.GetComponent<TextMeshProUGUI>().enabled = false;
+            TutoText = GameObject.Find("RULES");
+            TutoText.GetComponent<TextMeshProUGUI>().enabled = true;
+
             timerForTextTuto += Time.deltaTime;
             if (timerForTextTuto > 7)
             {
                 didHeCamera = false;
-                textmeshpro.SetText("SLAP the door to start \n And you better close behind you, insolent >:c");
-                DoorToOpen.GetComponent<Scr_FireDoor>().CAN_BE_CLOSED = true;
+
+                TutoText.GetComponent<TextMeshProUGUI>().enabled = false;
+                TutoText = GameObject.Find("START");
+                TutoText.GetComponent<TextMeshProUGUI>().enabled = true;
+
+                DoorToOpen.GetComponent<FireDoor>().CAN_BE_CLOSED = true;
             }
 
         }
 
-        if (DoorToOpen.GetComponent<Scr_FireDoor>().isClosed == false)
+        if (DoorToOpen.GetComponent<FireDoor>().isClosed == false)
         {
             tutoCompleted = true;
         }

@@ -69,7 +69,11 @@ public class PlayerActionService : MonoBehaviour, IPlayerActionService
     }
     public void EnterTabletView()
     {
-        if(tabletAction == null) return; 
+        if (tabletAction == null)
+        {
+            Debug.LogWarning("Pas de tablet");
+            return;
+        }
         if(TUTOCanUseTablet == true) tabletAction.EnterTabletView();
     }
     public void ExitTabletView()

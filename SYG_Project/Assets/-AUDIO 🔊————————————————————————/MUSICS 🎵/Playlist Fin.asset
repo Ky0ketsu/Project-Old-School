@@ -15,10 +15,10 @@ MonoBehaviour:
   playlist:
     looping: 1
     randomizeTracks: 0
-    timeScale: 0
-    fadeInDuration: 1
+    timeScale: 1
+    fadeInDuration: 5
     fadeOutDuration: 1
     tracks:
     - clipTitle: Music End V3
-      clip: {fileID: 8300000, guid: 08c5148cdc8c34641a71e08c5f0993d6, type: 3}
-      volume: 0.606
+      clip: {fileID: 8300000, guid: 4f4eb174ad59fd24e8e734ab1ea0285a, type: 3}
+      volume: 0.822

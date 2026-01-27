@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class GAME: MonoBehaviour
 {
+    [SerializeField]
+    private Scr_GameTimer timer;
+
+    public Scr_GameTimer Timer
+    { get { return timer; } }
 
 // PUBLIC METHODS --------------------------------------------------------------------------------------------------
 

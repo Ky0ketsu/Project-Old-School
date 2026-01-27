@@ -289,6 +289,9 @@ MonoBehaviour:
   inBedroom: 0
   exitBedroomTimer: 0
   leaveBedroomFX: {fileID: 0}
+  _obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
   life: 0
   inflateList:
   - {fileID: 8300000, guid: a70ed2aa3605c3e4391708e8abb57b9f, type: 3}
@@ -299,9 +302,18 @@ MonoBehaviour:
   cryList:
   - {fileID: 8300000, guid: 34b668485d6d9474daaddb12b8824776, type: 3}
   audioPshht: {fileID: 5530356404582404854}
+  _animator: {fileID: 4448932941408707312}
+  _speed: 1
+  _escapeSpeed: 2
 --- !u!1 &3217459165918407127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3666368851544809270, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 2181775332947179233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4448932941408707312 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2592650528302666769, guid: e02ca4e7d40f7c64eb13f4b3fe83bcab,
     type: 3}
   m_PrefabInstance: {fileID: 2181775332947179233}
   m_PrefabAsset: {fileID: 0}

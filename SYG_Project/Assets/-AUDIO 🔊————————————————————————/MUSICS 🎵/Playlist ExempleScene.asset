@@ -21,4 +21,4 @@ MonoBehaviour:
     tracks:
     - clipTitle: Music Game V3
       clip: {fileID: 8300000, guid: 49c02984c54e574428b3ad2eb569cb93, type: 3}
-      volume: 1
+      volume: 0.091

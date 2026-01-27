@@ -21,10 +21,14 @@ public class TabletAction : MonoBehaviour
     private void Start()
     {
         initTransform = transform.position;
-        ServicesLocator.Get<IPlayerActionService>()?.SetTabletAction(this);
+        
         player = ReInput.players.GetPlayer(0);
     }
 
+    private void Update()
+    {
+        ServicesLocator.Get<IPlayerActionService>()?.SetTabletAction(this);
+    }
 
     public void EnterTabletView()
     {

@@ -7,7 +7,12 @@ public class Scr_GrandpaSpriteDirection : MonoBehaviour
     public Transform graphics;
     [SerializeField] float result;
     [SerializeField] Transform Square;
-    Animator anim; 
+    Animator anim;
+
+    [HideInInspector]
+    public bool isAttack;
+
+    
 
     
 
@@ -16,14 +21,28 @@ public class Scr_GrandpaSpriteDirection : MonoBehaviour
         anim = Square.GetComponent<Animator>();
     }
 
-    public void Update()
+    void CheckAttack()
     {
-        
+        if (isAttack)
+        {
+            anim.SetBool("Attack", true);
+            anim.SetBool("goBack", false);
+            anim.SetBool("goLeft", false);
+            anim.SetBool("goRight", false);
+            anim.SetBool("goFront", false);
+        }
+        else
+        {
+            anim.SetBool("Attack", false);
+            CheckDirection();
+        }
+    }
 
-
+    void CheckDirection()
+    {
         float graphicsAngle = graphics.localEulerAngles.y;
 
-        if ((graphicsAngle > 0 &&  graphicsAngle < 45) || (graphicsAngle < 360 && graphicsAngle > 315))
+        if ((graphicsAngle > 0 && graphicsAngle < 45) || (graphicsAngle < 360 && graphicsAngle > 315))
         {
             //FRONT
 
@@ -61,6 +80,18 @@ public class Scr_GrandpaSpriteDirection : MonoBehaviour
             anim.SetBool("goFront", false);
             anim.SetBool("goRight", false);
             anim.SetBool("goLeft", true);
+        }
+    }
+
+    public void Update()
+    {
+        if (GetComponent<Scr_Mimolle>() != null)
+        {
+            CheckAttack();
+        }
+        else
+        {
+            CheckDirection();
         }
     }
 }

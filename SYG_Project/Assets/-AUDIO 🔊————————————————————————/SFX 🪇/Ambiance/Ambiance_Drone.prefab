@@ -80,7 +80,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.686
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -175,5 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droneList:
-  - {fileID: 8300000, guid: 1898f3c2984d850479580459d305e10a, type: 3}
+  - {fileID: 8300000, guid: 7b64ac1d9b913ee449f73a719f14ba9f, type: 3}
+  - {fileID: 8300000, guid: ec9924e938f5c20458f0f63a1e39bd53, type: 3}
+  - {fileID: 8300000, guid: 8f932360297193446ac741ba0d8488ee, type: 3}
+  - {fileID: 8300000, guid: d6814e0996c95444a969809e6ff3f725, type: 3}
   drone: {fileID: 551119767763224082}

@@ -15,7 +15,7 @@ public class Scr_CrazyCat : GrandpaParent
     [SerializeField]
     GameObject catPrefab;
     
-    private bool _catIsSpawned = false;
+    public bool _catIsSpawned = false;
     
 
      private GameObject _currentCat;
@@ -26,10 +26,8 @@ public class Scr_CrazyCat : GrandpaParent
 
     private Transform[] _catSpawnPoint;
 
-    protected override void Start()
+    void Start()
     {
-        base.Start();
-
         _catSpawnPoint = new Transform[_catSpawnPointParent.childCount];
         for(int i = 0; i < _catSpawnPointParent.childCount; i++)
         {
@@ -37,9 +35,10 @@ public class Scr_CrazyCat : GrandpaParent
         }
     }
 
-
     void CheckCanViewPlayer()
     {
+        if (!CanSeePlayer()) return;
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position) * 1.05f, layerMask))
         {
@@ -65,7 +64,7 @@ public class Scr_CrazyCat : GrandpaParent
     public override void Slap()
     {
         Debug.Log("Trouve le chat");
-        if (_catIsSpawned == false)
+        if (_catIsSpawned == false && !controlledMove)
         {
             _currentCat = Instantiate(catPrefab, _catSpawnPoint[Random.Range(0, _catSpawnPoint.Length)].position, Quaternion.identity);
             _currentCat.GetComponent<Scr_Cat>().crazyCat = this;
@@ -79,6 +78,8 @@ public class Scr_CrazyCat : GrandpaParent
 
         CheckCanViewPlayer();
 
+        if (_shearchingPlayer == true) agent.speed = 2;
+        else if (!controlledMove) SetDestinationToPlayer();
 
         if (inBedroom == true)
         {
@@ -92,8 +93,9 @@ public class Scr_CrazyCat : GrandpaParent
                 inBedroom = true;
                 ActivateAgent(false);
             }
-            else SetRandomDestination(transform.position, 10f);
-            
+            else if (!_shearchingPlayer) SetRandomDestination(transform.position, 10f);
+            else SetDestinationToPlayer();
+
         }
 
         if (agent.isActiveAndEnabled) agent.isStopped = !canMove;
@@ -101,6 +103,9 @@ public class Scr_CrazyCat : GrandpaParent
 
     void SetDestinationToPlayer()
     {
+        agent.speed = 4;
         targetPosition = player.position;
+        if(ArrivedToDestination()) return;
+        SetRandomDestination(player.position, 0f);
     }
 }

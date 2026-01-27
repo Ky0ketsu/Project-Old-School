@@ -122,11 +122,23 @@ public class Scr_Mimolle : GrandpaParent
             if (hit.transform.GetComponentInParent<PlayerStunAction>() != null)
             {
                 hit.transform.GetComponentInParent<PlayerStunAction>().Stun();
-                _timerAfterkickPlayer = 15f;
+                StartCoroutine(AttackRoutine());
+                _timerAfterkickPlayer = 5f;
             }
             else Debug.Log("mimolle na pas toucher");
         }
     }
+
+    IEnumerator AttackRoutine()
+    {
+        yield return new WaitForSeconds(0.3f);
+        agent.speed = 0;
+        GetComponentInChildren<Scr_GrandpaSpriteDirection>().isAttack = true;
+        yield return new WaitForSeconds(1f);
+        agent.speed = 2;
+        GetComponentInChildren<Scr_GrandpaSpriteDirection>().isAttack = false;
+    }
+
 
     IEnumerator AttackAnimation()
     {
