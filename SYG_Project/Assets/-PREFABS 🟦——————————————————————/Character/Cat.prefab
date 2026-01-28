@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 972141282408312994}
   - component: {fileID: 4588295597245707459}
   - component: {fileID: 49153010795023056}
+  - component: {fileID: 6734245788993264027}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -100,6 +101,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00fc4d5237b62f04d971a0a196c5e960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6734245788993264027
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254361713969764758}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65c1b15d0c629974597f4fcb4e6be9f9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3389894155593817283
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +179,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b20882824bde90348a7f00d08490eb5a, type: 3}
   - {fileID: 8300000, guid: af3ad68c5013f6b41b1d5f70cdee4271, type: 3}
   audioCat: {fileID: 2144087638447312755}
+  spriteCanSlap: 0
 --- !u!1 &6228889606467774448
 GameObject:
   m_ObjectHideFlags: 0
