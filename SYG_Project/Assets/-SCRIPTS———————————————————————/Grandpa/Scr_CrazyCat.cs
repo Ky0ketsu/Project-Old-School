@@ -85,13 +85,6 @@ public class Scr_CrazyCat : GrandpaParent
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
 
-        if (!inBedroom && !ArrivedToDestination())
-        {
-            int d = Random.Range(0, footStep.Count);
-            audioFootStep.clip = footStep[d];
-            audioFootStep.Play();
-        }
-
         CheckCanViewPlayer();
 
         if (_shearchingPlayer == true) agent.speed = 2;

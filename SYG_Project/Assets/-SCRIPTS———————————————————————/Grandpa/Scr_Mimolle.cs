@@ -87,13 +87,6 @@ public class Scr_Mimolle : GrandpaParent
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
 
-        if (!inBedroom && !ArrivedToDestination() && GetComponentInChildren<Scr_GrandpaSpriteDirection>().isAttack == true)
-        {
-            int d = Random.Range(0, footStep.Count);
-            audioFootStep.clip = footStep[d];
-            audioFootStep.Play();
-        }
-
         if (!controlledMove)
         {
             if (!CanSeePlayer()) spriteCanSlap = true;
