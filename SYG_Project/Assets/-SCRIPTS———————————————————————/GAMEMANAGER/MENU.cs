@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEditor;
 
 [RequireComponent(typeof(AudioSource))]
 public class MENU : MonoBehaviour
 {
     Player player;
-    [SerializeField] GameObject mainCanvas,menusList,inGameList,mainMenu,pauseMenu,settingsMenu,creditsMenu,endMenu; //<-- Reference to all the menus and the in-game UI
+    [SerializeField] GameObject mainCanvas,menusList,inGameList,mainMenu,pauseMenu,settingsMenu,creditsMenu,endMenu,victoryMenu; //<-- Reference to all the menus and the in-game UI
     void AllMenus(bool wanted) // <-- Don't forget to add new menus here too
     {
         mainMenu.SetActive(wanted);
@@ -52,6 +53,7 @@ public class MENU : MonoBehaviour
         EVENTS.OnMenuExit += DisableUIInputs;
         EVENTS.OnGameResume += DisableUIInputs;
         EVENTS.OnGameOver += GoToEndMenu;
+        EVENTS.OnVictory += GoToVictoryMenu;
     }
 
     void OnDisable()
@@ -67,6 +69,7 @@ public class MENU : MonoBehaviour
         EVENTS.OnMenuExit -= DisableUIInputs;
         EVENTS.OnGameResume -= DisableUIInputs;
         EVENTS.OnGameOver -= GoToEndMenu;
+        EVENTS.OnVictory -= GoToVictoryMenu;
     }
 
 
@@ -204,6 +207,13 @@ public class MENU : MonoBehaviour
     {
         MenusList(false);
         StartCoroutine(TransitionToMenu(TransitionType.Iris, endMenu, 1f, 1f, 2f));
+        MUSIC.PLAYER.Stop();
+    }
+
+    public void GoToVictoryMenu()
+    {
+        MenusList(false);
+        StartCoroutine(TransitionToMenu(TransitionType.Iris, victoryMenu, 1f, 1f, 2f));
         MUSIC.PLAYER.Stop();
     }
 

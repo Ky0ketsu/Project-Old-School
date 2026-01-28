@@ -21,6 +21,9 @@ public class EVENTS
     public static event Action OnGameOver;
     public static void InvokeGameOver() { LogEventInConsole("💀GameOver"); OnGameOver?.Invoke(); }
 
+    public static event Action OnVictory;
+    public static void InvokeVictory() { OnVictory?.Invoke(); }
+
     public static event Action OnGamePause;
     public static void InvokeGamePause() { LogEventInConsole("⏯️GamePause"); OnGamePause?.Invoke(); }
 
