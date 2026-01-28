@@ -32,8 +32,8 @@ public class GrandpaParent : MonoBehaviour , ISlapable
     [SerializeField]
     protected float exitBedroomTimer;
 
-    public List<AudioClip> footStep;
-    [SerializeField] public AudioSource audioFootStep;
+    /*public List<AudioClip> footStep;
+    [SerializeField] public AudioSource audioFootStep;*/
 
 
     [SerializeField]
@@ -102,13 +102,6 @@ public class GrandpaParent : MonoBehaviour , ISlapable
     protected virtual void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
-
-        if (!inBedroom && !ArrivedToDestination())
-        {
-            int d = Random.Range(0, footStep.Count);
-            audioFootStep.clip = footStep[d];
-            audioFootStep.Play();
-        }
 
         if (inBedroom == true)  UpdateTimer();
 
