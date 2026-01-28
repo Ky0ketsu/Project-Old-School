@@ -38,7 +38,7 @@ public class TabletAction : MonoBehaviour
 
     public void ExitTabletView()
     {
-        selfTransform.DOLocalMove(new Vector3(0, transform.position.y - 1000, 0), 0.5f, false);
+        selfTransform.DOLocalMove(new Vector3(0, transform.position.y - 1500, 0), 0.5f, false);
 
         int r = Random.Range(0, cameraActionCloseList.Count);
         audioCameraAction.clip = cameraActionCloseList[r];
