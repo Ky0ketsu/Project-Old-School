@@ -207,6 +207,7 @@ public class MENU : MonoBehaviour
     {
         MenusList(false);
         StartCoroutine(TransitionToMenu(TransitionType.Iris, endMenu, 1f, 1f, 2f));
+        ServicesLocator.Get<PlayerService>().player.transform.position = Vector3.right * 4000 ;
         MUSIC.PLAYER.Stop();
     }
 
@@ -214,6 +215,7 @@ public class MENU : MonoBehaviour
     {
         MenusList(false);
         StartCoroutine(TransitionToMenu(TransitionType.Iris, victoryMenu, 1f, 1f, 2f));
+        ServicesLocator.Get<PlayerService>().player.transform.position = Vector3.right * 4000;
         MUSIC.PLAYER.Stop();
     }
 
