@@ -47,12 +47,12 @@ PrefabInstance:
     - target: {fileID: 2993677693277303759, guid: 645cf0f5effa9f341ae6765b9eca5150,
         type: 3}
       propertyPath: _initialLeftRota
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2993677693277303759, guid: 645cf0f5effa9f341ae6765b9eca5150,
         type: 3}
       propertyPath: _initialRightRota
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 2993677693277303759, guid: 645cf0f5effa9f341ae6765b9eca5150,
         type: 3}
