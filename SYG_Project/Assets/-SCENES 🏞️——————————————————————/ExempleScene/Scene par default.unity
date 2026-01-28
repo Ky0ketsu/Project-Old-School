@@ -566,10 +566,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SLAP the door to start
-
-    And you better close behind you, insolent
-    >:c'
+  m_text: "\rCLAQUEZ la porte pour commencer\nEt vous avez int\xE9r\xEAt \xE0 fermer
+    derri\xE8re vous, insolent >:c"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -1791,10 +1789,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'They go to their room and will come out of it after some time
-
-    Hold
-    Space or Left Click to look at your TABLET'
+  m_text: "Ils retournent dans leurs chambres, ils en resortiront apr\xE8s un certains
+    temps\nRestez appuy\xE9 sur Espace ou Clic Gauche pour regarder votre TABLETTE"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -1944,9 +1940,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press Space or Left Click to SLAP
+  m_text: 'Appuyez sur Espace ou Clic Gauche pour CLAQUER
 
-    SLAP Grandpas to fix them'
+    CLAQUEZ les Papis
+    pour les soigner'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -2246,10 +2243,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Seems like other grandpas need to be cured!!
+  m_text: 'On dirait que d''autres Papis ont besoin de vous!!
 
-    Bring them back to their
-    room before the end of the timer on your TABLET'
+    Ramenez les dans
+    leurs chambres avant la fin du chrono sur votre TABLETTE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc5f0d24cb5ae74888918d878c44c06, type: 2}
   m_sharedMaterial: {fileID: -4191031275900277734, guid: ffc5f0d24cb5ae74888918d878c44c06,
@@ -3935,9 +3932,21 @@ PrefabInstance:
       objectReference: {fileID: 1210043493}
     - target: {fileID: 660704208383534660, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
+      propertyPath: HealVFX
+      value: 
+      objectReference: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153,
+        type: 3}
+    - target: {fileID: 660704208383534660, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+        type: 3}
       propertyPath: canMove
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 660704208383534660, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+        type: 3}
+      propertyPath: healSpeederVFX
+      value: 
+      objectReference: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153,
+        type: 3}
     - target: {fileID: 660704208383534660, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: minimumDistante
@@ -4098,6 +4107,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1210043493}
+    - target: {fileID: 1941541984811946823, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+        type: 3}
+      propertyPath: HealVFX
+      value: 
+      objectReference: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153,
+        type: 3}
+    - target: {fileID: 1941541984811946823, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+        type: 3}
+      propertyPath: healMimolleVFX
+      value: 
+      objectReference: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153,
+        type: 3}
     - target: {fileID: 2345168952721701452, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: m_IsActive
@@ -4193,6 +4214,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1210043493}
+    - target: {fileID: 3430549314103836184, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+        type: 3}
+      propertyPath: HealVFX
+      value: 
+      objectReference: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153,
+        type: 3}
+    - target: {fileID: 3430549314103836184, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+        type: 3}
+      propertyPath: healRexVFX
+      value: 
+      objectReference: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153,
+        type: 3}
     - target: {fileID: 3455639044523499971, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: m_PlayOnAwake
@@ -4449,6 +4482,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1210043493}
+    - target: {fileID: 6886254896559051479, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+        type: 3}
+      propertyPath: HealVFX
+      value: 
+      objectReference: {fileID: 1558990608093960050, guid: d780f89af28a4b54e98ce2f8e443dd48,
+        type: 3}
+    - target: {fileID: 6886254896559051479, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
+        type: 3}
+      propertyPath: healCrazyCatVFX
+      value: 
+      objectReference: {fileID: 1558990608093960050, guid: d780f89af28a4b54e98ce2f8e443dd48,
+        type: 3}
     - target: {fileID: 6886254896559051479, guid: d0a1ca072e4ad4f4c9af18f172ec604e,
         type: 3}
       propertyPath: _catSpawnPointParent

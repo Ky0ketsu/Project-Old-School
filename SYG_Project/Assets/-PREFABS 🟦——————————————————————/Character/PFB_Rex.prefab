@@ -280,9 +280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff346df9869ef6c41b1fba3235c6f3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteCanSlap: 0
+  HealVFX: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153, type: 3}
   canMove: 0
   graphics: {fileID: 3217459165918407127}
   colliders: {fileID: 8502768712306493193}
+  agent: {fileID: 0}
   player: {fileID: 0}
   bedroom: {fileID: 0}
   controlledMove: 0
@@ -292,6 +295,8 @@ MonoBehaviour:
   _obstacleMask:
     serializedVersion: 2
     m_Bits: 0
+  healRexVFX: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153,
+    type: 3}
   life: 0
   inflateList:
   - {fileID: 8300000, guid: a70ed2aa3605c3e4391708e8abb57b9f, type: 3}

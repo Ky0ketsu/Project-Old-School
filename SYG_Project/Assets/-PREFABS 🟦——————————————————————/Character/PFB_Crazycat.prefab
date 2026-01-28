@@ -126,9 +126,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0433f19ba2239e54ebea99dd65ebdd64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteCanSlap: 0
+  HealVFX: {fileID: 1558990608093960050, guid: d780f89af28a4b54e98ce2f8e443dd48, type: 3}
   canMove: 0
   graphics: {fileID: 1139202835330172447}
   colliders: {fileID: 6239196297178949825}
+  agent: {fileID: 0}
   player: {fileID: 0}
   bedroom: {fileID: 0}
   controlledMove: 0
@@ -138,6 +141,8 @@ MonoBehaviour:
   _obstacleMask:
     serializedVersion: 2
     m_Bits: 0
+  healCrazyCatVFX: {fileID: 1558990608093960050, guid: d780f89af28a4b54e98ce2f8e443dd48,
+    type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 635073

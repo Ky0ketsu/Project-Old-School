@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Scr_CrazyCat : GrandpaParent
 {
+    [SerializeField] GameObject healCrazyCatVFX;
+
     [SerializeField]
     LayerMask layerMask;
 
@@ -59,7 +61,14 @@ public class Scr_CrazyCat : GrandpaParent
         }
     }
 
+    public override void GoBedroom()
+    {
+        SetRandomDestination(bedroom.position,0);
+        controlledMove = true;
+        Debug.DrawLine(transform.position, targetPosition, Color.magenta, 10f);
 
+        Instantiate(healCrazyCatVFX, transform.position, Quaternion.identity);
+    }
 
     public override void Slap()
     {

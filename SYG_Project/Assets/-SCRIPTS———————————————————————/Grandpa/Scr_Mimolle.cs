@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class Scr_Mimolle : GrandpaParent
 {
+
+    [SerializeField] GameObject healMimolleVFX;
+
     [SerializeField] bool shearchPlayer;
     [SerializeField] LayerMask layerMask;
 
@@ -69,6 +72,15 @@ public class Scr_Mimolle : GrandpaParent
             Debug.Log($"{transform.name} a pris une claque");
             GoBedroom();
         }
+    }
+
+    public override void GoBedroom()
+    {
+        SetRandomDestination(bedroom.position,0);
+        controlledMove = true;
+        Debug.DrawLine(transform.position, targetPosition, Color.magenta, 10f);
+
+        Instantiate(healMimolleVFX, transform.position, Quaternion.identity);
     }
 
     protected override void Update()

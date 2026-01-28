@@ -428,6 +428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da2a37e95d76c745aaa77c0551819f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteCanSlap: 0
+  HealVFX: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153, type: 3}
   canMove: 0
   graphics: {fileID: 6354484704562452425}
   colliders: {fileID: 105547771140421911}
@@ -441,6 +443,8 @@ MonoBehaviour:
   _obstacleMask:
     serializedVersion: 2
     m_Bits: 0
+  healMimolleVFX: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153,
+    type: 3}
   shearchPlayer: 0
   layerMask:
     serializedVersion: 2

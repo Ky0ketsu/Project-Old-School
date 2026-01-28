@@ -1,2 +1,19 @@
 fileFormatVersion: 2
 guid: 539da6663202f6e4b87dd7cae1315cd0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - HealVFX: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153,
+      type: 3}
+  - graphics: {instanceID: 0}
+  - colliders: {instanceID: 0}
+  - agent: {instanceID: 0}
+  - player: {instanceID: 0}
+  - bedroom: {instanceID: 0}
+  - leaveBedroomFX: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class Scr_Speeder : GrandpaParent
 {
+
+
+    [SerializeField] GameObject healSpeederVFX;
     [SerializeField, Range(0f, 50f)] float speed;
     private float currentSpeed;
 
@@ -110,6 +113,8 @@ public class Scr_Speeder : GrandpaParent
         agent.SetDestination(bedroom.position);
         controlledMove = true;
         Debug.DrawLine(transform.position, targetPosition, Color.magenta, 10f);
+
+        Instantiate(healSpeederVFX, transform.position, Quaternion.identity);
     }
 
 

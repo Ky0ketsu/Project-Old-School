@@ -589,9 +589,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65aec4cd10002f7459bbd60317e7257c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteCanSlap: 0
+  HealVFX: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153, type: 3}
   canMove: 0
   graphics: {fileID: 8180722588441227730}
   colliders: {fileID: 2944952634667966220}
+  agent: {fileID: 0}
   player: {fileID: 0}
   bedroom: {fileID: 0}
   controlledMove: 0
@@ -601,6 +604,8 @@ MonoBehaviour:
   _obstacleMask:
     serializedVersion: 2
     m_Bits: 0
+  healSpeederVFX: {fileID: 1558990608093960050, guid: 8121f1dde5a59a44e9f136eaaaca6153,
+    type: 3}
   speed: 8.9
   minimumDistante: 3
   stunList:
@@ -617,7 +622,7 @@ MonoBehaviour:
   audioCrash: {fileID: 1650566317385804853}
   audioRun: {fileID: 5019808516356951413}
   stunFX: {fileID: 1558990608093960050, guid: c39ee3991f8f22c4e94a0ad369f4090d, type: 3}
-  layerMask:
+  doorLayer:
     serializedVersion: 2
     m_Bits: 0
 --- !u!1 &8180722588441227730 stripped

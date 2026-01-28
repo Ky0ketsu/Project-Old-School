@@ -8,6 +8,8 @@ public class GrandpaParent : MonoBehaviour , ISlapable
 {
     public bool spriteCanSlap;
 
+    [SerializeField] public GameObject HealVFX;
+
     [SerializeField] 
     public bool canMove;
 
@@ -90,6 +92,8 @@ public class GrandpaParent : MonoBehaviour , ISlapable
         SetRandomDestination(bedroom.position,0);
         controlledMove = true;
         Debug.DrawLine(transform.position, targetPosition, Color.magenta, 10f);
+
+        Instantiate(HealVFX, transform.position, Quaternion.identity);
     }
 
     protected virtual void Update()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Scr_Rex : GrandpaParent
 {
 
-    [SerializeField] GameObject HealVFX;
+    [SerializeField] GameObject healRexVFX;
 
     [SerializeField]
     int life;
@@ -64,7 +64,7 @@ public class Scr_Rex : GrandpaParent
         {
             StartCoroutine(StunRoutine());
 
-            Instantiate(HealVFX, transform.position, Quaternion.identity);
+            Instantiate(healRexVFX, transform.position, Quaternion.identity);
         }
     }
 
