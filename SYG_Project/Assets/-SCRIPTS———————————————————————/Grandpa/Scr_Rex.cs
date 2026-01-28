@@ -84,6 +84,14 @@ public class Scr_Rex : GrandpaParent
     protected override void Update()
     {
         if (GAME.MANAGER.CurrentState != State.gameplay) return;
+
+        if (!inBedroom && !ArrivedToDestination() && !isStun)
+        {
+            int d = Random.Range(0, footStep.Count);
+            audioFootStep.clip = footStep[d];
+            audioFootStep.Play();
+        }
+
         if (inBedroom == true)
         {
             UpdateTimer();
