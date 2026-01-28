@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BUTTON
+  m_text: "CR\xC9DITS"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9350e833d940ba47a3d3d612fe51130, type: 2}
   m_sharedMaterial: {fileID: -3318051868655622645, guid: c9350e833d940ba47a3d3d612fe51130,
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 7727215134079208971}
   - component: {fileID: 6855584894009099304}
   m_Layer: 5
-  m_Name: BUTTON Button Graphics
+  m_Name: "CR\xC9DITS Button Graphics"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -253,7 +253,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 811226315287723063}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: CREDITS
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9010565144984093170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,8 +397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2205f90ae6199849a2e5200b57afb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  en: BUTTON
-  fr: BOUTON
+  en: CREDITS
+  fr: "CR\xC9DITS"
 --- !u!114 &7802165269150084820
 MonoBehaviour:
   m_ObjectHideFlags: 0

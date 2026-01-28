@@ -172,7 +172,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 454.1
+  m_fontSize: 454.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: START
+  m_text: "D\xC9MARRER"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9350e833d940ba47a3d3d612fe51130, type: 2}
   m_sharedMaterial: {fileID: -3318051868655622645, guid: c9350e833d940ba47a3d3d612fe51130,
@@ -976,7 +976,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 454.1
+  m_fontSize: 454.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1143,7 +1143,7 @@ PrefabInstance:
     - target: {fileID: 722590726480801720, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_text
-      value: START
+      value: "D\xC9MARRER"
       objectReference: {fileID: 0}
     - target: {fileID: 722590726480801720, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
@@ -1303,7 +1303,7 @@ PrefabInstance:
     - target: {fileID: 5653400515240392124, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_Name
-      value: START Button Graphics
+      value: "D\xC9MARRER Button Graphics"
       objectReference: {fileID: 0}
     - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
@@ -1488,28 +1488,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456951229959331998, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456951229959331998, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722590726480801720, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_text
-      value: CREDITS
+      value: "CR\xC9DITS"
       objectReference: {fileID: 0}
-    - target: {fileID: 722590726480801720, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
+    - target: {fileID: 3331895880277980308, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
-      propertyPath: m_fontSize
-      value: 30
+      propertyPath: m_Pivot.x
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1754839394084153332, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
+    - target: {fileID: 3331895880277980308, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
-      propertyPath: lockParenting
-      value: 1
+      propertyPath: m_Pivot.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3331895880277980308, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
@@ -1549,6 +1544,11 @@ PrefabInstance:
     - target: {fileID: 3331895880277980308, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3331895880277980308, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3331895880277980308, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
@@ -1596,30 +1596,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -20.74
       objectReference: {fileID: 0}
-    - target: {fileID: 3583978759715300998, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
-      propertyPath: en
-      value: CREDITS
-      objectReference: {fileID: 0}
-    - target: {fileID: 3583978759715300998, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
-      propertyPath: fr
-      value: "CR\xC9DITS"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999631699898198112, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
-      propertyPath: clickOnce
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5653400515240392124, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_Name
-      value: CREDITS Button Graphics
-      objectReference: {fileID: 0}
-    - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
+      value: "CR\xC9DITS Button Graphics"
       objectReference: {fileID: 0}
     - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
@@ -1633,39 +1613,9 @@ PrefabInstance:
       objectReference: {fileID: 2541620738341400000}
     - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 299194572138152577}
-    - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CREDITS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainMenuButtons, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6904772261322917910, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_Name
@@ -1725,7 +1675,7 @@ PrefabInstance:
     - target: {fileID: 722590726480801720, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_text
-      value: QUIT
+      value: QUITTER
       objectReference: {fileID: 0}
     - target: {fileID: 722590726480801720, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
@@ -1840,7 +1790,7 @@ PrefabInstance:
     - target: {fileID: 5653400515240392124, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}
       propertyPath: m_Name
-      value: QUIT Button Graphics
+      value: QUITTER Button Graphics
       objectReference: {fileID: 0}
     - target: {fileID: 6459998953733841741, guid: 3ee834a07d046ee4ebebee9a58cafa8f,
         type: 3}

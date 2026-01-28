@@ -18,6 +18,9 @@ public class MENU : MonoBehaviour
         pauseMenu.SetActive(wanted);
         settingsMenu.SetActive(wanted);
         creditsMenu.SetActive(wanted);
+        endMenu.SetActive(wanted);
+        victoryMenu.SetActive(wanted);
+
     }
 
 
